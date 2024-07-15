@@ -47,9 +47,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Transparent;
-            label1.Location = new Point(340, 87);
+            label1.Location = new Point(398, 117);
             label1.Name = "label1";
-            label1.Size = new Size(465, 59);
+            label1.Size = new Size(355, 45);
             label1.TabIndex = 9;
             label1.Text = "Đăng Nhập Hệ Thống";
             // 
@@ -63,9 +63,9 @@
             grb_thongtindangnhap.Controls.Add(label3);
             grb_thongtindangnhap.Controls.Add(label2);
             grb_thongtindangnhap.ForeColor = Color.White;
-            grb_thongtindangnhap.Location = new Point(457, 223);
+            grb_thongtindangnhap.Location = new Point(506, 244);
             grb_thongtindangnhap.Name = "grb_thongtindangnhap";
-            grb_thongtindangnhap.Size = new Size(561, 299);
+            grb_thongtindangnhap.Size = new Size(518, 280);
             grb_thongtindangnhap.TabIndex = 8;
             grb_thongtindangnhap.TabStop = false;
             grb_thongtindangnhap.Text = "Thông tin đăng nhập";
@@ -75,9 +75,9 @@
             // 
             btn_thoat.BackColor = Color.White;
             btn_thoat.ForeColor = Color.Black;
-            btn_thoat.Location = new Point(316, 213);
+            btn_thoat.Location = new Point(292, 200);
             btn_thoat.Name = "btn_thoat";
-            btn_thoat.Size = new Size(150, 46);
+            btn_thoat.Size = new Size(138, 43);
             btn_thoat.TabIndex = 5;
             btn_thoat.Text = "Thoát";
             btn_thoat.UseVisualStyleBackColor = false;
@@ -87,9 +87,9 @@
             // 
             btn_dangnhap.BackColor = Color.White;
             btn_dangnhap.ForeColor = Color.Black;
-            btn_dangnhap.Location = new Point(68, 213);
+            btn_dangnhap.Location = new Point(63, 200);
             btn_dangnhap.Name = "btn_dangnhap";
-            btn_dangnhap.Size = new Size(150, 46);
+            btn_dangnhap.Size = new Size(138, 43);
             btn_dangnhap.TabIndex = 4;
             btn_dangnhap.Text = "Đăng nhập";
             btn_dangnhap.UseVisualStyleBackColor = false;
@@ -97,52 +97,52 @@
             // 
             // txt_matkhau
             // 
-            txt_matkhau.Location = new Point(159, 127);
+            txt_matkhau.Location = new Point(147, 119);
             txt_matkhau.Name = "txt_matkhau";
-            txt_matkhau.Size = new Size(335, 39);
+            txt_matkhau.Size = new Size(310, 35);
             txt_matkhau.TabIndex = 3;
             // 
             // txt_taikhoan
             // 
-            txt_taikhoan.Location = new Point(159, 58);
+            txt_taikhoan.Location = new Point(147, 54);
             txt_taikhoan.Name = "txt_taikhoan";
-            txt_taikhoan.Size = new Size(335, 39);
+            txt_taikhoan.Size = new Size(310, 35);
             txt_taikhoan.TabIndex = 2;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(24, 134);
+            label3.Location = new Point(22, 126);
             label3.Name = "label3";
-            label3.Size = new Size(115, 32);
+            label3.Size = new Size(101, 30);
             label3.TabIndex = 1;
             label3.Text = "Mật khẩu";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(24, 65);
+            label2.Location = new Point(22, 61);
             label2.Name = "label2";
-            label2.Size = new Size(115, 32);
+            label2.Size = new Size(101, 30);
             label2.TabIndex = 0;
             label2.Text = "Tài khoản";
             // 
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(111, 223);
+            pictureBox2.Location = new Point(186, 244);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(301, 299);
+            pictureBox2.Size = new Size(278, 280);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 7;
             pictureBox2.TabStop = false;
             // 
             // FormDangNhap
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(1088, 642);
+            ClientSize = new Size(1208, 739);
             Controls.Add(label1);
             Controls.Add(grb_thongtindangnhap);
             Controls.Add(pictureBox2);

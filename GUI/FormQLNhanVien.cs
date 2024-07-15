@@ -16,7 +16,5 @@ namespace GUI
         {
             InitializeComponent();
         }
-
-        
     }
 }

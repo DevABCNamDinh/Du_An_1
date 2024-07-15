@@ -16,10 +16,5 @@ namespace GUI
         {
             InitializeComponent();
         }
-
-        private void FormSanPham_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -52,7 +52,7 @@
             panel1.ForeColor = SystemColors.ButtonHighlight;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1408, 65);
+            panel1.Size = new Size(1386, 65);
             panel1.TabIndex = 0;
             // 
             // button2
@@ -81,7 +81,7 @@
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 65);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(240, 770);
+            flowLayoutPanel1.Size = new Size(240, 798);
             flowLayoutPanel1.TabIndex = 1;
             flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
@@ -180,9 +180,9 @@
             // 
             pn_Body.BackgroundImageLayout = ImageLayout.None;
             pn_Body.Dock = DockStyle.Right;
-            pn_Body.Location = new Point(270, 65);
+            pn_Body.Location = new Point(248, 65);
             pn_Body.Name = "pn_Body";
-            pn_Body.Size = new Size(1138, 770);
+            pn_Body.Size = new Size(1138, 798);
             pn_Body.TabIndex = 3;
             pn_Body.Paint += pn_Body_Paint;
             // 
@@ -190,7 +190,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1408, 835);
+            ClientSize = new Size(1386, 863);
             Controls.Add(pn_Body);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(panel1);

@@ -29,7 +29,11 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            panel2 = new Panel();
+            button1 = new Button();
             button2 = new Button();
+            txt_tieude = new Label();
+            label1 = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
             btn_hoaDon = new Button();
             btn_sanPham = new Button();
@@ -40,6 +44,7 @@
             btn_dangXuat = new Button();
             pn_Body = new Panel();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,25 +52,67 @@
             // 
             panel1.BackColor = Color.CornflowerBlue;
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(button2);
+            panel1.Controls.Add(panel2);
+            panel1.Controls.Add(txt_tieude);
+            panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.ForeColor = SystemColors.ButtonHighlight;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1408, 65);
+            panel1.Size = new Size(1599, 65);
             panel1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(button1);
+            panel2.Controls.Add(button2);
+            panel2.Dock = DockStyle.Right;
+            panel2.Location = new Point(1438, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(159, 63);
+            panel2.TabIndex = 0;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Black;
+            button1.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(0, 0);
+            button1.Name = "button1";
+            button1.Size = new Size(72, 59);
+            button1.TabIndex = 6;
+            button1.Text = "❐";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_2;
             // 
             // button2
             // 
             button2.BackColor = Color.Black;
             button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(1331, 1);
+            button2.Location = new Point(78, 0);
             button2.Name = "button2";
             button2.Size = new Size(72, 59);
             button2.TabIndex = 2;
             button2.Text = "X";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
+            // 
+            // txt_tieude
+            // 
+            txt_tieude.AutoSize = true;
+            txt_tieude.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txt_tieude.Location = new Point(610, 8);
+            txt_tieude.Name = "txt_tieude";
+            txt_tieude.Size = new Size(0, 45);
+            txt_tieude.TabIndex = 5;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(626, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(0, 45);
+            label1.TabIndex = 5;
             // 
             // flowLayoutPanel1
             // 
@@ -81,7 +128,7 @@
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 65);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(240, 770);
+            flowLayoutPanel1.Size = new Size(240, 842);
             flowLayoutPanel1.TabIndex = 1;
             flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
@@ -179,10 +226,10 @@
             // pn_Body
             // 
             pn_Body.BackgroundImageLayout = ImageLayout.None;
-            pn_Body.Dock = DockStyle.Right;
-            pn_Body.Location = new Point(270, 65);
+            pn_Body.Dock = DockStyle.Fill;
+            pn_Body.Location = new Point(240, 65);
             pn_Body.Name = "pn_Body";
-            pn_Body.Size = new Size(1138, 770);
+            pn_Body.Size = new Size(1359, 842);
             pn_Body.TabIndex = 3;
             pn_Body.Paint += pn_Body_Paint;
             // 
@@ -190,7 +237,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1408, 835);
+            ClientSize = new Size(1599, 907);
             Controls.Add(pn_Body);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(panel1);
@@ -200,6 +247,8 @@
             Text = "Form1";
             Load += Index_Load;
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -217,5 +266,9 @@
         private Button btn_dangXuat;
         private Button button2;
         private Panel pn_Body;
+        private Label label1;
+        private Label txt_tieude;
+        private Button button1;
+        private Panel panel2;
     }
 }

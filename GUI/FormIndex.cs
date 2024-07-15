@@ -2,7 +2,7 @@ namespace GUI
 {
     public partial class FormIndex : Form
     {
-
+        private bool isFullScreen = false;
         public FormIndex()
         {
             InitializeComponent();
@@ -15,6 +15,7 @@ namespace GUI
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            txt_tieude.Text = "Hóa ??n";
             oppenForm(new FormHoaDon());
         }
 
@@ -42,6 +43,7 @@ namespace GUI
 
         private void btn_sanPham_Click(object sender, EventArgs e)
         {
+            txt_tieude.Text = "S?n ph?m";
             oppenForm(new FormSanPham());
         }
 
@@ -68,22 +70,42 @@ namespace GUI
 
         private void btn_khuyenMai_Click(object sender, EventArgs e)
         {
+            txt_tieude.Text = "Khuy?n m?i";
             oppenForm(new FormKhuyenMai());
         }
 
         private void btn_quanLyNV_Click(object sender, EventArgs e)
         {
+            txt_tieude.Text = "Qu?n lý nhân viên";
             oppenForm(new FormQLNhanVien());
         }
 
         private void btn_quanLyKH_Click(object sender, EventArgs e)
         {
+            txt_tieude.Text = "Qu?n lý khách hàng";
+
             oppenForm(new FormQLKhachHang());
         }
 
         private void btn_thongTinTK_Click(object sender, EventArgs e)
         {
+            txt_tieude.Text = "Thông tin tài kho?n";
+
             oppenForm(new FormThongTinTK());
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            if (isFullScreen)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+
+            isFullScreen = !isFullScreen;
         }
     }
 }

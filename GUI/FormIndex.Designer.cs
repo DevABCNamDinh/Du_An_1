@@ -60,7 +60,9 @@
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
 
+
             panel1.Size = new Size(1599, 65);
+
             panel1.TabIndex = 0;
             // 
             // panel2
@@ -131,7 +133,9 @@
             flowLayoutPanel1.Location = new Point(0, 61);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
 
+
             flowLayoutPanel1.Size = new Size(240, 842);
+
 
             flowLayoutPanel1.TabIndex = 1;
             flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
@@ -231,10 +235,12 @@
             // 
             pn_Body.BackgroundImageLayout = ImageLayout.None;
 
+
             pn_Body.Dock = DockStyle.Fill;
             pn_Body.Location = new Point(240, 65);
             pn_Body.Name = "pn_Body";
             pn_Body.Size = new Size(1359, 842);
+
 
             pn_Body.TabIndex = 3;
             pn_Body.Paint += pn_Body_Paint;
@@ -243,6 +249,7 @@
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
+
 
             ClientSize = new Size(1599, 907);
 

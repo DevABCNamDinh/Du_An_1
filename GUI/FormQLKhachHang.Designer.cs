@@ -247,29 +247,9 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1051, 681);
-            Controls.Add(radioButton2);
-            Controls.Add(radioButton1);
-            Controls.Add(txt_search);
-            Controls.Add(label9);
-            Controls.Add(btn_clean);
-            Controls.Add(btn_delete);
-            Controls.Add(btn_add);
-            Controls.Add(btn_update);
-            Controls.Add(txt_email);
-            Controls.Add(txt_sdt);
-            Controls.Add(txt_diachi);
-            Controls.Add(txt_khachhang);
-            Controls.Add(txt_id);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(dtg_hienthi);
-            Controls.Add(label1);
+
+            ClientSize = new Size(1101, 718);
+
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2);
             Name = "FormQLKhachHang";

@@ -16,5 +16,10 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void FormQLKhachHang_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

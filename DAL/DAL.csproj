@@ -19,4 +19,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DTO1\DTO1.csproj" />
+    <ProjectReference Include="..\DTO2\DTO2.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BUS", "BUS\BUS.csproj", "{A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{EF1DDD09-BAA8-44F5-B598-83A522142F70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{3D98B8D2-05F5-4436-A8E7-E04274310F52}"
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO1", "DTO1\DTO1.csproj", "{842140EC-B528-4F63-919A-9EB52AD206A6}"
+
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +31,12 @@ Global
 		{EF1DDD09-BAA8-44F5-B598-83A522142F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF1DDD09-BAA8-44F5-B598-83A522142F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF1DDD09-BAA8-44F5-B598-83A522142F70}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3D98B8D2-05F5-4436-A8E7-E04274310F52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D98B8D2-05F5-4436-A8E7-E04274310F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D98B8D2-05F5-4436-A8E7-E04274310F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D98B8D2-05F5-4436-A8E7-E04274310F52}.Release|Any CPU.Build.0 = Release|Any CPU
+
+		{842140EC-B528-4F63-919A-9EB52AD206A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{842140EC-B528-4F63-919A-9EB52AD206A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{842140EC-B528-4F63-919A-9EB52AD206A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{842140EC-B528-4F63-919A-9EB52AD206A6}.Release|Any CPU.Build.0 = Release|Any CPU
+
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

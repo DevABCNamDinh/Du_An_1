@@ -20,8 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DTO1\DTO1.csproj" />
-    <ProjectReference Include="..\DTO2\DTO2.csproj" />
+
+    <ProjectReference Include="..\Data\Data.csproj" />
+
+
   </ItemGroup>
 
 </Project>

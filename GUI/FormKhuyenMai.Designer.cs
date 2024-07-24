@@ -78,7 +78,7 @@
             // txtMoTaKM
             // 
             txtMoTaKM.Cursor = Cursors.IBeam;
-            txtMoTaKM.Font = new Font("Segoe UI Variable Display", 10.8F);
+            txtMoTaKM.Font = new Font("Microsoft Sans Serif", 10.8F);
             txtMoTaKM.Location = new Point(79, 949);
             txtMoTaKM.Margin = new Padding(6);
             txtMoTaKM.Multiline = true;
@@ -89,18 +89,18 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI Variable Display", 10.2F);
+            label9.Font = new Font("Microsoft Sans Serif", 10.2F);
             label9.ForeColor = Color.DarkSlateBlue;
             label9.Location = new Point(86, 897);
             label9.Name = "label9";
-            label9.Size = new Size(93, 37);
+            label9.Size = new Size(93, 32);
             label9.TabIndex = 15;
             label9.Text = "Mô Tả";
             // 
             // txtGiamGia
             // 
             txtGiamGia.Cursor = Cursors.IBeam;
-            txtGiamGia.Font = new Font("Segoe UI Variable Display", 10.8F);
+            txtGiamGia.Font = new Font("Microsoft Sans Serif", 10.8F);
             txtGiamGia.Location = new Point(86, 823);
             txtGiamGia.Margin = new Padding(6);
             txtGiamGia.Multiline = true;
@@ -111,17 +111,17 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI Variable Display", 10.2F);
+            label8.Font = new Font("Microsoft Sans Serif", 10.2F);
             label8.ForeColor = Color.DarkSlateBlue;
             label8.Location = new Point(86, 770);
             label8.Name = "label8";
-            label8.Size = new Size(255, 37);
+            label8.Size = new Size(259, 32);
             label8.TabIndex = 13;
             label8.Text = "Phần trăm giảm giá";
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.CalendarFont = new Font("Segoe UI Variable Display", 9F);
+            dateTimePicker1.CalendarFont = new Font("Microsoft Sans Serif", 9F);
             dateTimePicker1.CalendarForeColor = Color.FromArgb(177, 178, 255);
             dateTimePicker1.CalendarMonthBackground = Color.FromArgb(177, 178, 255);
             dateTimePicker1.CalendarTitleBackColor = Color.FromArgb(177, 178, 255);
@@ -136,7 +136,7 @@
             // 
             // dateNgayBatDau
             // 
-            dateNgayBatDau.CalendarFont = new Font("Segoe UI Variable Display", 9F);
+            dateNgayBatDau.CalendarFont = new Font("Microsoft Sans Serif", 9F);
             dateNgayBatDau.CalendarForeColor = Color.FromArgb(177, 178, 255);
             dateNgayBatDau.CalendarMonthBackground = Color.FromArgb(177, 178, 255);
             dateNgayBatDau.CalendarTitleBackColor = Color.FromArgb(177, 178, 255);
@@ -152,29 +152,29 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI Variable Display", 10.2F);
+            label6.Font = new Font("Microsoft Sans Serif", 10.2F);
             label6.ForeColor = Color.DarkSlateBlue;
             label6.Location = new Point(563, 658);
             label6.Name = "label6";
-            label6.Size = new Size(197, 37);
+            label6.Size = new Size(200, 32);
             label6.TabIndex = 10;
             label6.Text = "Ngày Kết Thúc";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Variable Display", 10.2F);
+            label7.Font = new Font("Microsoft Sans Serif", 10.2F);
             label7.ForeColor = Color.DarkSlateBlue;
             label7.Location = new Point(86, 658);
             label7.Name = "label7";
-            label7.Size = new Size(185, 37);
+            label7.Size = new Size(189, 32);
             label7.TabIndex = 9;
             label7.Text = "Ngày Bắt Đầu";
             // 
             // txtTenKhuyenMai
             // 
             txtTenKhuyenMai.Cursor = Cursors.IBeam;
-            txtTenKhuyenMai.Font = new Font("Segoe UI Variable Display", 10.8F);
+            txtTenKhuyenMai.Font = new Font("Microsoft Sans Serif", 10.8F);
             txtTenKhuyenMai.Location = new Point(79, 575);
             txtTenKhuyenMai.Margin = new Padding(6);
             txtTenKhuyenMai.Multiline = true;
@@ -185,18 +185,18 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Variable Display", 10.2F);
+            label5.Font = new Font("Microsoft Sans Serif", 10.2F);
             label5.ForeColor = Color.DarkSlateBlue;
             label5.Location = new Point(79, 522);
             label5.Name = "label5";
-            label5.Size = new Size(223, 37);
+            label5.Size = new Size(231, 32);
             label5.TabIndex = 7;
             label5.Text = "Tên Khuyến Mãi*";
             // 
             // IDKhuyenMaiCT
             // 
             IDKhuyenMaiCT.Cursor = Cursors.IBeam;
-            IDKhuyenMaiCT.Font = new Font("Segoe UI Variable Display", 10.8F);
+            IDKhuyenMaiCT.Font = new Font("Microsoft Sans Serif", 10.8F);
             IDKhuyenMaiCT.Location = new Point(563, 401);
             IDKhuyenMaiCT.Margin = new Padding(6);
             IDKhuyenMaiCT.Multiline = true;
@@ -207,18 +207,18 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Variable Display", 10.2F);
+            label4.Font = new Font("Microsoft Sans Serif", 10.2F);
             label4.ForeColor = Color.DarkSlateBlue;
             label4.Location = new Point(563, 348);
             label4.Name = "label4";
-            label4.Size = new Size(310, 37);
+            label4.Size = new Size(314, 32);
             label4.TabIndex = 5;
             label4.Text = "ID Khuyến Mãi Chi Tiết*";
             // 
             // txtIDSanPham
             // 
             txtIDSanPham.Cursor = Cursors.IBeam;
-            txtIDSanPham.Font = new Font("Segoe UI Variable Display", 10.8F);
+            txtIDSanPham.Font = new Font("Microsoft Sans Serif", 10.8F);
             txtIDSanPham.Location = new Point(86, 401);
             txtIDSanPham.Margin = new Padding(6);
             txtIDSanPham.Multiline = true;
@@ -229,18 +229,18 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Variable Display", 10.2F);
+            label3.Font = new Font("Microsoft Sans Serif", 10.2F);
             label3.ForeColor = Color.DarkSlateBlue;
             label3.Location = new Point(86, 348);
             label3.Name = "label3";
-            label3.Size = new Size(183, 37);
+            label3.Size = new Size(191, 32);
             label3.TabIndex = 3;
             label3.Text = "ID Sản Phẩm*";
             // 
             // txtIDKhuyenMai
             // 
             txtIDKhuyenMai.Cursor = Cursors.IBeam;
-            txtIDKhuyenMai.Font = new Font("Segoe UI Variable Display", 10.8F);
+            txtIDKhuyenMai.Font = new Font("Microsoft Sans Serif", 10.8F);
             txtIDKhuyenMai.Location = new Point(86, 248);
             txtIDKhuyenMai.Margin = new Padding(6);
             txtIDKhuyenMai.Multiline = true;
@@ -251,22 +251,22 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Variable Display", 10.2F);
+            label2.Font = new Font("Microsoft Sans Serif", 10.2F);
             label2.ForeColor = Color.DarkSlateBlue;
             label2.Location = new Point(86, 195);
             label2.Name = "label2";
-            label2.Size = new Size(207, 37);
+            label2.Size = new Size(209, 32);
             label2.TabIndex = 1;
             label2.Text = "ID Khuyến Mãi*";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Variable Display", 24F, FontStyle.Bold);
+            label1.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold);
             label1.ForeColor = Color.SlateBlue;
             label1.Location = new Point(191, 65);
             label1.Name = "label1";
-            label1.Size = new Size(631, 85);
+            label1.Size = new Size(643, 73);
             label1.TabIndex = 0;
             label1.Text = "THÊM KHUYẾN MÃI";
             label1.TextAlign = ContentAlignment.MiddleCenter;

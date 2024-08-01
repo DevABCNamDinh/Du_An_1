@@ -1,5 +1,10 @@
 ﻿using BUS;
+
+using DAL;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
 using Data.data;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +19,9 @@ namespace GUI
 {
     public partial class FormDangNhap : Form
     {
+
         DangNhapBUS dangNhapBUS = new DangNhapBUS();
+
         public FormDangNhap()
         {
             InitializeComponent();
@@ -39,6 +46,14 @@ namespace GUI
         }
         private void btn_dangnhap_Click(object sender, EventArgs e)
         {
+
+           
+         
+
+
+           
+
+
             
             var username = txt_taikhoan.Text;
             var password = txt_matkhau.Text;
@@ -79,6 +94,7 @@ namespace GUI
         {
             // Đóng form đăng nhập khi form bán hàng đóng
             this.Close();
+
         }
     }
 }

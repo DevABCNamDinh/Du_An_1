@@ -266,13 +266,18 @@
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2);
             Name = "FormQLKhachHang";
-            Text = "````````````````````````";
+
+            Text = "FormQLKhachHang";
+            Load += FormQLKhachHang_Load;
+
+           
             grpGioiTinh.ResumeLayout(false);
             grpGioiTinh.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtg_hienthi).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+
             ResumeLayout(false);
             PerformLayout();
         }

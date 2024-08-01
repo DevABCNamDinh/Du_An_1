@@ -176,6 +176,9 @@ namespace GUI
 
         }
 
+
+
+
         private void FormHoaDon_Load(object sender, EventArgs e)
         {
             lbl_tenNhanVien.Text = _nhanVien.TenNhanVien;
@@ -472,6 +475,7 @@ namespace GUI
             HoaDonBUS.SuaTrangThai(cbx_chonHoaDon.SelectedValue.ToString(), 2);
             MessageBox.Show("Đã hủy hóa đơn!");
             RefreshToanBoForm();
+
         }
     }
 }

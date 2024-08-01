@@ -134,5 +134,10 @@ namespace GUI
             rdo_Nam.Enabled = false;
             rdo_Nu.Enabled = false;
         }
+
+        private void FormQLKhachHang_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

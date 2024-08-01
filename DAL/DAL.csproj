@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EPPlus" Version="7.2.2" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-preview.6.24327.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0-preview.6.24327.4">
       <PrivateAssets>all</PrivateAssets>
@@ -23,7 +25,9 @@
 
 
 
+
     <ProjectReference Include="..\Data\Data.csproj" />
+
 
 
   </ItemGroup>

@@ -59,5 +59,45 @@ namespace GUI.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_clipart_plus_and_minus_signs_symbol_add_sign_s_cross_sign {
+            get {
+                object obj = ResourceManager.GetObject("png-clipart-plus-and-minus-signs-symbol-add-sign-s-cross-sign", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_clipart_plus_and_minus_signs_symbol_add_sign_s_cross_sign_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("png-clipart-plus-and-minus-signs-symbol-add-sign-s-cross-sign-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap z5683803557304_6b5cd3f9d2706e1270531c4213a7a187 {
+            get {
+                object obj = ResourceManager.GetObject("z5683803557304_6b5cd3f9d2706e1270531c4213a7a187", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap z5683803557304_6b5cd3f9d2706e1270531c4213a7a187_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("z5683803557304_6b5cd3f9d2706e1270531c4213a7a187-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

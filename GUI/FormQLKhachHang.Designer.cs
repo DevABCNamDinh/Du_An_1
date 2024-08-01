@@ -38,6 +38,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormQLKhachHang";
             Text = "FormQLKhachHang";
+            Load += FormQLKhachHang_Load;
             ResumeLayout(false);
         }
 

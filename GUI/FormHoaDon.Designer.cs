@@ -45,7 +45,11 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            button4 = new Button();
             groupBox2 = new GroupBox();
+            button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
             textBox9 = new TextBox();
             label15 = new Label();
             dataGridView1 = new DataGridView();
@@ -61,10 +65,6 @@
             label11 = new Label();
             label10 = new Label();
             label9 = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -249,6 +249,16 @@
             label1.TabIndex = 0;
             label1.Text = "Mã hóa đơn";
             // 
+            // button4
+            // 
+            button4.Location = new Point(1264, 557);
+            button4.Name = "button4";
+            button4.Size = new Size(150, 46);
+            button4.TabIndex = 25;
+            button4.Text = "Thống kê ";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(button3);
@@ -275,6 +285,33 @@
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin mặt hàng";
+            // 
+            // button3
+            // 
+            button3.Location = new Point(542, 412);
+            button3.Name = "button3";
+            button3.Size = new Size(188, 46);
+            button3.TabIndex = 24;
+            button3.Text = "Hủy hóa đơn";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(45, 412);
+            button2.Name = "button2";
+            button2.Size = new Size(224, 46);
+            button2.TabIndex = 23;
+            button2.Text = "Thêm hóa đơn";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(307, 412);
+            button1.Name = "button1";
+            button1.Size = new Size(180, 46);
+            button1.TabIndex = 1;
+            button1.Text = "Lưu hóa đơn";
+            button1.UseVisualStyleBackColor = true;
             // 
             // textBox9
             // 
@@ -406,42 +443,6 @@
             label9.Size = new Size(159, 32);
             label9.TabIndex = 8;
             label9.Text = "Mã sản phẩm";
-            // 
-            // button1
-            // 
-            button1.Location = new Point(307, 412);
-            button1.Name = "button1";
-            button1.Size = new Size(180, 46);
-            button1.TabIndex = 1;
-            button1.Text = "Lưu hóa đơn";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(45, 412);
-            button2.Name = "button2";
-            button2.Size = new Size(224, 46);
-            button2.TabIndex = 23;
-            button2.Text = "Thêm hóa đơn";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(542, 412);
-            button3.Name = "button3";
-            button3.Size = new Size(188, 46);
-            button3.TabIndex = 24;
-            button3.Text = "Hủy hóa đơn";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(1264, 557);
-            button4.Name = "button4";
-            button4.Size = new Size(150, 46);
-            button4.TabIndex = 25;
-            button4.Text = "Thống kê ";
-            button4.UseVisualStyleBackColor = true;
             // 
             // FormHoaDon
             // 

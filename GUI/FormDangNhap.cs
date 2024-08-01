@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BUS;
+using DAL;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +15,7 @@ namespace GUI
 {
     public partial class FormDangNhap : Form
     {
+        
         public FormDangNhap()
         {
             InitializeComponent();
@@ -29,9 +33,14 @@ namespace GUI
 
         private void btn_dangnhap_Click(object sender, EventArgs e)
         {
-            FormIndex index = new FormIndex();
-            index.Show();
-            this.Hide();
+           
+         
+
+                    FormIndex index = new FormIndex();
+                    index.Show();
+                    this.Hide();
+           
+
         }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             button1 = new Button();
+            dateTimePicker1 = new DateTimePicker();
             SuspendLayout();
             // 
             // button1
@@ -40,11 +41,22 @@
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
             // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy HH:mm:ss";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.Location = new Point(199, 317);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(598, 39);
+            dateTimePicker1.TabIndex = 1;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            // 
             // FormThongTinTK
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 577);
+            Controls.Add(dateTimePicker1);
             Controls.Add(button1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormThongTinTK";
@@ -55,5 +67,6 @@
         #endregion
 
         private Button button1;
+        private DateTimePicker dateTimePicker1;
     }
 }

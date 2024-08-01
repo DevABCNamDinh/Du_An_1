@@ -1,4 +1,4 @@
-namespace GUI
+Ôªønamespace GUI
 {
     public partial class FormIndex : Form
     {
@@ -15,7 +15,7 @@ namespace GUI
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            txt_tieude.Text = "HÛa ??n";
+            txt_tieude.Text = "H√≥a ??n";
             oppenForm(new FormHoaDon());
         }
 
@@ -70,26 +70,26 @@ namespace GUI
 
         private void btn_khuyenMai_Click(object sender, EventArgs e)
         {
-            txt_tieude.Text = "Khuy?n m?i";
+            txt_tieude.Text = "Khuy·∫øn m√£i";
             oppenForm(new FormKhuyenMai());
         }
 
         private void btn_quanLyNV_Click(object sender, EventArgs e)
         {
-            txt_tieude.Text = "Qu?n l˝ nh‚n viÍn";
+            txt_tieude.Text = "Qu·∫£n l√Ω nh√¢n vi√™n";
             oppenForm(new FormQLNhanVien());
         }
 
         private void btn_quanLyKH_Click(object sender, EventArgs e)
         {
-            txt_tieude.Text = "Qu?n l˝ kh·ch h‡ng";
+            txt_tieude.Text = "Qu·∫£n l√Ω kh√°ch h√†ng";
 
             oppenForm(new FormQLKhachHang());
         }
 
         private void btn_thongTinTK_Click(object sender, EventArgs e)
         {
-            txt_tieude.Text = "ThÙng tin t‡i kho?n";
+            txt_tieude.Text = "Th√¥ng tin t√†i kho?n";
 
             oppenForm(new FormThongTinTK());
         }

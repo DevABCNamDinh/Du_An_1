@@ -1,5 +1,6 @@
 ﻿
-using Data.data;
+using Data.DataBase;
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace DAL
 {
     public class ChucVuDAL
     {
-        CsdlDuAn1NewNewContext dbContext = new CsdlDuAn1NewNewContext();
+        CsdlDuAn1NewNew2Context dbContext = new CsdlDuAn1NewNew2Context();
 
         public ChucVu? GetChucVuById(string maChucVu)
         {

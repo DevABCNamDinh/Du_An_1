@@ -1,4 +1,4 @@
-using Data.data;
+using Data.DataBase;
 
 namespace GUI
 {
@@ -17,10 +17,10 @@ namespace GUI
         {
 
         }
-       
+
         private void button1_Click_1(object sender, EventArgs e)
         {
-           
+
             oppenForm(new FormHoaDon(_nhanVien));
         }
 
@@ -107,6 +107,11 @@ namespace GUI
             }
 
             isFullScreen = !isFullScreen;
+        }
+
+        private void btn_quanlyhoadon_Click(object sender, EventArgs e)
+        {
+            oppenForm(new FormQLHoaDon());
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHoaDon));
             lbl_tenNhanVien = new Label();
             lbl_chucVu = new Label();
             groupBox1 = new GroupBox();
@@ -55,22 +56,37 @@
             cbx_chonHoaDon = new ComboBox();
             label5 = new Label();
             groupBox3 = new GroupBox();
-            cbx_phanLoai = new ComboBox();
-            label7 = new Label();
             label11 = new Label();
             txt_timkiem = new TextBox();
             dtgview_danhSachSP = new DataGridView();
             groupBox4 = new GroupBox();
+            groupBox7 = new GroupBox();
+            txt_daHuy = new Label();
+            txt_daThanhToan = new Label();
+            lbl_LichSuTienThua = new Label();
+            lbl_LichSuTienKhachDua = new Label();
+            lbl_LichSuThanhTien = new Label();
+            lbl_LichSuKhuyenMai = new Label();
+            lbl_LichSuTongHoaDon = new Label();
+            label19 = new Label();
+            label18 = new Label();
+            label13 = new Label();
+            label15 = new Label();
+            label14 = new Label();
+            label16 = new Label();
+            label17 = new Label();
             groupBox6 = new GroupBox();
             dtg_lichSuChiTietHoaDon = new DataGridView();
             groupBox5 = new GroupBox();
             dtg_LichSuHoaDon = new DataGridView();
+            printDocument1 = new System.Drawing.Printing.PrintDocument();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgview_thongTinHoaDon).BeginInit();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgview_danhSachSP).BeginInit();
             groupBox4.SuspendLayout();
+            groupBox7.SuspendLayout();
             groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtg_lichSuChiTietHoaDon).BeginInit();
             groupBox5.SuspendLayout();
@@ -80,6 +96,7 @@
             // lbl_tenNhanVien
             // 
             lbl_tenNhanVien.AutoSize = true;
+            lbl_tenNhanVien.BackColor = Color.Transparent;
             lbl_tenNhanVien.Location = new Point(31, 18);
             lbl_tenNhanVien.Name = "lbl_tenNhanVien";
             lbl_tenNhanVien.Size = new Size(165, 32);
@@ -89,6 +106,7 @@
             // lbl_chucVu
             // 
             lbl_chucVu.AutoSize = true;
+            lbl_chucVu.BackColor = Color.Transparent;
             lbl_chucVu.Location = new Point(31, 76);
             lbl_chucVu.Name = "lbl_chucVu";
             lbl_chucVu.Size = new Size(101, 32);
@@ -123,6 +141,7 @@
             // 
             // txt_tenkhachhang
             // 
+            txt_tenkhachhang.BackColor = SystemColors.ActiveBorder;
             txt_tenkhachhang.Location = new Point(19, 217);
             txt_tenkhachhang.Name = "txt_tenkhachhang";
             txt_tenkhachhang.ReadOnly = true;
@@ -320,6 +339,7 @@
             dtgview_thongTinHoaDon.RowHeadersWidth = 82;
             dtgview_thongTinHoaDon.Size = new Size(904, 361);
             dtgview_thongTinHoaDon.TabIndex = 7;
+            dtgview_thongTinHoaDon.CellDoubleClick += dtgview_thongTinHoaDon_CellDoubleClick;
             // 
             // cbx_chonHoaDon
             // 
@@ -342,35 +362,16 @@
             // groupBox3
             // 
             groupBox3.BackColor = Color.FromArgb(238, 241, 255);
-            groupBox3.Controls.Add(cbx_phanLoai);
-            groupBox3.Controls.Add(label7);
             groupBox3.Controls.Add(label11);
             groupBox3.Controls.Add(txt_timkiem);
             groupBox3.Controls.Add(dtgview_danhSachSP);
             groupBox3.ForeColor = Color.DarkSlateBlue;
             groupBox3.Location = new Point(1415, 140);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(849, 788);
+            groupBox3.Size = new Size(1027, 788);
             groupBox3.TabIndex = 6;
             groupBox3.TabStop = false;
             groupBox3.Text = "Danh sách sản phẩm";
-            // 
-            // cbx_phanLoai
-            // 
-            cbx_phanLoai.FormattingEnabled = true;
-            cbx_phanLoai.Location = new Point(564, 37);
-            cbx_phanLoai.Name = "cbx_phanLoai";
-            cbx_phanLoai.Size = new Size(242, 40);
-            cbx_phanLoai.TabIndex = 11;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(424, 43);
-            label7.Name = "label7";
-            label7.Size = new Size(112, 32);
-            label7.TabIndex = 10;
-            label7.Text = "Phân loại";
             // 
             // label11
             // 
@@ -385,39 +386,193 @@
             // 
             txt_timkiem.Location = new Point(169, 38);
             txt_timkiem.Name = "txt_timkiem";
-            txt_timkiem.Size = new Size(200, 39);
+            txt_timkiem.Size = new Size(512, 39);
             txt_timkiem.TabIndex = 8;
             txt_timkiem.TextChanged += textBox4_TextChanged;
             // 
             // dtgview_danhSachSP
             // 
+            dtgview_danhSachSP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgview_danhSachSP.BackgroundColor = SystemColors.InactiveBorder;
             dtgview_danhSachSP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgview_danhSachSP.Location = new Point(30, 97);
             dtgview_danhSachSP.Name = "dtgview_danhSachSP";
             dtgview_danhSachSP.RowHeadersWidth = 82;
-            dtgview_danhSachSP.Size = new Size(790, 555);
+            dtgview_danhSachSP.Size = new Size(968, 636);
             dtgview_danhSachSP.TabIndex = 7;
             dtgview_danhSachSP.CellDoubleClick += dtgview_danhSachSP_CellDoubleClick;
             // 
             // groupBox4
             // 
             groupBox4.BackColor = Color.FromArgb(238, 241, 255);
+            groupBox4.Controls.Add(groupBox7);
             groupBox4.Controls.Add(groupBox6);
             groupBox4.Controls.Add(groupBox5);
             groupBox4.Location = new Point(33, 966);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(2231, 557);
+            groupBox4.Size = new Size(2409, 557);
             groupBox4.TabIndex = 7;
             groupBox4.TabStop = false;
             groupBox4.Text = "Lịch sử hóa đơn";
+            // 
+            // groupBox7
+            // 
+            groupBox7.Controls.Add(txt_daHuy);
+            groupBox7.Controls.Add(txt_daThanhToan);
+            groupBox7.Controls.Add(lbl_LichSuTienThua);
+            groupBox7.Controls.Add(lbl_LichSuTienKhachDua);
+            groupBox7.Controls.Add(lbl_LichSuThanhTien);
+            groupBox7.Controls.Add(lbl_LichSuKhuyenMai);
+            groupBox7.Controls.Add(lbl_LichSuTongHoaDon);
+            groupBox7.Controls.Add(label19);
+            groupBox7.Controls.Add(label18);
+            groupBox7.Controls.Add(label13);
+            groupBox7.Controls.Add(label15);
+            groupBox7.Controls.Add(label14);
+            groupBox7.Controls.Add(label16);
+            groupBox7.Controls.Add(label17);
+            groupBox7.Location = new Point(1954, 61);
+            groupBox7.Name = "groupBox7";
+            groupBox7.Size = new Size(426, 471);
+            groupBox7.TabIndex = 8;
+            groupBox7.TabStop = false;
+            groupBox7.Text = "Thành tiền";
+            // 
+            // txt_daHuy
+            // 
+            txt_daHuy.AutoSize = true;
+            txt_daHuy.Font = new Font("Arial Narrow", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txt_daHuy.ForeColor = Color.Red;
+            txt_daHuy.Location = new Point(131, 355);
+            txt_daHuy.Name = "txt_daHuy";
+            txt_daHuy.Size = new Size(189, 43);
+            txt_daHuy.TabIndex = 29;
+            txt_daHuy.Text = "Trạng Thái ";
+            // 
+            // txt_daThanhToan
+            // 
+            txt_daThanhToan.AutoSize = true;
+            txt_daThanhToan.Font = new Font("Arial Narrow", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txt_daThanhToan.ForeColor = Color.Blue;
+            txt_daThanhToan.Location = new Point(109, 355);
+            txt_daThanhToan.Name = "txt_daThanhToan";
+            txt_daThanhToan.Size = new Size(0, 43);
+            txt_daThanhToan.TabIndex = 28;
+            // 
+            // lbl_LichSuTienThua
+            // 
+            lbl_LichSuTienThua.AutoSize = true;
+            lbl_LichSuTienThua.Location = new Point(233, 246);
+            lbl_LichSuTienThua.Name = "lbl_LichSuTienThua";
+            lbl_LichSuTienThua.Size = new Size(27, 32);
+            lbl_LichSuTienThua.TabIndex = 27;
+            lbl_LichSuTienThua.Text = "0";
+            // 
+            // lbl_LichSuTienKhachDua
+            // 
+            lbl_LichSuTienKhachDua.AutoSize = true;
+            lbl_LichSuTienKhachDua.Location = new Point(233, 203);
+            lbl_LichSuTienKhachDua.Name = "lbl_LichSuTienKhachDua";
+            lbl_LichSuTienKhachDua.Size = new Size(27, 32);
+            lbl_LichSuTienKhachDua.TabIndex = 26;
+            lbl_LichSuTienKhachDua.Text = "0";
+            // 
+            // lbl_LichSuThanhTien
+            // 
+            lbl_LichSuThanhTien.AutoSize = true;
+            lbl_LichSuThanhTien.Location = new Point(233, 159);
+            lbl_LichSuThanhTien.Name = "lbl_LichSuThanhTien";
+            lbl_LichSuThanhTien.Size = new Size(27, 32);
+            lbl_LichSuThanhTien.TabIndex = 25;
+            lbl_LichSuThanhTien.Text = "0";
+            // 
+            // lbl_LichSuKhuyenMai
+            // 
+            lbl_LichSuKhuyenMai.AutoSize = true;
+            lbl_LichSuKhuyenMai.Location = new Point(233, 97);
+            lbl_LichSuKhuyenMai.Name = "lbl_LichSuKhuyenMai";
+            lbl_LichSuKhuyenMai.Size = new Size(27, 32);
+            lbl_LichSuKhuyenMai.TabIndex = 24;
+            lbl_LichSuKhuyenMai.Text = "0";
+            // 
+            // lbl_LichSuTongHoaDon
+            // 
+            lbl_LichSuTongHoaDon.AutoSize = true;
+            lbl_LichSuTongHoaDon.Location = new Point(233, 56);
+            lbl_LichSuTongHoaDon.Name = "lbl_LichSuTongHoaDon";
+            lbl_LichSuTongHoaDon.Size = new Size(27, 32);
+            lbl_LichSuTongHoaDon.TabIndex = 23;
+            lbl_LichSuTongHoaDon.Text = "0";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(28, 292);
+            label19.Name = "label19";
+            label19.Size = new Size(374, 32);
+            label19.TabIndex = 22;
+            label19.Text = "------------------------------------";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(28, 130);
+            label18.Name = "label18";
+            label18.Size = new Size(374, 32);
+            label18.TabIndex = 21;
+            label18.Text = "------------------------------------";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(28, 56);
+            label13.Name = "label13";
+            label13.Size = new Size(165, 32);
+            label13.TabIndex = 8;
+            label13.Text = "Tổng hóa đơn";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(28, 246);
+            label15.Name = "label15";
+            label15.Size = new Size(115, 32);
+            label15.TabIndex = 11;
+            label15.Text = "Tiền thừa";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(28, 203);
+            label14.Name = "label14";
+            label14.Size = new Size(177, 32);
+            label14.TabIndex = 10;
+            label14.Text = "Tiền khách đưa";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(28, 97);
+            label16.Name = "label16";
+            label16.Size = new Size(141, 32);
+            label16.TabIndex = 16;
+            label16.Text = "Khuyến mại";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(28, 159);
+            label17.Name = "label17";
+            label17.Size = new Size(129, 32);
+            label17.TabIndex = 19;
+            label17.Text = "Thành tiền";
             // 
             // groupBox6
             // 
             groupBox6.Controls.Add(dtg_lichSuChiTietHoaDon);
             groupBox6.Location = new Point(853, 61);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(1335, 471);
+            groupBox6.Size = new Size(1065, 471);
             groupBox6.TabIndex = 23;
             groupBox6.TabStop = false;
             groupBox6.Text = "Chi tiết hóa đơn";
@@ -429,7 +584,7 @@
             dtg_lichSuChiTietHoaDon.Location = new Point(38, 56);
             dtg_lichSuChiTietHoaDon.Name = "dtg_lichSuChiTietHoaDon";
             dtg_lichSuChiTietHoaDon.RowHeadersWidth = 82;
-            dtg_lichSuChiTietHoaDon.Size = new Size(1263, 385);
+            dtg_lichSuChiTietHoaDon.Size = new Size(990, 385);
             dtg_lichSuChiTietHoaDon.TabIndex = 25;
             // 
             // groupBox5
@@ -451,12 +606,19 @@
             dtg_LichSuHoaDon.RowHeadersWidth = 82;
             dtg_LichSuHoaDon.Size = new Size(694, 385);
             dtg_LichSuHoaDon.TabIndex = 24;
+            dtg_LichSuHoaDon.CellClick += dtg_LichSuHoaDon_CellClick;
+            // 
+            // printDocument1
+            // 
+            printDocument1.PrintPage += printDocument1_PrintPage;
             // 
             // FormHoaDon
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(210, 218, 255);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(2486, 1575);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
@@ -464,7 +626,9 @@
             Controls.Add(groupBox1);
             Controls.Add(lbl_chucVu);
             Controls.Add(lbl_tenNhanVien);
+            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
+            ImeMode = ImeMode.Disable;
             Name = "FormHoaDon";
             Text = "Form2";
             Load += FormHoaDon_Load;
@@ -477,6 +641,8 @@
             groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgview_danhSachSP).EndInit();
             groupBox4.ResumeLayout(false);
+            groupBox7.ResumeLayout(false);
+            groupBox7.PerformLayout();
             groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dtg_lichSuChiTietHoaDon).EndInit();
             groupBox5.ResumeLayout(false);
@@ -511,8 +677,6 @@
         private Label label11;
         private TextBox txt_timkiem;
         private DataGridView dtgview_danhSachSP;
-        private ComboBox cbx_phanLoai;
-        private Label label7;
         private Label lbl_khuyenMai;
         private Label label1;
         private Label label2;
@@ -524,5 +688,21 @@
         private GroupBox groupBox5;
         private DataGridView dtg_lichSuChiTietHoaDon;
         private DataGridView dtg_LichSuHoaDon;
+        private GroupBox groupBox7;
+        private Label lbl_LichSuTongHoaDon;
+        private Label label19;
+        private Label label18;
+        private Label label13;
+        private Label label15;
+        private Label label14;
+        private Label label16;
+        private Label label17;
+        private Label lbl_LichSuTienThua;
+        private Label lbl_LichSuTienKhachDua;
+        private Label lbl_LichSuThanhTien;
+        private Label lbl_LichSuKhuyenMai;
+        private Label txt_daHuy;
+        private Label txt_daThanhToan;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

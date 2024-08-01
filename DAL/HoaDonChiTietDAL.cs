@@ -1,5 +1,5 @@
 ﻿
-using Data.data;
+using Data.DataBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace DAL
 {
     public class HoaDonChiTietDAL
     {
-        CsdlDuAn1NewNewContext dbContext = new CsdlDuAn1NewNewContext();
+        CsdlDuAn1NewNew2Context dbContext = new CsdlDuAn1NewNew2Context();
         public List<HoaDonChiTiet> GetAllHoaDonCT()
         {
             return dbContext.HoaDonChiTiets.ToList();
@@ -26,6 +26,11 @@ namespace DAL
                 .FirstOrDefault(hdct => hdct.IdhoaDon == maHoaDon && hdct.IdsanPham == maSPCT);
         }
 
+        public HoaDonChiTiet? GetHDCTByIdHDCT( string maSPCT)
+        {
+            return dbContext.HoaDonChiTiets
+                .Find(maSPCT);
+        }
         public void ThemMoiHDCT(HoaDonChiTiet hdct)
         {
             dbContext.HoaDonChiTiets.Add(hdct);
@@ -39,6 +44,11 @@ namespace DAL
             {
                 hdctOld.SoLuong = hdctNew.SoLuong;
             }
+            dbContext.SaveChanges();
+        }
+        public void XoaHDCT(HoaDonChiTiet hoaDonChiTiet)
+        {
+            dbContext.HoaDonChiTiets.Remove(hoaDonChiTiet);
             dbContext.SaveChanges();
         }
     }

@@ -1,5 +1,6 @@
 ﻿using BUS;
-using Data.data;
+using Data.DataBase;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ namespace GUI
 {
     public partial class FormQLNhanVien : Form
     {
-        private CsdlDuAn1NewNewContext dbcontext = new CsdlDuAn1NewNewContext();
+        private CsdlDuAn1NewNew2Context dbcontext = new CsdlDuAn1NewNew2Context();
         DQLNhanVienBUS _qlnvBUS = new DQLNhanVienBUS();
         DChucVuBUS _chucvuBUS = new DChucVuBUS();
 

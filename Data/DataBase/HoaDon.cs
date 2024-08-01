@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Data.data;
+namespace Data.DataBase;
 
 public partial class HoaDon
 {
@@ -20,4 +20,6 @@ public partial class HoaDon
     public virtual KhachHang? IdkhachHangNavigation { get; set; }
 
     public virtual NhanVien? IdnhanVienNavigation { get; set; }
+
+    public virtual ICollection<ThanhTien> ThanhTiens { get; set; } = new List<ThanhTien>();
 }

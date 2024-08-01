@@ -1,4 +1,4 @@
-﻿using Data.data;
+﻿using Data.DataBase;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,10 +10,14 @@ namespace DAL
 {
     public class DQLNhanVienDAL
     {
-        CsdlDuAn1NewNewContext dbcontext = new CsdlDuAn1NewNewContext();
+        CsdlDuAn1NewNew2Context dbcontext = new CsdlDuAn1NewNew2Context();
         public List <NhanVien> GetallNhanVien()
         {
             return dbcontext.NhanViens.ToList();
+        }
+        public NhanVien GetNhanVienByID(string id)
+        {
+            return dbcontext.NhanViens.Find(id);
         }
         public NhanVien GetbyId(string id)
         {

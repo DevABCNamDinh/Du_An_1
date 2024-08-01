@@ -1,4 +1,4 @@
-﻿using Data.data;
+﻿using Data.DataBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,10 @@ namespace DAL
 {
     public class DChucVuDAL
     {
-        CsdlDuAn1NewNewContext _context;
+        CsdlDuAn1NewNew2Context _context;
         public DChucVuDAL()
         {
-            _context = new CsdlDuAn1NewNewContext(); 
+            _context = new CsdlDuAn1NewNew2Context(); 
         }
 
         public List <ChucVu> GetallChucVu()

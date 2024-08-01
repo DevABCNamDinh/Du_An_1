@@ -1,5 +1,6 @@
 ﻿using DAL;
-using Data.data;
+using Data.DataBase;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,10 @@ namespace BUS
         {
             return hoaDonChiTietDAL.GetHDCTById(maHoaDon, maSPCT);
         }
+        public HoaDonChiTiet? GetHDCTByIdHDCT( string maSPCT)
+        {
+            return hoaDonChiTietDAL.GetHDCTByIdHDCT( maSPCT);
+        }
 
         public void ThemMoiHDCT(HoaDonChiTiet hdct)
         {
@@ -34,6 +39,10 @@ namespace BUS
         public void UpdateSoLuong(HoaDonChiTiet hdctNew)
         {
             hoaDonChiTietDAL.UpdateSoLuong(hdctNew);
+        }
+        public void XoaHDCT(HoaDonChiTiet hoaDonChiTiet)
+        {
+            hoaDonChiTietDAL.XoaHDCT(hoaDonChiTiet);
         }
     }
     

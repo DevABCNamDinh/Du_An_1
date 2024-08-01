@@ -39,6 +39,7 @@ namespace GUI
 
         }
 
+
         public void FormSanPham_Load(object sender, EventArgs e)
         {
 
@@ -546,6 +547,7 @@ namespace GUI
         {
 
         }
+
     }
 }
 

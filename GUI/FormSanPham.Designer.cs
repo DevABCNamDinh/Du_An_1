@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             btnAddSp = new Button();
             label2 = new Label();
             label3 = new Label();
@@ -80,10 +81,12 @@
             groupBox2.SuspendLayout();
             grpLoaiSP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvLoaiSP).BeginInit();
+
             SuspendLayout();
             // 
-            // btnAddSp
+            // button1
             // 
+
             btnAddSp.BackColor = Color.FromArgb(128, 128, 255);
             btnAddSp.ForeColor = SystemColors.ButtonHighlight;
             btnAddSp.Location = new Point(670, 824);
@@ -208,6 +211,7 @@
             grpdssanpham.TabIndex = 19;
             grpdssanpham.TabStop = false;
             grpdssanpham.Text = "Danh Sach San Pham";
+
             // 
             // label6
             // 
@@ -534,6 +538,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+
             BackColor = Color.FromArgb(210, 218, 255);
             ClientSize = new Size(2460, 1504);
             Controls.Add(label17);
@@ -578,11 +583,12 @@
             groupBox2.PerformLayout();
             grpLoaiSP.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvLoaiSP).EndInit();
+
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
+
         private Button btnAddSp;
         private Label label2;
         private Label label3;
@@ -629,5 +635,6 @@
         private ComboBox cbbTrangThai;
         private TextBox txtLsp;
         private Label label17;
+
     }
 }

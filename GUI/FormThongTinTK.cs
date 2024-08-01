@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BUS;
+using Data.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,15 +14,98 @@ namespace GUI
 {
     public partial class FormThongTinTK : Form
     {
-        public FormThongTinTK()
+        DChucVuBUS _chucvuBUS = new DChucVuBUS();
+        TQLNhanVienBUS _qlnvBUS = new TQLNhanVienBUS();
+        NhanVien NhanVien { get; set; }
+        public FormThongTinTK(NhanVien nv)
         {
             InitializeComponent();
+            NhanVien = nv;
+
+            
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+
+        private void FormThongTinTK_Load(object sender, EventArgs e)
         {
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.CustomFormat = "dd/MM/yyyy HH:mm:ss";
+            LoadTTTK();
         }
+
+
+
+        public void LoadTTTK()
+        {
+            HamClear();
+            var nv = _qlnvBUS.getNhanVienById(NhanVien.IdnhanVien);
+
+            txtIDNhanVien.Text = nv.IdnhanVien;
+            txtHoVaTen.Text = nv.TenNhanVien;
+            txtTenDangNhap.Text = nv.Taikhoan;
+            txtMatKhau.Text = nv.MatKhau;
+
+
+            //txtChucVu.Text = NhanVien.IdchucVu;
+            txtChucVu.Text = _chucvuBUS.Getbyid(NhanVien.IdchucVu).ChucVu1;
+
+            txtEmail.Text = NhanVien.Email;
+            txtSdt.Text = NhanVien.Sdt;
+            if (NhanVien.GioiTinh == true)
+            {
+                rdoNam.Checked = true;
+            }
+            else { rdoNu.Checked = true; }
+        }
+
+
+
+        public void HamClear()
+        {
+            txtIDNhanVien.Clear();
+            txtHoVaTen.Clear();
+            txtTenDangNhap.Clear();
+            txtMatKhau.Clear();
+            txtChucVu.Clear();
+            txtEmail.Clear();
+            txtSdt.Clear();
+            rdoNam.Checked = false;
+            rdoNu.Checked = false;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+            var update = _qlnvBUS.getNhanVienById(NhanVien.IdnhanVien);
+            bool gioitinh = false;
+            if (rdoNam.Checked)
+            {
+                gioitinh = true;
+            }
+            else if (rdoNam.Checked)
+            {
+                gioitinh = false;
+            }
+            update.TenNhanVien = txtHoVaTen.Text;
+            update.Taikhoan = txtTenDangNhap.Text;
+            update.MatKhau = txtMatKhau.Text;
+            update.Email = txtEmail.Text;
+            update.Sdt = txtSdt.Text;
+            update.GioiTinh = gioitinh;
+
+            DialogResult dl = MessageBox.Show("Ban có muốn sửa không?", "Sửa thành công", MessageBoxButtons.YesNo);
+            if (dl == DialogResult.Yes)
+            {
+                string kq = _qlnvBUS.Update2(update);
+                MessageBox.Show(kq);
+
+                return;
+
+            }
+            LoadTTTK();
+
+
+        }
+
+        
+
     }
 }

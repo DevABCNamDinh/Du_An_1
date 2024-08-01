@@ -1,4 +1,5 @@
-﻿using Data.data;
+﻿using Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DChucVuDAL
+    public class TChucVuDAL
     {
         CsdlDuAn1NewNewContext _context;
-        public DChucVuDAL()
+        public TChucVuDAL()
         {
             _context = new CsdlDuAn1NewNewContext(); 
         }
@@ -42,5 +43,7 @@ namespace DAL
                 return true;
             } catch { return false; }
         }
+
+
     }
 }

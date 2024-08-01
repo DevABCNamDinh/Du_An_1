@@ -1,5 +1,5 @@
 ﻿using DAL;
-using Data.data;
+using Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace BUS
 {
     public class DChucVuBUS
     {
-        public DChucVuDAL _chucvuDAL = new DChucVuDAL();
+        public TChucVuDAL _chucvuDAL = new TChucVuDAL();
 
         public List<ChucVu> Getallchucvu()
         {

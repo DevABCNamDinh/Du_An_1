@@ -1,10 +1,17 @@
-﻿namespace GUI
+
+using Data.data;
+
+namespace GUI
+
 {
     public partial class FormIndex : Form
     {
+        NhanVien _nhanVien { get; set; }
+        FormDangNhap DangNhap;
         private bool isFullScreen = false;
-        public FormIndex()
+        public FormIndex(NhanVien nv)
         {
+            _nhanVien = nv;
             InitializeComponent();
         }
 
@@ -12,11 +19,13 @@
         {
 
         }
-
+       
         private void button1_Click_1(object sender, EventArgs e)
         {
-            txt_tieude.Text = "Hóa ??n";
-            oppenForm(new FormHoaDon());
+
+           
+            oppenForm(new FormHoaDon(_nhanVien));
+
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -38,18 +47,18 @@
 
         private void Index_Load(object sender, EventArgs e)
         {
+            oppenForm(new FormHoaDon(_nhanVien));
 
         }
 
         private void btn_sanPham_Click(object sender, EventArgs e)
         {
-            txt_tieude.Text = "S?n ph?m";
             oppenForm(new FormSanPham());
         }
 
 
         private Form formTam;
-        private void oppenForm(Form formChild)
+        public void oppenForm(Form formChild)
         {
             if (formTam != null)
             {
@@ -61,7 +70,7 @@
             pn_Body.Controls.Add(formChild);
             pn_Body.Tag = formChild;
             formChild.BringToFront();
-            formChild.Show();
+           formChild.Show();
         }
         private void pn_Body_Paint(object sender, PaintEventArgs e)
         {
@@ -70,26 +79,26 @@
 
         private void btn_khuyenMai_Click(object sender, EventArgs e)
         {
-            txt_tieude.Text = "Khuyến mãi";
+
             oppenForm(new FormKhuyenMai());
         }
 
         private void btn_quanLyNV_Click(object sender, EventArgs e)
         {
-            txt_tieude.Text = "Quản lý nhân viên";
+
             oppenForm(new FormQLNhanVien());
         }
 
         private void btn_quanLyKH_Click(object sender, EventArgs e)
         {
-            txt_tieude.Text = "Quản lý khách hàng";
+
 
             oppenForm(new FormQLKhachHang());
         }
 
         private void btn_thongTinTK_Click(object sender, EventArgs e)
         {
-            txt_tieude.Text = "Thông tin tài kho?n";
+
 
             oppenForm(new FormThongTinTK());
         }

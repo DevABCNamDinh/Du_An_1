@@ -35,8 +35,9 @@
             // button1
             // 
             button1.Location = new Point(0, 0);
+            button1.Margin = new Padding(2, 2, 2, 2);
             button1.Name = "button1";
-            button1.Size = new Size(150, 46);
+            button1.Size = new Size(115, 36);
             button1.TabIndex = 0;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
@@ -53,12 +54,15 @@
             // 
             // FormThongTinTK
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+
             ClientSize = new Size(914, 577);
             Controls.Add(dateTimePicker1);
+
             Controls.Add(button1);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(2, 2, 2, 2);
             Name = "FormThongTinTK";
             Text = "FormThongTinTK";
             ResumeLayout(false);

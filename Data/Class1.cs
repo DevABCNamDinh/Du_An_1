@@ -1,4 +1,4 @@
-﻿namespace DAL
+﻿namespace Data
 {
     public class Class1
     {

@@ -1,10 +1,12 @@
-using Data.data;
+﻿using BUS;
+using Data.Models;
 
 namespace GUI
 {
     public partial class FormIndex : Form
     {
         NhanVien _nhanVien { get; set; }
+        TQLNhanVienBUS _qlnvBUS = new TQLNhanVienBUS();
         FormDangNhap DangNhap;
         private bool isFullScreen = false;
         public FormIndex(NhanVien nv)
@@ -80,7 +82,19 @@ namespace GUI
 
         private void btn_quanLyNV_Click(object sender, EventArgs e)
         {
-            oppenForm(new FormQLNhanVien());
+            if (_nhanVien.IdchucVu == "CV001" && _nhanVien.TrangThaiLamViec == true)
+            {
+                oppenForm(new FormQLNhanVien(_nhanVien));
+            }
+            else if(_nhanVien.IdchucVu == "CV001" && _nhanVien.TrangThaiLamViec == false)
+            {
+                MessageBox.Show("Bạn không còn quyền truy cập !");
+            }
+            else
+            {
+                MessageBox.Show("Bạn không phải Admin. Chỉ Admin mới có quyền truy cập !");
+            }
+            
         }
 
         private void btn_quanLyKH_Click(object sender, EventArgs e)
@@ -91,8 +105,7 @@ namespace GUI
 
         private void btn_thongTinTK_Click(object sender, EventArgs e)
         {
-
-            oppenForm(new FormThongTinTK());
+            oppenForm(new FormThongTinTK(_nhanVien));
         }
 
         private void button1_Click_2(object sender, EventArgs e)

@@ -36,9 +36,8 @@
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            grpGioiTinh = new GroupBox();
-            rdoNu = new RadioButton();
-            rdoNam = new RadioButton();
+            Nu = new RadioButton();
+            Nam = new RadioButton();
             txtIDNhanVien = new TextBox();
             txtTaiKhoan = new TextBox();
             txtMatKhau = new TextBox();
@@ -53,29 +52,35 @@
             grpDanhSachNhanVien = new GroupBox();
             dgvDanhSachNhanVien = new DataGridView();
             cboChucVu = new ComboBox();
-            grpTrangThaiLamViec = new GroupBox();
             rdoFalse = new RadioButton();
             rdoTrue = new RadioButton();
-            grpGioiTinh.SuspendLayout();
+            grpThaoTac = new GroupBox();
+            groupBox2 = new GroupBox();
+            groupBox1 = new GroupBox();
+            label12 = new Label();
+            cboLoc = new ComboBox();
             grpDanhSachNhanVien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDanhSachNhanVien).BeginInit();
-            grpTrangThaiLamViec.SuspendLayout();
+            grpThaoTac.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(10, 8);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(133, 25);
+            label1.Size = new Size(198, 30);
             label1.TabIndex = 0;
-            label1.Text = "Nhập thông tin";
+            label1.Text = "Quản lý nhân viên";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(50, 202);
+            label2.Location = new Point(82, 159);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(119, 25);
@@ -85,7 +90,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(50, 266);
+            label3.Location = new Point(82, 223);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(117, 25);
@@ -95,7 +100,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(42, 133);
+            label4.Location = new Point(82, 90);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(114, 25);
@@ -105,7 +110,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(50, 331);
+            label5.Location = new Point(82, 288);
             label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new Size(54, 25);
@@ -115,7 +120,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(675, 168);
+            label6.Location = new Point(82, 416);
             label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
             label6.Size = new Size(86, 25);
@@ -125,7 +130,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(675, 228);
+            label7.Location = new Point(82, 476);
             label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
             label7.Size = new Size(86, 25);
@@ -135,115 +140,102 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(42, 394);
+            label8.Location = new Point(82, 354);
             label8.Margin = new Padding(2, 0, 2, 0);
             label8.Name = "label8";
             label8.Size = new Size(76, 25);
             label8.TabIndex = 7;
             label8.Text = "Chức vụ";
             // 
-            // grpGioiTinh
+            // Nu
             // 
-            grpGioiTinh.Controls.Add(rdoNu);
-            grpGioiTinh.Controls.Add(rdoNam);
-            grpGioiTinh.Location = new Point(677, 283);
-            grpGioiTinh.Margin = new Padding(2);
-            grpGioiTinh.Name = "grpGioiTinh";
-            grpGioiTinh.Padding = new Padding(2);
-            grpGioiTinh.Size = new Size(541, 85);
-            grpGioiTinh.TabIndex = 8;
-            grpGioiTinh.TabStop = false;
-            grpGioiTinh.Text = "Giới tính";
+            Nu.AutoSize = true;
+            Nu.Location = new Point(475, 39);
+            Nu.Margin = new Padding(2);
+            Nu.Name = "Nu";
+            Nu.Size = new Size(61, 29);
+            Nu.TabIndex = 1;
+            Nu.TabStop = true;
+            Nu.Text = "Nữ";
+            Nu.UseVisualStyleBackColor = true;
             // 
-            // rdoNu
+            // Nam
             // 
-            rdoNu.AutoSize = true;
-            rdoNu.Location = new Point(363, 39);
-            rdoNu.Margin = new Padding(2);
-            rdoNu.Name = "rdoNu";
-            rdoNu.Size = new Size(61, 29);
-            rdoNu.TabIndex = 1;
-            rdoNu.TabStop = true;
-            rdoNu.Text = "Nữ";
-            rdoNu.UseVisualStyleBackColor = true;
-            // 
-            // rdoNam
-            // 
-            rdoNam.AutoSize = true;
-            rdoNam.Location = new Point(114, 39);
-            rdoNam.Margin = new Padding(2);
-            rdoNam.Name = "rdoNam";
-            rdoNam.Size = new Size(75, 29);
-            rdoNam.TabIndex = 0;
-            rdoNam.TabStop = true;
-            rdoNam.Text = "Nam";
-            rdoNam.UseVisualStyleBackColor = true;
+            Nam.AutoSize = true;
+            Nam.Location = new Point(248, 41);
+            Nam.Margin = new Padding(2);
+            Nam.Name = "Nam";
+            Nam.Size = new Size(75, 29);
+            Nam.TabIndex = 0;
+            Nam.TabStop = true;
+            Nam.Text = "Nam";
+            Nam.UseVisualStyleBackColor = true;
             // 
             // txtIDNhanVien
             // 
-            txtIDNhanVien.Location = new Point(195, 129);
+            txtIDNhanVien.Location = new Point(323, 84);
             txtIDNhanVien.Margin = new Padding(2);
             txtIDNhanVien.Name = "txtIDNhanVien";
             txtIDNhanVien.ReadOnly = true;
-            txtIDNhanVien.Size = new Size(390, 31);
+            txtIDNhanVien.Size = new Size(497, 31);
             txtIDNhanVien.TabIndex = 9;
             // 
             // txtTaiKhoan
             // 
-            txtTaiKhoan.Location = new Point(828, 164);
+            txtTaiKhoan.Location = new Point(323, 410);
             txtTaiKhoan.Margin = new Padding(2);
             txtTaiKhoan.Name = "txtTaiKhoan";
-            txtTaiKhoan.Size = new Size(390, 31);
+            txtTaiKhoan.Size = new Size(497, 31);
             txtTaiKhoan.TabIndex = 11;
             // 
             // txtMatKhau
             // 
-            txtMatKhau.Location = new Point(828, 224);
+            txtMatKhau.Location = new Point(323, 470);
             txtMatKhau.Margin = new Padding(2);
             txtMatKhau.Name = "txtMatKhau";
-            txtMatKhau.Size = new Size(390, 31);
+            txtMatKhau.Size = new Size(497, 31);
             txtMatKhau.TabIndex = 12;
             // 
             // txtTenNhanVien
             // 
-            txtTenNhanVien.Location = new Point(195, 198);
+            txtTenNhanVien.Location = new Point(323, 153);
             txtTenNhanVien.Margin = new Padding(2);
             txtTenNhanVien.Name = "txtTenNhanVien";
-            txtTenNhanVien.Size = new Size(396, 31);
+            txtTenNhanVien.Size = new Size(497, 31);
             txtTenNhanVien.TabIndex = 13;
             // 
             // txtSdt
             // 
-            txtSdt.Location = new Point(195, 262);
+            txtSdt.Location = new Point(323, 217);
             txtSdt.Margin = new Padding(2);
             txtSdt.Name = "txtSdt";
-            txtSdt.Size = new Size(396, 31);
+            txtSdt.Size = new Size(497, 31);
             txtSdt.TabIndex = 14;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(195, 327);
+            txtEmail.Location = new Point(323, 282);
             txtEmail.Margin = new Padding(2);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(396, 31);
+            txtEmail.Size = new Size(497, 31);
             txtEmail.TabIndex = 15;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(42, 60);
+            label9.Location = new Point(42, 76);
             label9.Margin = new Padding(2, 0, 2, 0);
             label9.Name = "label9";
-            label9.Size = new Size(64, 25);
+            label9.Size = new Size(193, 25);
             label9.TabIndex = 16;
-            label9.Text = "Search";
+            label9.Text = "Tìm nhân viên theo tên";
             // 
             // txtSeach
             // 
-            txtSeach.Location = new Point(195, 56);
+            txtSeach.Location = new Point(266, 70);
             txtSeach.Margin = new Padding(2);
             txtSeach.Name = "txtSeach";
-            txtSeach.Size = new Size(1023, 31);
+            txtSeach.Size = new Size(770, 31);
             txtSeach.TabIndex = 17;
             txtSeach.TextChanged += txtSeach_TextChanged;
             // 
@@ -251,10 +243,10 @@
             // 
             btnAdd.BackColor = Color.MediumSlateBlue;
             btnAdd.ForeColor = SystemColors.Control;
-            btnAdd.Location = new Point(173, 479);
+            btnAdd.Location = new Point(118, 777);
             btnAdd.Margin = new Padding(2);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(99, 42);
+            btnAdd.Size = new Size(702, 53);
             btnAdd.TabIndex = 18;
             btnAdd.Text = "ADD";
             btnAdd.UseVisualStyleBackColor = false;
@@ -264,10 +256,10 @@
             // 
             btnUpdate.BackColor = Color.MediumSlateBlue;
             btnUpdate.ForeColor = SystemColors.Control;
-            btnUpdate.Location = new Point(326, 479);
+            btnUpdate.Location = new Point(118, 855);
             btnUpdate.Margin = new Padding(2);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(99, 42);
+            btnUpdate.Size = new Size(702, 53);
             btnUpdate.TabIndex = 20;
             btnUpdate.Text = "UPDATE";
             btnUpdate.UseVisualStyleBackColor = false;
@@ -277,10 +269,10 @@
             // 
             btnClean.BackColor = Color.MediumSlateBlue;
             btnClean.ForeColor = SystemColors.Control;
-            btnClean.Location = new Point(492, 479);
+            btnClean.Location = new Point(118, 931);
             btnClean.Margin = new Padding(2);
             btnClean.Name = "btnClean";
-            btnClean.Size = new Size(99, 42);
+            btnClean.Size = new Size(702, 53);
             btnClean.TabIndex = 21;
             btnClean.Text = "CLEAN";
             btnClean.UseVisualStyleBackColor = false;
@@ -289,25 +281,24 @@
             // grpDanhSachNhanVien
             // 
             grpDanhSachNhanVien.Controls.Add(dgvDanhSachNhanVien);
-            grpDanhSachNhanVien.Location = new Point(10, 549);
+            grpDanhSachNhanVien.Location = new Point(1127, 137);
             grpDanhSachNhanVien.Margin = new Padding(2);
             grpDanhSachNhanVien.Name = "grpDanhSachNhanVien";
             grpDanhSachNhanVien.Padding = new Padding(2);
-            grpDanhSachNhanVien.Size = new Size(1314, 352);
+            grpDanhSachNhanVien.Size = new Size(1195, 1028);
             grpDanhSachNhanVien.TabIndex = 22;
             grpDanhSachNhanVien.TabStop = false;
             grpDanhSachNhanVien.Text = "Danh sách nhân viên";
-            grpDanhSachNhanVien.Enter += grpDanhSachNhanVien_Enter;
             // 
             // dgvDanhSachNhanVien
             // 
             dgvDanhSachNhanVien.BackgroundColor = Color.LightSteelBlue;
             dgvDanhSachNhanVien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDanhSachNhanVien.Location = new Point(5, 28);
+            dgvDanhSachNhanVien.Location = new Point(4, 28);
             dgvDanhSachNhanVien.Margin = new Padding(2);
             dgvDanhSachNhanVien.Name = "dgvDanhSachNhanVien";
             dgvDanhSachNhanVien.RowHeadersWidth = 62;
-            dgvDanhSachNhanVien.Size = new Size(1305, 386);
+            dgvDanhSachNhanVien.Size = new Size(1187, 996);
             dgvDanhSachNhanVien.TabIndex = 0;
             dgvDanhSachNhanVien.CellClick += dgvDanhSachNhanVien_CellClick;
             // 
@@ -315,28 +306,15 @@
             // 
             cboChucVu.FormattingEnabled = true;
             cboChucVu.Items.AddRange(new object[] { "Nhân viên", "Admin" });
-            cboChucVu.Location = new Point(195, 391);
+            cboChucVu.Location = new Point(323, 346);
             cboChucVu.Name = "cboChucVu";
-            cboChucVu.Size = new Size(396, 33);
+            cboChucVu.Size = new Size(497, 33);
             cboChucVu.TabIndex = 23;
-            // 
-            // grpTrangThaiLamViec
-            // 
-            grpTrangThaiLamViec.Controls.Add(rdoFalse);
-            grpTrangThaiLamViec.Controls.Add(rdoTrue);
-            grpTrangThaiLamViec.Location = new Point(677, 390);
-            grpTrangThaiLamViec.Margin = new Padding(2);
-            grpTrangThaiLamViec.Name = "grpTrangThaiLamViec";
-            grpTrangThaiLamViec.Padding = new Padding(2);
-            grpTrangThaiLamViec.Size = new Size(541, 85);
-            grpTrangThaiLamViec.TabIndex = 9;
-            grpTrangThaiLamViec.TabStop = false;
-            grpTrangThaiLamViec.Text = "Trạng thái làm việc";
             // 
             // rdoFalse
             // 
             rdoFalse.AutoSize = true;
-            rdoFalse.Location = new Point(363, 38);
+            rdoFalse.Location = new Point(475, 41);
             rdoFalse.Margin = new Padding(2);
             rdoFalse.Name = "rdoFalse";
             rdoFalse.Size = new Size(99, 29);
@@ -348,7 +326,7 @@
             // rdoTrue
             // 
             rdoTrue.AutoSize = true;
-            rdoTrue.Location = new Point(114, 38);
+            rdoTrue.Location = new Point(248, 41);
             rdoTrue.Margin = new Padding(2);
             rdoTrue.Name = "rdoTrue";
             rdoTrue.Size = new Size(114, 29);
@@ -357,48 +335,106 @@
             rdoTrue.Text = "Đang làm";
             rdoTrue.UseVisualStyleBackColor = true;
             // 
+            // grpThaoTac
+            // 
+            grpThaoTac.Controls.Add(groupBox2);
+            grpThaoTac.Controls.Add(groupBox1);
+            grpThaoTac.Controls.Add(btnUpdate);
+            grpThaoTac.Controls.Add(txtIDNhanVien);
+            grpThaoTac.Controls.Add(btnClean);
+            grpThaoTac.Controls.Add(label2);
+            grpThaoTac.Controls.Add(cboChucVu);
+            grpThaoTac.Controls.Add(btnAdd);
+            grpThaoTac.Controls.Add(label3);
+            grpThaoTac.Controls.Add(label4);
+            grpThaoTac.Controls.Add(label5);
+            grpThaoTac.Controls.Add(label8);
+            grpThaoTac.Controls.Add(txtTenNhanVien);
+            grpThaoTac.Controls.Add(txtMatKhau);
+            grpThaoTac.Controls.Add(txtSdt);
+            grpThaoTac.Controls.Add(txtTaiKhoan);
+            grpThaoTac.Controls.Add(txtEmail);
+            grpThaoTac.Controls.Add(label7);
+            grpThaoTac.Controls.Add(label6);
+            grpThaoTac.Location = new Point(42, 137);
+            grpThaoTac.Name = "grpThaoTac";
+            grpThaoTac.Size = new Size(994, 1028);
+            grpThaoTac.TabIndex = 24;
+            grpThaoTac.TabStop = false;
+            grpThaoTac.Text = "Thao Tác";
+            grpThaoTac.Enter += grpThaoTac_Enter;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(rdoFalse);
+            groupBox2.Controls.Add(rdoTrue);
+            groupBox2.Location = new Point(82, 651);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(738, 97);
+            groupBox2.TabIndex = 27;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Trạng thái làm việc";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(Nu);
+            groupBox1.Controls.Add(Nam);
+            groupBox1.Location = new Point(82, 539);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(738, 97);
+            groupBox1.TabIndex = 26;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Giới tính";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(1127, 73);
+            label12.Margin = new Padding(2, 0, 2, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(242, 25);
+            label12.TabIndex = 26;
+            label12.Text = "Lọc nhân viên theo trạng thái";
+            // 
+            // cboLoc
+            // 
+            cboLoc.FormattingEnabled = true;
+            cboLoc.Items.AddRange(new object[] { "Đang làm", "Đã nghỉ" });
+            cboLoc.Location = new Point(1397, 65);
+            cboLoc.Name = "cboLoc";
+            cboLoc.Size = new Size(921, 33);
+            cboLoc.TabIndex = 27;
+            cboLoc.SelectedIndexChanged += cboLoc_SelectedIndexChanged;
+            // 
             // FormQLNhanVien
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(210, 218, 255);
-            ClientSize = new Size(1335, 912);
-            Controls.Add(grpTrangThaiLamViec);
-            Controls.Add(cboChucVu);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(2460, 1504);
+            Controls.Add(cboLoc);
+            Controls.Add(label12);
+            Controls.Add(grpThaoTac);
             Controls.Add(grpDanhSachNhanVien);
-            Controls.Add(btnClean);
-            Controls.Add(btnUpdate);
-            Controls.Add(btnAdd);
             Controls.Add(txtSeach);
             Controls.Add(label9);
-            Controls.Add(txtEmail);
-            Controls.Add(txtSdt);
-            Controls.Add(txtTenNhanVien);
-            Controls.Add(txtMatKhau);
-            Controls.Add(txtTaiKhoan);
-            Controls.Add(txtIDNhanVien);
-            Controls.Add(grpGioiTinh);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
             Controls.Add(label1);
-
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2);
             Name = "FormQLNhanVien";
             Text = "FormQLNhanVien";
-
             Load += FormQLNhanVien_Load;
-            grpGioiTinh.ResumeLayout(false);
-            grpGioiTinh.PerformLayout();
             grpDanhSachNhanVien.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvDanhSachNhanVien).EndInit();
-            grpTrangThaiLamViec.ResumeLayout(false);
-            grpTrangThaiLamViec.PerformLayout();
+            grpThaoTac.ResumeLayout(false);
+            grpThaoTac.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
 
@@ -412,13 +448,12 @@
         private Label label6;
         private Label label7;
         private Label label8;
-        private GroupBox grpGioiTinh;
         private TextBox txtIDNhanVien;
         private TextBox txtTaiKhoan;
         private TextBox txtMatKhau;
         private TextBox txtTenNhanVien;
-        private RadioButton rdoNu;
-        private RadioButton rdoNam;
+        private RadioButton Nu;
+        private RadioButton Nam;
         private TextBox txtSdt;
         private TextBox txtEmail;
         private Label label9;
@@ -429,8 +464,12 @@
         private GroupBox grpDanhSachNhanVien;
         private DataGridView dgvDanhSachNhanVien;
         private ComboBox cboChucVu;
-        private GroupBox grpTrangThaiLamViec;
         private RadioButton rdoFalse;
         private RadioButton rdoTrue;
+        private GroupBox grpThaoTac;
+        private Label label12;
+        private ComboBox cboLoc;
+        private GroupBox groupBox2;
+        private GroupBox groupBox1;
     }
 }

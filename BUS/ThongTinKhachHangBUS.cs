@@ -1,5 +1,5 @@
 ﻿using DAL;
-using Data.data;
+using Data.Models;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
 using System.Collections.Generic;

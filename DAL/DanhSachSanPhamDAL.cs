@@ -1,5 +1,5 @@
 ﻿
-using Data.data;
+using Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace DAL
         CsdlDuAn1NewNewContext dbContext = new CsdlDuAn1NewNewContext();
 
 
-        // Bảng sản phẩm
+        
         public List<SanPham> GetAllSanPhams()
         {
             return dbContext.SanPhams.ToList();
@@ -26,16 +26,7 @@ namespace DAL
         }
 
 
-        //Bảng sản phẩm chi tiết
-        //public List<SanPhamChiTiet> GetAllSanPhamChiTiets()
-        //{
-        //    return dbContext.SanPhamChiTiets.ToList();
-        //}
-
-        //public SanPhamChiTiet GetAllSanPhamChiTietById(string maSPCT)
-        //{
-        //    return dbContext.SanPhamChiTiets.Find(maSPCT);
-        //}
+       
 
         public void UpdateSoLuong(SanPham sp)
         {
@@ -47,14 +38,14 @@ namespace DAL
             dbContext.SaveChanges();
         }
 
-        //Loại sản phẩm
+      
 
         public LoaiSanPham? GetLoaiSanPhamById(string IDLoaiSP)
         {
             return dbContext.LoaiSanPhams.FirstOrDefault(ms => ms.IdloaiSanPham == IDLoaiSP);
         }
 
-        //khuyến mại
+      
         public KhuyenMai? GetKhuyenMaiById(string IDKhuyenMai)
         {
             return dbContext.KhuyenMais.FirstOrDefault(ms => ms.IdkhuyenMai == IDKhuyenMai);
@@ -62,7 +53,6 @@ namespace DAL
 
 
 
-        //chức vụ
       
     }
 }

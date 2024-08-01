@@ -1,5 +1,5 @@
 ﻿using DAL;
-using Data.data;
+using Data.Models;
 
 
 namespace BUS

@@ -1,5 +1,5 @@
 ﻿using DAL;
-using Data.data;
+using Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,53 +9,26 @@ using System.Threading.Tasks;
 
 namespace BUS
 {
-    public class DQLNhanVienBUS
+    public class TQLNhanVienBUS
     {
         private CsdlDuAn1NewNewContext dbcontext = new CsdlDuAn1NewNewContext();
-        DQLNhanVienDAL QLNVDAL = new DQLNhanVienDAL();
+        TQLNhanVienDAL QLNVDAL = new TQLNhanVienDAL();
         public List <NhanVien> Getallnhanvien()
         {
             var nhanvien = QLNVDAL.GetallNhanVien();
             return nhanvien;
         }
-
+        public NhanVien? getNhanVienById(string idNhanVien)
+        {
+             return QLNVDAL.getNhanVienById(idNhanVien);
+        }
         public bool  Create(NhanVien nhanVien)
         {
             return QLNVDAL.Create(nhanVien);
         }
 
 
-        //    public string UpdateSanPham(string IdSanPham, string IdKhuyenMai, string Idlsp,
-    //      string TenSanPham, int SoLuong, decimal GiaNhap, double KhoiLuong, string NguonGoc,
-    //      DateOnly HanSuDung, string Spf, string Fa, decimal GiaBan)
-
-    //    {
-    //        SanPham sanphamList = new SanPham()
-    //        {
-
-    //            IdsanPham = IdSanPham,
-    //            IdkhuyenMai = IdKhuyenMai,
-    //            IdloaiSanPham = Idlsp,
-    //            TenSanPham = TenSanPham,
-    //            SoLuong = SoLuong,
-    //            GiaNhap = GiaNhap,
-    //            KhoiLuong = KhoiLuong,
-    //            NguonGoc = NguonGoc,
-    //            HanSuDung = HanSuDung,
-    //            ChiSoSpf = Spf,
-    //            ChiSoFa = Fa,
-    //            GiaBan = GiaBan
-
-    //        };
-
-    //        if (sanPhamDAL.Update(sanphamList))
-    //        {
-    //            return "Sua  thành công";
-    //        }
-    //        else
-    //            return "Sua  thất bại";
-
-    //    }
+ 
 
         public string Update(string idnhanvien, string idchucvu, string tennhanvien, string email, string sdt, 
             bool gioitinh, string taikhoan, /*string matkhau,*/ bool trangthailamviec)
@@ -82,14 +55,33 @@ namespace BUS
                 return "Sửa thất bại!";
             }
 
-            //return QLNVDAL.Update(nhanvien);
         }
 
 
-        //public bool UpdateTTLV(NhanVien nhanvien)
-        //{
-        //    return QLNVDAL.UpdateTTLV(nhanvien);
-        //}
+
+
+
+
+
+        public string Update2(NhanVien nv)
+        {
+            
+
+            if (QLNVDAL.Update2(nv))
+            {
+                return "Sửa thành công!";
+            }
+            else
+            {
+                return "Sửa thất bại!";
+            }
+
+        }
+
+
+
+
+
 
         public bool UpdateTTLV(NhanVien nhanvien)
         {
@@ -101,22 +93,28 @@ namespace BUS
             return QLNVDAL.GetbyId(id);
         }
 
-        public List<NhanVien> CNTim(string Id)
+       
+
+
+        public List<NhanVien> GetAllNV(string timkiem)
         {
-            if (Id == null || Id == string.Empty)
+            if (timkiem == null || timkiem == string.Empty)
             {
-                return QLNVDAL.GetallNhanVien();
+                return QLNVDAL.GetTimKiem();
 
             }
-            return QLNVDAL.GetallNhanVien().Where(x => x.IdnhanVien.Contains(Id) || x.IdnhanVien.Contains(Id)).ToList();
+            return QLNVDAL.GetTimKiem().Where(x => x.IdnhanVien.StartsWith(timkiem) || x.TenNhanVien.Contains(timkiem)).ToList();
+
         }
 
 
 
-        
-
+        public List<NhanVien> CNLocTheoTrangThai(bool trangThai)
+        {
+            return QLNVDAL.LocTheoTrangThai(trangThai);
+        }
 
 
     }
-        
+
 }

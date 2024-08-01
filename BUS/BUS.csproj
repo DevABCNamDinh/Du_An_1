@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repository\**" />
+    <Compile Remove="Service\**" />
+    <EmbeddedResource Remove="Repository\**" />
+    <EmbeddedResource Remove="Service\**" />
+    <None Remove="Repository\**" />
+    <None Remove="Service\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-preview.6.24327.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0-preview.6.24327.4">
       <PrivateAssets>all</PrivateAssets>
@@ -20,7 +29,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\" />
+
+    <ProjectReference Include="..\DAL\DAL.csproj" />
+
+
   </ItemGroup>
 
   <ItemGroup>

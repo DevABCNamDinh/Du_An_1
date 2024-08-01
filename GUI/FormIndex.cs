@@ -66,7 +66,7 @@ namespace GUI
             pn_Body.Controls.Add(formChild);
             pn_Body.Tag = formChild;
             formChild.BringToFront();
-            formChild.Show();
+           formChild.Show();
         }
         private void pn_Body_Paint(object sender, PaintEventArgs e)
         {

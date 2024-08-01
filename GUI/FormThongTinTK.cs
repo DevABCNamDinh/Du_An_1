@@ -57,6 +57,7 @@ namespace GUI
         }
 
 
+
         public void HamClear()
         {
             txtIDNhanVien.Clear();
@@ -105,5 +106,6 @@ namespace GUI
         }
 
         
+
     }
 }

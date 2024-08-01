@@ -7,6 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repository\**" />
+    <Compile Remove="Service\**" />
+    <EmbeddedResource Remove="Repository\**" />
+    <EmbeddedResource Remove="Service\**" />
+    <None Remove="Repository\**" />
+    <None Remove="Service\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+
+    <PackageReference Include="EPPlus" Version="7.2.2" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.4" />
+
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-preview.6.24327.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0-preview.6.24327.4">
       <PrivateAssets>all</PrivateAssets>
@@ -20,11 +33,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Service\" />
-    <Folder Include="Repository\" />
+
+
+    <ProjectReference Include="..\DAL\DAL.csproj" />
+
+
   </ItemGroup>
 
   <ItemGroup>
+
     <ProjectReference Include="..\DAL\DAL.csproj" />
   </ItemGroup>
 

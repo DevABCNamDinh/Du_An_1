@@ -36,7 +36,27 @@
             txt_sodienthoai = new TextBox();
             label4 = new Label();
             label3 = new Label();
+
+            label2 = new Label();
+            label1 = new Label();
+            button4 = new Button();
             groupBox2 = new GroupBox();
+            button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
+            textBox9 = new TextBox();
+            label15 = new Label();
+            dataGridView1 = new DataGridView();
+            comboBox3 = new ComboBox();
+            comboBox2 = new ComboBox();
+            textBox5 = new TextBox();
+            textBox3 = new TextBox();
+            textBox2 = new TextBox();
+            textBox1 = new TextBox();
+            label14 = new Label();
+            label13 = new Label();
+
+
             label12 = new Label();
             lbl_thanhtien = new Label();
             label10 = new Label();
@@ -48,6 +68,7 @@
             lb_tienThua = new Label();
             txt_tinKhachDua = new TextBox();
             label9 = new Label();
+
             label8 = new Label();
             lbl_giaTriHoaDon = new Label();
             label6 = new Label();
@@ -65,6 +86,7 @@
             dtg_lichSuChiTietHoaDon = new DataGridView();
             groupBox5 = new GroupBox();
             dtg_LichSuHoaDon = new DataGridView();
+
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgview_thongTinHoaDon).BeginInit();
@@ -155,6 +177,16 @@
             label3.TabIndex = 0;
             label3.Text = "Số điện thoại";
             // 
+            // button4
+            // 
+            button4.Location = new Point(1264, 557);
+            button4.Name = "button4";
+            button4.Size = new Size(150, 46);
+            button4.TabIndex = 25;
+            button4.Text = "Thống kê ";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
             // groupBox2
             // 
             groupBox2.BackColor = Color.FromArgb(238, 241, 255);
@@ -185,12 +217,43 @@
             // 
             // label12
             // 
+
+            // button3
+            // 
+            button3.Location = new Point(542, 412);
+            button3.Name = "button3";
+            button3.Size = new Size(188, 46);
+            button3.TabIndex = 24;
+            button3.Text = "Hủy hóa đơn";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(45, 412);
+            button2.Name = "button2";
+            button2.Size = new Size(224, 46);
+            button2.TabIndex = 23;
+            button2.Text = "Thêm hóa đơn";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(307, 412);
+            button1.Name = "button1";
+            button1.Size = new Size(180, 46);
+            button1.TabIndex = 1;
+            button1.Text = "Lưu hóa đơn";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox9
+
             label12.AutoSize = true;
             label12.Location = new Point(28, 578);
             label12.Name = "label12";
             label12.Size = new Size(584, 32);
             label12.TabIndex = 21;
             label12.Text = "---------------------------------------------------------";
+
             // 
             // lbl_thanhtien
             // 
@@ -378,6 +441,31 @@
             label11.Location = new Point(30, 41);
             label11.Name = "label11";
             label11.Size = new Size(113, 32);
+
+            label11.TabIndex = 10;
+            label11.Text = "Tên hàng";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.ForeColor = SystemColors.HotTrack;
+            label10.Location = new Point(45, 116);
+            label10.Name = "label10";
+            label10.Size = new Size(110, 32);
+            label10.TabIndex = 9;
+            label10.Text = "Số lượng";
+            label10.Click += label10_Click;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.ForeColor = SystemColors.HotTrack;
+            label9.Location = new Point(45, 63);
+            label9.Name = "label9";
+            label9.Size = new Size(159, 32);
+            label9.TabIndex = 8;
+            label9.Text = "Mã sản phẩm";
+
             label11.TabIndex = 9;
             label11.Text = "Tìm kiếm";
             // 
@@ -451,6 +539,7 @@
             dtg_LichSuHoaDon.RowHeadersWidth = 82;
             dtg_LichSuHoaDon.Size = new Size(694, 385);
             dtg_LichSuHoaDon.TabIndex = 24;
+
             // 
             // FormHoaDon
             // 

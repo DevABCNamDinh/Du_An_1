@@ -1,7 +1,10 @@
-﻿using BUS;
-using Data.Models;
+
+
+using Data.data;
+
 
 namespace GUI
+
 {
     public partial class FormIndex : Form
     {
@@ -22,8 +25,10 @@ namespace GUI
        
         private void button1_Click_1(object sender, EventArgs e)
         {
+
            
             oppenForm(new FormHoaDon(_nhanVien));
+
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -68,7 +73,7 @@ namespace GUI
             pn_Body.Controls.Add(formChild);
             pn_Body.Tag = formChild;
             formChild.BringToFront();
-            formChild.Show();
+           formChild.Show();
         }
         private void pn_Body_Paint(object sender, PaintEventArgs e)
         {
@@ -77,11 +82,13 @@ namespace GUI
 
         private void btn_khuyenMai_Click(object sender, EventArgs e)
         {
+
             oppenForm(new FormKhuyenMai());
         }
 
         private void btn_quanLyNV_Click(object sender, EventArgs e)
         {
+
             if (_nhanVien.IdchucVu == "CV001" && _nhanVien.TrangThaiLamViec == true)
             {
                 oppenForm(new FormQLNhanVien(_nhanVien));
@@ -94,18 +101,21 @@ namespace GUI
             {
                 MessageBox.Show("Bạn không phải Admin. Chỉ Admin mới có quyền truy cập !");
             }
-            
+
         }
 
         private void btn_quanLyKH_Click(object sender, EventArgs e)
         {
+
 
             oppenForm(new FormQLKhachHang());
         }
 
         private void btn_thongTinTK_Click(object sender, EventArgs e)
         {
+
             oppenForm(new FormThongTinTK(_nhanVien));
+
         }
 
         private void button1_Click_2(object sender, EventArgs e)

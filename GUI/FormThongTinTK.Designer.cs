@@ -49,6 +49,7 @@
             pictureBox1 = new PictureBox();
             btnUpdate = new Button();
             button1 = new Button();
+
             groupBox1 = new GroupBox();
             label7 = new Label();
             grpGioiTinh.SuspendLayout();
@@ -291,14 +292,26 @@
             label7.TabIndex = 20;
             label7.Text = "Ảnh nhân viên";
             // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy HH:mm:ss";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.Location = new Point(199, 317);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(598, 39);
+            dateTimePicker1.TabIndex = 1;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            // 
             // FormThongTinTK
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+
             BackColor = Color.White;
             ClientSize = new Size(2460, 1504);
             Controls.Add(label9);
             Controls.Add(groupBox1);
+
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(2);
             Name = "FormThongTinTK";
@@ -335,7 +348,9 @@
         private PictureBox pictureBox1;
         private Button btnUpdate;
         private Button button1;
+
         private GroupBox groupBox1;
         private Label label7;
+
     }
 }

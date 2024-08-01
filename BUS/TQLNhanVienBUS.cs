@@ -1,5 +1,8 @@
 ﻿using DAL;
-using Data.Models;
+
+using Data.DataBase;
+
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,16 +14,22 @@ namespace BUS
 {
     public class TQLNhanVienBUS
     {
-        private CsdlDuAn1NewNewContext dbcontext = new CsdlDuAn1NewNewContext();
-        TQLNhanVienDAL QLNVDAL = new TQLNhanVienDAL();
+
+        private CsdlDuAn1NewNew2Context dbcontext = new CsdlDuAn1NewNew2Context();
+        DQLNhanVienDAL QLNVDAL = new DQLNhanVienDAL();
+
         public List <NhanVien> Getallnhanvien()
         {
             var nhanvien = QLNVDAL.GetallNhanVien();
             return nhanvien;
         }
-        public NhanVien? getNhanVienById(string idNhanVien)
+
+
+        public NhanVien GetnhanvienByID(string IdNhanvien)
         {
-             return QLNVDAL.getNhanVienById(idNhanVien);
+            var nhanvien = QLNVDAL.GetNhanVienByID(IdNhanvien);
+            return nhanvien;
+
         }
         public bool  Create(NhanVien nhanVien)
         {

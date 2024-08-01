@@ -1,5 +1,8 @@
-﻿
-using Data.Models;
+
+
+﻿using Data.DataBase;
+
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +14,7 @@ namespace DAL
    
     public class DanhSachSanPhamDAL
     {
-        CsdlDuAn1NewNewContext dbContext = new CsdlDuAn1NewNewContext();
+        CsdlDuAn1NewNew2Context dbContext = new CsdlDuAn1NewNew2Context();
 
 
         

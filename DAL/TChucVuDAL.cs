@@ -1,5 +1,8 @@
-﻿using Data.Models;
+
 using Microsoft.EntityFrameworkCore;
+
+﻿using Data.DataBase;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +13,12 @@ namespace DAL
 {
     public class TChucVuDAL
     {
+
         CsdlDuAn1NewNewContext _context;
         public TChucVuDAL()
+
         {
-            _context = new CsdlDuAn1NewNewContext(); 
+            _context = new CsdlDuAn1NewNew2Context(); 
         }
 
         public List <ChucVu> GetallChucVu()

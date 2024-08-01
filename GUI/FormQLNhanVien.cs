@@ -1,6 +1,10 @@
 ﻿using BUS;
-using Data.Models;
+
 using System.Text.RegularExpressions;
+
+using Data.DataBase;
+
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,8 +19,10 @@ namespace GUI
 {
     public partial class FormQLNhanVien : Form
     {
+
         NhanVien NhanVien { get; set; }
         TQLNhanVienBUS _qlnvBUS = new TQLNhanVienBUS();
+
         DChucVuBUS _chucvuBUS = new DChucVuBUS();
 
         List<string> _lstchucvu = new List<string>();

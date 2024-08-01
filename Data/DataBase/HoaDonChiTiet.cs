@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Data.data;
+namespace Data.DataBase;
 
 public partial class HoaDonChiTiet
 {

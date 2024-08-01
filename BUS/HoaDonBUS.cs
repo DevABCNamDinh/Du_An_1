@@ -1,5 +1,7 @@
 ﻿using DAL;
-using Data.Models;
+
+using Data.DataBase;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,17 @@ namespace BUS
             return hoaDonDAL.GetHoaDonbyMaHoaDon(maHoaDon);
         }
 
+        public List<HoaDon> GetAllHoaDonByAll(string timkiem,int trangThai, string idNhanvien,string khachHang,DateTime? startDate, DateTime?endDate)
+        {
+            return hoaDonDAL.GetHoaDonByALl(timkiem,trangThai,idNhanvien,khachHang,startDate,endDate);
+
+
+
+        }
+        public List<HoaDon> GetAllHoaDonsByTrangThai()
+        {
+            return hoaDonDAL.GetAllHoaDonsByTrangThai();
+        }
         public List<HoaDon> GetAllHoaDons()
         {
             return hoaDonDAL.GetAllHoaDons();

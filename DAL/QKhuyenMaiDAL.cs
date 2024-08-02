@@ -1,4 +1,5 @@
-﻿using DTO.Models;
+﻿using Data.Data;
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace DAL
 {
     public class QKhuyenMaiDAL
     {
-        CsdlDuAn1NewNewContext dbcontex = new CsdlDuAn1NewNewContext();
+        CsdlDuAn1Context dbcontex = new CsdlDuAn1Context();
 
   
         public List<KhuyenMai> GetAll()

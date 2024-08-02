@@ -1,5 +1,6 @@
 ﻿using DAL;
-using DTO1.Mode;
+using Data.Data;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,8 +54,16 @@ namespace BUS
                 return "Sửa thất bại";
 
         }
-      
 
       
+        public string SuaLSP(LoaiSanPham sanPham)
+        {
+            if (_loaispDAL.SuaLoaiSanPham(sanPham))
+            {
+                return "Sua thanh cong";
+            }
+            return "Sua that bai";
+        }
+
     }
 }

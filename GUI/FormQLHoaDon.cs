@@ -1,5 +1,6 @@
 ﻿using BUS;
-using Data.DataBase;
+using Data.Data;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,7 +18,7 @@ namespace GUI
     {
         HoaDonBUS hoaDonBUS = new HoaDonBUS();
 
-        DQLNhanVienBUS DQLNhanVienBUS = new DQLNhanVienBUS();
+        TQLNhanVienBUS DQLNhanVienBUS = new TQLNhanVienBUS();
         DanhSachSanPhamBUS DSSP = new DanhSachSanPhamBUS();
         ChucVuBUS ChucVuBUS = new ChucVuBUS();
         ThongTinKhachHangBUS ThongTinKhachHangBUS = new ThongTinKhachHangBUS();
@@ -116,7 +117,7 @@ namespace GUI
             {
                 if (item.SoLuong != 0)
                 {
-                    dtg_lichSuChiTietHoaDon.Rows.Add(i++, item.IdsanPham, DSSP.GetSanPhamById(item.IdsanPham).TenSanPham, DSSP.GetSanPhamById(item.IdsanPham).NguonGoc, Convert.ToDecimal(item.Gia).ToString("#,##0.00 'VND'"), item.IdkhuyenMai + "%", item.SoLuong);
+                    dtg_lichSuChiTietHoaDon.Rows.Add(i++, item.IdsanPham, DSSP.GetSanPhamById(item.IdsanPham).TenSanPham, DSSP.GetSanPhamById(item.IdsanPham).NguonGoc, Convert.ToDecimal(item.Gia).ToString("#,##0.00 'VND'"), item.KhuyenMai + "%", item.SoLuong);
 
                 }
             }
@@ -154,7 +155,7 @@ namespace GUI
             idwhenclick = dtg_LichSuHoaDon.Rows[index].Cells[1].Value.ToString();
             foreach (var item in HoaDonChiTietBUS.GetAllHoaDonCTByMaHoaDon(idwhenclick))
             {
-                dtg_lichSuChiTietHoaDon.Rows.Add(i++, item.IdsanPham, DSSP.GetSanPhamById(item.IdsanPham).TenSanPham, DSSP.GetSanPhamById(item.IdsanPham).NguonGoc, Convert.ToDecimal(item.Gia).ToString("#,##0.00 'VND'"), item.IdkhuyenMai + "%", item.SoLuong);
+                dtg_lichSuChiTietHoaDon.Rows.Add(i++, item.IdsanPham, DSSP.GetSanPhamById(item.IdsanPham).TenSanPham, DSSP.GetSanPhamById(item.IdsanPham).NguonGoc, Convert.ToDecimal(item.Gia).ToString("#,##0.00 'VND'"), item.KhuyenMai + "%", item.SoLuong);
             }
             var x = ThanhTienBUS.GetThanhtienbyMaHoaDon(idwhenclick);
             if (x != null)

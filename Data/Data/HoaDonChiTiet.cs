@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Data.DataBase;
+namespace Data.Data;
 
 public partial class HoaDonChiTiet
 {
@@ -11,7 +11,7 @@ public partial class HoaDonChiTiet
 
     public string? IdhoaDon { get; set; }
 
-    public string? IdkhuyenMai { get; set; }
+    public string? KhuyenMai { get; set; }
 
     public int? SoLuong { get; set; }
 

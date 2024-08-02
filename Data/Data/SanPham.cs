@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Data.DataBase;
+namespace Data.Data;
 
 public partial class SanPham
 {

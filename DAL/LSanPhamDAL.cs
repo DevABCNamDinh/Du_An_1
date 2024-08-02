@@ -1,4 +1,5 @@
-﻿using DTO1.Mode;
+﻿using Data.Data;
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace DAL
     public  class LSanPhamDAL
     {
         
-                CsdlDuAn1NewNewContext dbContext = new CsdlDuAn1NewNewContext();
+                CsdlDuAn1Context dbContext = new CsdlDuAn1Context();
         public List<SanPham> GetAllSanPham()
         {
          return dbContext.SanPhams.ToList();
@@ -109,6 +110,16 @@ namespace DAL
         public List<SanPham> LocTheoTrangThai(bool trangThai)
         {
             return dbContext.SanPhams.Where(sp => sp.TrangThai == trangThai).ToList();
+        }
+        public bool SuaSanPham(SanPham nv)
+        {
+            if (nv == null)
+            {
+                return false;
+            }
+            dbContext.SanPhams.Update(nv);
+            dbContext.SaveChanges();
+            return true;
         }
     }
 }

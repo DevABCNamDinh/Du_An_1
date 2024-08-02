@@ -1,5 +1,6 @@
 ﻿using BUS;
-using DTO.Models;
+using Data.Data;
+
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using OfficeOpenXml;
@@ -265,21 +266,21 @@ namespace GUI
 
         private void FormKhuyenMai_Load_1(object sender, EventArgs e)
         {
-            List<KhuyenMai> khuyenMais = BUS.CNHien();
+            //List<KhuyenMai> khuyenMais = BUS.CNHien();
 
-            ShowData(khuyenMais);
-            this.WindowState = FormWindowState.Maximized;
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.TopMost = true;
-            cbbTrangThai.Items.Add("Đang hoạt động");
-            cbbTrangThai.Items.Add("Đã tắt");
-            cbbTrangThai.SelectedIndex = 0;
+            //ShowData(khuyenMais);
+            //this.WindowState = FormWindowState.Maximized;
+            //this.FormBorderStyle = FormBorderStyle.None;
+            //this.TopMost = true;
+            //cbbTrangThai.Items.Add("Đang hoạt động");
+            //cbbTrangThai.Items.Add("Đã tắt");
+            //cbbTrangThai.SelectedIndex = 0;
 
-            cbbIDKhuyenMai.Items.Clear();
-            foreach (var km in khuyenMais)
-            {
-                cbbIDKhuyenMai.Items.Add(km.IdkhuyenMai);
-            }
+            //cbbIDKhuyenMai.Items.Clear();
+            //foreach (var km in khuyenMais)
+            //{
+            //    cbbIDKhuyenMai.Items.Add(km.IdkhuyenMai);
+            //}
 
 
 
@@ -295,9 +296,7 @@ namespace GUI
 
         private void FormKhuyenMai_Resize(object sender, EventArgs e)
         {
-            panel1.Size = new Size(this.ClientSize.Width, this.ClientSize.Height);
-            panel1.Location = new Point(0, 0);
-
+          
         }
 
 
@@ -344,16 +343,16 @@ namespace GUI
 
         private void btnLocGiamGia_Click(object sender, EventArgs e)
         {
-            if (double.TryParse(txtLocGiamGiaTu.Text, out double discount))
-            {
-                filterDiscount = discount;
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng nhập phần trăm giảm giá hợp lệ.");
-                return;
-            }
-            ApplyFilters();
+            //if (double.TryParse(txtLocGiamGiaTu.Text, out double discount))
+            //{
+            //    filterDiscount = discount;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Vui lòng nhập phần trăm giảm giá hợp lệ.");
+            //    return;
+            //}
+            //ApplyFilters();
         }
 
         private void btnLocTrangThai_Click(object sender, EventArgs e)
@@ -409,24 +408,24 @@ namespace GUI
 
         private void btnXuat_Click_1(object sender, EventArgs e)
         {
-            string selectedFormat = cbbXuat.SelectedItem?.ToString();
+            //string selectedFormat = cbbXuat.SelectedItem?.ToString();
 
-            if (string.IsNullOrEmpty(selectedFormat))
-            {
-                MessageBox.Show("Vui lòng chọn định dạng xuất.", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            //if (string.IsNullOrEmpty(selectedFormat))
+            //{
+            //    MessageBox.Show("Vui lòng chọn định dạng xuất.", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
 
-            switch (selectedFormat)
-            {
+            //switch (selectedFormat)
+            //{
 
-                case "PDF":
-                    ExportToPDF();
-                    break;
-                default:
-                    MessageBox.Show("Định dạng không hợp lệ.", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    break;
-            }
+            //    case "PDF":
+            //        ExportToPDF();
+            //        break;
+            //    default:
+            //        MessageBox.Show("Định dạng không hợp lệ.", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        break;
+            //}
         }
         private void ExportToPDF()
         {
@@ -480,49 +479,49 @@ namespace GUI
 
         private void btnLocHan_Click(object sender, EventArgs e)
         {
-            bool conHan = rdoConHan.Checked;
-            List<KhuyenMai> khuyenMais = BUS.LocHan(conHan);
-            ShowData(khuyenMais);
+            //bool conHan = rdoConHan.Checked;
+            //List<KhuyenMai> khuyenMais = BUS.LocHan(conHan);
+            //ShowData(khuyenMais);
         }
 
         private void btnCheckNgay_Click(object sender, EventArgs e)
         {
-            if (cbbIDKhuyenMai.SelectedItem != null)
-            {
-                string selectedID = cbbIDKhuyenMai.SelectedItem.ToString();
-                KhuyenMai khuyenMai = BUS.CNTim(selectedID);
+            //if (cbbIDKhuyenMai.SelectedItem != null)
+            //{
+            //    string selectedID = cbbIDKhuyenMai.SelectedItem.ToString();
+            //    KhuyenMai khuyenMai = BUS.CNTim(selectedID);
 
-                if (khuyenMai != null)
-                {
-                    DateTime? ngayKetThuc = khuyenMai.NgayKetThuc;
+            //    if (khuyenMai != null)
+            //    {
+            //        DateTime? ngayKetThuc = khuyenMai.NgayKetThuc;
 
-                    if (ngayKetThuc.HasValue)
-                    {
-                        TimeSpan timeLeft = ngayKetThuc.Value - DateTime.Now;
+            //        if (ngayKetThuc.HasValue)
+            //        {
+            //            TimeSpan timeLeft = ngayKetThuc.Value - DateTime.Now;
 
-                        if (timeLeft.TotalDays > 0)
-                        {
-                            MessageBox.Show($"Khuyến mãi '{khuyenMai.TenKhuyenMai}' còn {timeLeft.Days} ngày nữa sẽ hết hạn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Khuyến mãi '{khuyenMai.TenKhuyenMai}' đã hết hạn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Khuyến mãi '{khuyenMai.TenKhuyenMai}' không có ngày kết thúc xác định.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy thông tin khuyến mãi.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn khuyến mãi từ danh sách.", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //            if (timeLeft.TotalDays > 0)
+            //            {
+            //                MessageBox.Show($"Khuyến mãi '{khuyenMai.TenKhuyenMai}' còn {timeLeft.Days} ngày nữa sẽ hết hạn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show($"Khuyến mãi '{khuyenMai.TenKhuyenMai}' đã hết hạn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //            }
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show($"Khuyến mãi '{khuyenMai.TenKhuyenMai}' không có ngày kết thúc xác định.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Không tìm thấy thông tin khuyến mãi.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Vui lòng chọn khuyến mãi từ danh sách.", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

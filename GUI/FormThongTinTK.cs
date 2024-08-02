@@ -1,5 +1,7 @@
 ﻿using BUS;
-using Data.Models;
+using DAL;
+using Data.Data;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,13 +18,14 @@ namespace GUI
     {
         DChucVuBUS _chucvuBUS = new DChucVuBUS();
         TQLNhanVienBUS _qlnvBUS = new TQLNhanVienBUS();
+        DQLNhanVienDAL X = new DQLNhanVienDAL();
         NhanVien NhanVien { get; set; }
         public FormThongTinTK(NhanVien nv)
         {
             InitializeComponent();
             NhanVien = nv;
 
-            
+
         }
 
 
@@ -36,7 +39,7 @@ namespace GUI
         public void LoadTTTK()
         {
             HamClear();
-            var nv = _qlnvBUS.getNhanVienById(NhanVien.IdnhanVien);
+            var nv = X.GetNhanVienByID(NhanVien.IdnhanVien);
 
             txtIDNhanVien.Text = nv.IdnhanVien;
             txtHoVaTen.Text = nv.TenNhanVien;
@@ -74,7 +77,7 @@ namespace GUI
         private void btnUpdate_Click(object sender, EventArgs e)
         {
 
-            var update = _qlnvBUS.getNhanVienById(NhanVien.IdnhanVien);
+            var update = _qlnvBUS.GetnhanvienByID(NhanVien.IdnhanVien);
             bool gioitinh = false;
             if (rdoNam.Checked)
             {
@@ -105,7 +108,9 @@ namespace GUI
 
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Data.Models;
+﻿using Data.Data;
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace DAL
 {
     public class TQLNhanVienDAL
     {
-        CsdlDuAn1NewNewContext dbcontext = new CsdlDuAn1NewNewContext();
+        CsdlDuAn1Context dbcontext = new CsdlDuAn1Context();
         public List <NhanVien> GetallNhanVien()
         {
             return dbcontext.NhanViens.ToList();
@@ -67,7 +68,7 @@ namespace DAL
         {
             try
             {
-               
+
                 dbcontext.NhanViens.Update(nhanVien);
                 dbcontext.SaveChanges();
                 return true;

@@ -1,6 +1,8 @@
 ﻿using DAL;
 
-using DTO1.Mode;
+using Data.Data;
+
+
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
@@ -112,8 +114,8 @@ namespace BUS
             }
                 
         }
+  
 
-    
 
         public SanPham GetById(string Id)
         {
@@ -127,7 +129,14 @@ namespace BUS
         }
 
 
-
+        public string SuaSP(SanPham sanPham)
+        {
+            if (sanPhamDAL.SuaSanPham(sanPham))
+            {
+                return "Sua thanh cong";
+            }
+            return "Sua that bai";
+        }
 
     }
 }

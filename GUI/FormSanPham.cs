@@ -15,8 +15,11 @@ using Microsoft.EntityFrameworkCore;
 using System.Security;
 using Microsoft.Identity.Client;
 
-using DTO1.Mode;
+
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Data.Data;
+using System.Security.Cryptography;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 
 
@@ -28,8 +31,10 @@ namespace GUI
     {
         LSanPhamBLL sanPhamBLL = new LSanPhamBLL();
         LLoaiSanPhamBLL lspBLL = new LLoaiSanPhamBLL();
-        CsdlDuAn1NewNewContext context = new CsdlDuAn1NewNewContext();
-        private string _idCellClick;
+        CsdlDuAn1Context context = new CsdlDuAn1Context();
+        private string _idCellClickSanPham;
+        private string _idCellClickLoaiSanPham;
+
 
 
 
@@ -49,15 +54,15 @@ namespace GUI
 
             int row = e.RowIndex;
             if (row < 0 || row >= sanPhamBLL.GetAllSP().Count()) return;
-            _idCellClick = Convert.ToString(dgvSanPham.Rows[row].Cells[0].Value);
-            var obj = sanPhamBLL.GetById(_idCellClick);
+            _idCellClickSanPham = Convert.ToString(dgvSanPham.Rows[row].Cells[0].Value);
+            var obj = sanPhamBLL.GetById(_idCellClickSanPham);
             if (obj != null)
             {
-                txtIDSanPham.Text = obj.IdsanPham;
+                
                 //cbbLoaiSP.SelectedIndex = _lstSanPHam.FindIndex(x => x == obj.IdloaiSanPham);
                 cbbLoaiSP.Text = lspBLL.Getbyid(obj.IdloaiSanPham).LoaiSanPham1;
                 txtTenSanPham.Text = obj.TenSanPham;
-                txtSoLuong.Text = Convert.ToString(obj.SoLuong);
+                txtSoLuong1.Text = Convert.ToString(obj.SoLuong);
                 txtGiaNhap.Text = Convert.ToString(obj.GiaNhap);
                 txtKhoiLuong.Text = Convert.ToString(obj.KhoiLuong);
                 txtNguonGoc.Text = obj.NguonGoc;
@@ -138,7 +143,7 @@ namespace GUI
                 IdsanPham = "SP" + (sanPhamBLL.GetAllSP().Count + 1),
                 IdloaiSanPham = IdLoaiSanPham,
                 TenSanPham = txtTenSanPham.Text,
-                SoLuong = Convert.ToInt32(txtSoLuong.Text),
+                SoLuong = Convert.ToInt32(txtSoLuong1.Text),
                 GiaNhap = Convert.ToInt32(txtGiaNhap.Text),
                 KhoiLuong = Convert.ToDouble(txtKhoiLuong.Text),
                 NguonGoc = txtNguonGoc.Text,
@@ -173,20 +178,8 @@ namespace GUI
 
         private void btnUpdateSp_Click(object sender, EventArgs e)
         {
-
-
-            string IdSanPham = txtIDSanPham.Text;
-            string TenSanPham = txtTenSanPham.Text;
-            string NguonGoc = txtNguonGoc.Text;
-            int SoLuong = Convert.ToInt32(txtSoLuong.Text);
-            decimal GiaNhap = Convert.ToDecimal(txtGiaNhap.Text);
-            double KhoiLuong = Convert.ToDouble(txtKhoiLuong.Text);
-            DateOnly HanSuDung = DateOnly.FromDateTime(datetimeHsd.Value);
-            string ChiSoSpf = txtSPF.Text;
-            string ChiSoFa = txtFA.Text;
-            decimal GiaBan = Convert.ToDecimal(txtGiaBan.Text);
-            string IdLoaiSanPham = cbbLoaiSP.SelectedValue.ToString();
-           
+            int soLuong;
+            bool isNumber = int.TryParse(txtSoLuong1.Text, out soLuong);
 
             bool TrangThai = false;
             if (rdoConBan.Checked)
@@ -197,27 +190,48 @@ namespace GUI
             {
                 TrangThai = false;
             }
-
-
-            DialogResult dl = MessageBox.Show("Bạn có muốn sửa không?", "Sửa thành công", MessageBoxButtons.YesNo);
-            if (dl == DialogResult.Yes)
+            if (!isNumber)
             {
-                string kq = sanPhamBLL.UpdateSanPham(IdSanPham, IdLoaiSanPham, TenSanPham, SoLuong, GiaNhap, KhoiLuong, NguonGoc, HanSuDung, ChiSoSpf, ChiSoFa, GiaBan, TrangThai);
+                MessageBox.Show("vui lòng nhập đúng số lượng");
+            }else if (Convert.ToInt32(txtSoLuong1.Text) < 0)
+            {
+                MessageBox.Show("vui lòng nhập đúng số lượng");
 
-                MessageBox.Show(kq);
+            }
+            else
+            {
+                var updateSP = sanPhamBLL.GetAllSP().Find(x => x.IdsanPham == _idCellClickSanPham);
+                updateSP.TenSanPham = txtTenSanPham.Text;
+                updateSP.NguonGoc = txtNguonGoc.Text;
+                updateSP.SoLuong = Convert.ToInt32(txtSoLuong1.Text);
+                updateSP.GiaNhap = Convert.ToDecimal(txtGiaNhap.Text);
+                updateSP.KhoiLuong = Convert.ToDouble(txtKhoiLuong.Text);
+                updateSP.HanSuDung = DateOnly.FromDateTime(datetimeHsd.Value);
+                updateSP.ChiSoFa = txtFA.Text;
+                updateSP.ChiSoSpf = txtSPF.Text;
+                updateSP.GiaBan = Convert.ToDecimal(txtGiaBan.Text);
+                updateSP.IdloaiSanPham = cbbLoaiSP.SelectedValue.ToString();
+                updateSP.TrangThai = TrangThai;
+
+
+                var chon = MessageBox.Show("Bạn có muốn sửa không?", "Sửa thành công", MessageBoxButtons.YesNo);
+                if (chon == DialogResult.Yes)
+                {
+                    MessageBox.Show(sanPhamBLL.SuaSP(updateSP));
+                }
 
                 ShowDS(dgvSanPham, null);
 
             }
+
         }
 
         private void btnClearSp_Click(object sender, EventArgs e)
         {
 
-            txtIDSanPham.Clear();
 
             txtTenSanPham.Clear();
-            txtSoLuong.Clear();
+            txtSoLuong1.Clear();
             txtGiaNhap.Clear();
             txtKhoiLuong.Clear();
             txtNguonGoc.Clear();
@@ -283,8 +297,8 @@ namespace GUI
                 {
                     loaiSanPham = "";
                 }
-               
-              
+
+
                 dgvSanPham.Rows.Add(item.IdsanPham, item.TenSanPham, item.SoLuong, item.GiaNhap, loaiSanPham,
                     item.KhoiLuong, item.NguonGoc, item.HanSuDung, item.ChiSoSpf, item.ChiSoFa, item.GiaBan, TrangThai);
             }
@@ -326,7 +340,7 @@ namespace GUI
 
         private void btnAddSp_Click_1(object sender, EventArgs e)
         {
-            
+
             bool TrangThai = false;
             if (rdoConBan.Checked == true)
             {
@@ -343,7 +357,7 @@ namespace GUI
             double khoiLuong;
 
             // Validate input data types
-            if (!int.TryParse(txtSoLuong.Text, out soLuong))
+            if (!int.TryParse(txtSoLuong1.Text, out soLuong))
             {
                 MessageBox.Show("Số lượng phải là số nguyên.");
                 return;
@@ -423,8 +437,8 @@ namespace GUI
 
         private void btnQLLSP_Click(object sender, EventArgs e)
         {
-           
-            
+
+
         }
 
 
@@ -434,12 +448,11 @@ namespace GUI
         {
             int rowindex = e.RowIndex;
             if (rowindex < 0 || rowindex >= lspBLL.Getallloaisp().Count) return;
-            _idCellClick = Convert.ToString(dgvLoaiSP.Rows[rowindex].Cells[1].Value);
-            var obj = lspBLL.Getbyid(_idCellClick);
+            _idCellClickLoaiSanPham = Convert.ToString(dgvLoaiSP.Rows[rowindex].Cells[1].Value);
+            var obj = lspBLL.Getbyid(_idCellClickLoaiSanPham);
             if (obj != null)
             {
-                txtIDLSP.Text = obj.IdloaiSanPham;
-
+         
                 cbbIdKm.Text = obj.IdkhuyenMai;
                 txtLsp.Text = obj.LoaiSanPham1;
             }
@@ -447,6 +460,9 @@ namespace GUI
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            
+          
+
 
             LoaiSanPham lsp = new LoaiSanPham();
 
@@ -471,7 +487,7 @@ namespace GUI
             LoadLoaiSP(dgvLoaiSP);
             ShowDS(dgvSanPham, null);
 
-            
+
         }
 
         private void txtTimKiemNgGoc_TextChanged(object sender, EventArgs e)
@@ -481,25 +497,27 @@ namespace GUI
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            var updateLoaiSP = lspBLL.Getallloaisp().Find(x => x.IdloaiSanPham == _idCellClickLoaiSanPham);
+            updateLoaiSP.LoaiSanPham1 = txtLsp.Text;
+            updateLoaiSP.IdkhuyenMai= cbbIdKm.Text;
+            
+            LoadLoaiSP(dgvLoaiSP);          
+            ShowDS(dgvSanPham, null);
 
-            string IdLoaiSanPham = txtIDLSP.Text;
-            string idKhuyenMai = cbbIdKm.Text;
-            string loaiSanPham = txtLsp.Text;
 
-            DialogResult result = MessageBox.Show("Bạn có muốn sửa không?", "Cập nhật thông tin loại sản phẩm", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
+            var chon = MessageBox.Show("Bạn có muốn sửa không?", "Cập nhật thông tin loại sản phẩm", MessageBoxButtons.YesNo);
+            if (chon == DialogResult.Yes)
             {
-                string updateResult = lspBLL.Update(IdLoaiSanPham, idKhuyenMai, loaiSanPham);
-
-                MessageBox.Show(updateResult, "Thông báo cập nhật", MessageBoxButtons.OK);
-
-
-                LoadLoaiSP(dgvLoaiSP);
-                ShowDS(dgvSanPham, null);
-
-
-
+                MessageBox.Show(lspBLL.SuaLSP(updateLoaiSP));
             }
+
+            //DialogResult result = MessageBox.Show("Bạn có muốn sửa không?", "Cập nhật thông tin loại sản phẩm", MessageBoxButtons.YesNo);
+            //if (result == DialogResult.Yes)
+            //{
+            //    string updateResult = lspBLL.Update(IdLoaiSanPham, idKhuyenMai, loaiSanPham);
+
+            //    MessageBox.Show(updateResult, "Thông báo cập nhật", MessageBoxButtons.OK);
+            //}
         }
 
         private void cbbTrangThai_SelectedIndexChanged(object sender, EventArgs e)
@@ -507,7 +525,7 @@ namespace GUI
             bool trangThai = cbbTrangThai.SelectedItem.ToString() == "Còn Bán";
             List<SanPham> sanPhams = sanPhamBLL.LocTrangThai(trangThai);
             LoadGrid2(dgvSanPham, sanPhams);
-     
+
 
         }
         public void LoadGrid2(DataGridView dataGridView, List<SanPham> sanPhams)
@@ -529,15 +547,15 @@ namespace GUI
             dataGridView.Columns[11].Name = "Gia Ban";
             dataGridView.Columns[12].Name = "Trang Thai";
 
-         
+
 
             dataGridView.Rows.Clear();
 
             foreach (var item in sanPhams)
             {
-               
-                string trangthai = item.TrangThai == true ? "Còn Bán":"Ngừng Bán";
-               
+
+                string trangthai = item.TrangThai == true ? "Còn Bán" : "Ngừng Bán";
+
                 var LoaiSanPham = lspBLL.Getbyid(item.IdloaiSanPham).LoaiSanPham1;
 
                 dataGridView.Rows.Add(stt++, item.IdsanPham, item.TenSanPham, item.SoLuong, item.GiaNhap, LoaiSanPham, item.KhoiLuong, item.NguonGoc, item.HanSuDung, item.ChiSoSpf, item.ChiSoFa, item.GiaBan, trangthai);
@@ -548,6 +566,10 @@ namespace GUI
 
         }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

@@ -1,6 +1,6 @@
 
 
-﻿using Data.DataBase;
+using Data.Data;
 
 
 using System;
@@ -14,7 +14,7 @@ namespace DAL
    
     public class DanhSachSanPhamDAL
     {
-        CsdlDuAn1NewNew2Context dbContext = new CsdlDuAn1NewNew2Context();
+        CsdlDuAn1Context dbContext = new CsdlDuAn1Context();
 
 
         

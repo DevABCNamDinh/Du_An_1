@@ -1,4 +1,6 @@
-﻿using DTO.Modeles;
+﻿using Data.Data;
+
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,10 +13,10 @@ namespace DAL.Repository
     public class KhachHangRepository
     {
 
-        CsdlDuAn1NewContext context;
+        CsdlDuAn1Context context;
         public KhachHangRepository()
         {
-            context = new CsdlDuAn1NewContext();
+            context = new CsdlDuAn1Context();
         }
         public List<KhachHang> GetAllKhachHang()
         {

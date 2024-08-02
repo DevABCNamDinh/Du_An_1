@@ -1,5 +1,7 @@
-﻿using BUS.Service;
-using DTO.Modeles;
+﻿using BUS;
+using Data.Data;
+
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +16,7 @@ namespace GUI
 {
     public partial class FormQLKhachHang : Form
     {
-        KhachHangService service = new KhachHangService();
+        KhacHangBUS service = new KhacHangBUS();
         string idwhenclick;
 
         public FormQLKhachHang()

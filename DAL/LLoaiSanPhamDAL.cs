@@ -1,4 +1,5 @@
-﻿using DTO1.Mode;
+﻿using Data.Data;
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,10 @@ namespace DAL
 {
     public class LLoaiSanPhamDAL
     {
-        CsdlDuAn1NewNewContext _context;
+        CsdlDuAn1Context _context;
         public LLoaiSanPhamDAL()
         {
-            _context = new CsdlDuAn1NewNewContext();
+            _context = new CsdlDuAn1Context();
         }
 
         public List<LoaiSanPham> GetallLoaiSanPham()
@@ -79,11 +80,20 @@ namespace DAL
 
                 return options.Where(o => o.StartsWith(filter)).ToList();
             }
-        
 
 
 
 
+        public bool SuaLoaiSanPham(LoaiSanPham sp)
+        {
+            if (sp == null)
+            {
+                return false;
+            }
+            _context.LoaiSanPhams.Update(sp);
+            _context.SaveChanges();
+            return true;
+        }
 
 
 

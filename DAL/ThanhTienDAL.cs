@@ -1,4 +1,5 @@
-﻿using Data.DataBase;
+﻿using Data.Data;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace DAL
 {
     public class ThanhTienDAL
     {
-        CsdlDuAn1NewNew2Context dbContext = new CsdlDuAn1NewNew2Context();
+        CsdlDuAn1Context dbContext = new CsdlDuAn1Context();
         public ThanhTien? GetThanhTienbyMaHoaDon(string maHoaDon)
         {
             return dbContext.ThanhTiens.FirstOrDefault(x=>x.IdhoaDon==maHoaDon);

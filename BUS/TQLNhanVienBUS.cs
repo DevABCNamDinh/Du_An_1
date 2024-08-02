@@ -1,6 +1,7 @@
 ﻿using DAL;
 
-using Data.DataBase;
+using Data.Data;
+
 
 
 using Microsoft.EntityFrameworkCore;
@@ -15,8 +16,9 @@ namespace BUS
     public class TQLNhanVienBUS
     {
 
-        private CsdlDuAn1NewNew2Context dbcontext = new CsdlDuAn1NewNew2Context();
+        private CsdlDuAn1Context dbcontext = new CsdlDuAn1Context();
         DQLNhanVienDAL QLNVDAL = new DQLNhanVienDAL();
+        TQLNhanVienDAL TQLNhanVienDAL = new TQLNhanVienDAL();
 
         public List <NhanVien> Getallnhanvien()
         {
@@ -76,7 +78,7 @@ namespace BUS
         {
             
 
-            if (QLNVDAL.Update2(nv))
+            if (TQLNhanVienDAL.Update2(nv))
             {
                 return "Sửa thành công!";
             }
@@ -109,10 +111,10 @@ namespace BUS
         {
             if (timkiem == null || timkiem == string.Empty)
             {
-                return QLNVDAL.GetTimKiem();
+                return TQLNhanVienDAL.GetTimKiem();
 
             }
-            return QLNVDAL.GetTimKiem().Where(x => x.IdnhanVien.StartsWith(timkiem) || x.TenNhanVien.Contains(timkiem)).ToList();
+            return TQLNhanVienDAL.GetTimKiem().Where(x => x.IdnhanVien.StartsWith(timkiem) || x.TenNhanVien.Contains(timkiem)).ToList();
 
         }
 
@@ -120,7 +122,7 @@ namespace BUS
 
         public List<NhanVien> CNLocTheoTrangThai(bool trangThai)
         {
-            return QLNVDAL.LocTheoTrangThai(trangThai);
+            return TQLNhanVienDAL.LocTheoTrangThai(trangThai);
         }
 
 

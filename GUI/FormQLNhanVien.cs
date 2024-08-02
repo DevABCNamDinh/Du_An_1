@@ -2,7 +2,8 @@
 
 using System.Text.RegularExpressions;
 
-using Data.DataBase;
+using Data.Data;
+
 
 
 using System;
@@ -31,7 +32,7 @@ namespace GUI
         public FormQLNhanVien(NhanVien nv)
         {
             InitializeComponent();
-            LoadGrid(dgvDanhSachNhanVien, null);
+            LoadGrid(dtgv_thongtinNhanVien, null);
             NhanVien = nv;
         }
 
@@ -91,7 +92,7 @@ namespace GUI
 
         private void FormQLNhanVien_Load(object sender, EventArgs e)
         {
-            dgvDanhSachNhanVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgv_thongtinNhanVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -153,7 +154,7 @@ namespace GUI
                 MessageBox.Show("Số điện thoại không hợp lệ !");
             }
 
-         
+
 
 
             else
@@ -168,7 +169,7 @@ namespace GUI
                 }
 
                 txtMatKhau.Clear();
-                LoadGrid(dgvDanhSachNhanVien, null);
+                LoadGrid(dtgv_thongtinNhanVien, null);
             }
 
         }
@@ -233,15 +234,16 @@ namespace GUI
                     if (dl == DialogResult.Yes && txtMatKhau.Text == "")
                     {
                         string kq = _qlnvBUS.Update(idnhanvien, idchucvu, tennhanvien, email, sdt, gioitinh, taikhoan, /*matkhau,*/ trangthai);
-                        
+
                         MessageBox.Show(kq);
 
-                        LoadGrid(dgvDanhSachNhanVien, null);
+                        LoadGrid(dtgv_thongtinNhanVien, null);
                         return;
 
                     }
-                    else if(dl == DialogResult.No && txtMatKhau.Text == ""){
-                        LoadGrid(dgvDanhSachNhanVien, null);
+                    else if (dl == DialogResult.No && txtMatKhau.Text == "")
+                    {
+                        LoadGrid(dtgv_thongtinNhanVien, null);
                         return;
                     }
                     else
@@ -264,7 +266,7 @@ namespace GUI
         {
             int rowIndex = e.RowIndex;
             if (rowIndex < 0 || rowIndex >= _qlnvBUS.Getallnhanvien().Count()) return;
-            _idCellClick = Convert.ToString(dgvDanhSachNhanVien.Rows[rowIndex].Cells[1].Value);
+            _idCellClick = Convert.ToString(dtgv_thongtinNhanVien.Rows[rowIndex].Cells[1].Value);
             var obj = _qlnvBUS.GetById(_idCellClick);
 
             if (obj != null)
@@ -336,7 +338,7 @@ namespace GUI
 
         private void txtSeach_TextChanged(object sender, EventArgs e)
         {
-            LoadGrid(dgvDanhSachNhanVien, txtSeach.Text/*.ToUpper()*/);
+            LoadGrid(dtgv_thongtinNhanVien, txtSeach.Text/*.ToUpper()*/);
         }
 
 
@@ -377,7 +379,12 @@ namespace GUI
         {
             bool trangThai = cboLoc.SelectedItem.ToString() == "Đang làm";
             List<NhanVien> nhanViens = _qlnvBUS.CNLocTheoTrangThai(trangThai);
-            LoadGrid2(dgvDanhSachNhanVien, nhanViens);
+            LoadGrid2(dtgv_thongtinNhanVien, nhanViens);
+        }
+
+        private void rdoTrue_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }       

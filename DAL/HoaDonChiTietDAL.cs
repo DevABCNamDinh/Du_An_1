@@ -1,6 +1,6 @@
 ﻿
 
-using Data.DataBase;
+using Data.Data;
 
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace DAL
 {
     public class HoaDonChiTietDAL
     {
-        CsdlDuAn1NewNew2Context dbContext = new CsdlDuAn1NewNew2Context();
+        CsdlDuAn1Context dbContext = new CsdlDuAn1Context();
         public List<HoaDonChiTiet> GetAllHoaDonCT()
         {
             return dbContext.HoaDonChiTiets.ToList();

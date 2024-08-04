@@ -17,7 +17,7 @@ using Microsoft.Identity.Client;
 
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using Data.Data;
+using Data.Models;
 using System.Security.Cryptography;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 

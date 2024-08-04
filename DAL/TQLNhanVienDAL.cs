@@ -1,6 +1,7 @@
 
 ﻿using Data.Models;
 
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,25 +11,17 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DQLNhanVienDAL
+    public class TQLNhanVienDAL
     {
         CsdlDuAn1Context dbcontext = new CsdlDuAn1Context();
         public List <NhanVien> GetallNhanVien()
         {
             return dbcontext.NhanViens.ToList();
         }
-        public NhanVien GetNhanVienByID(string id)
-        {
-            return dbcontext.NhanViens.Find(id);
-        }
         public NhanVien GetbyId(string id)
         {
             return dbcontext.NhanViens.Find(id);
         }
-        
-        
-        
-        
         public bool Create(NhanVien nhanVien)
         {
             try
@@ -41,7 +34,11 @@ namespace DAL
         }
 
 
-        
+        public NhanVien? getNhanVienById(string idNhanVien)
+        {
+            return dbcontext.NhanViens.Find(idNhanVien);
+        }
+
 
 
         public bool Update(NhanVien nhanVien)
@@ -65,7 +62,26 @@ namespace DAL
             }
             catch(Exception) { return false; }
         }
-        
+
+
+
+
+        public bool Update2(NhanVien nhanVien)
+        {
+            try
+            {
+
+                dbcontext.NhanViens.Update(nhanVien);
+                dbcontext.SaveChanges();
+                return true;
+            }
+            catch (Exception) { return false; }
+        }
+
+
+
+
+
 
         public bool UpdateTTLV(NhanVien nhanVien)
         {
@@ -98,35 +114,18 @@ namespace DAL
 
 
 
-
-
-
-        public bool Update2(NhanVien nhanVien)
-        {
-            try
-            {
-
-                dbcontext.NhanViens.Update(nhanVien);
-                dbcontext.SaveChanges();
-                return true;
-            }
-            catch (Exception) { return false; }
-        }
-
         public List<NhanVien> GetTimKiem()
         {
             return dbcontext.NhanViens.ToList();
         }
+
+
 
         public List<NhanVien> LocTheoTrangThai(bool trangThai)
         {
             return dbcontext.NhanViens.Where(nv => nv.TrangThaiLamViec == trangThai).ToList();
         }
 
-        public List<NhanVien> LocTheoChucVu(string chucVu)
-        {
-            return dbcontext.NhanViens.Where(nv => nv.IdchucVu == chucVu).ToList();
-        }
 
     }
 }

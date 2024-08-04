@@ -1,6 +1,7 @@
 ﻿using DAL;
-using Data.Models;
 
+
+using Data.Models;
 
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;

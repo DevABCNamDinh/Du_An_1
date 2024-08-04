@@ -1,4 +1,6 @@
 ﻿using DAL;
+
+
 using Data.Models;
 
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +21,11 @@ namespace BUS
             return KmDAL.GetAll();
         }
 
-      
+        public List<KhachHang> ShowKH()
+        {
+            return KmDAL.GetAllKH();
+        }
+
         public string CNThem(string IdKm, string TenKM, DateTime NgayBD, DateTime NgayKT, double GiamGia, string MoTa , bool TrangThai)
         {
             KhuyenMai km = new KhuyenMai()
@@ -94,18 +100,18 @@ namespace BUS
         }
 
 
-       
-        public KhuyenMai CNTim(string IdKM)
+
+        public List<KhuyenMai> CNTimByPartialTen(string searchTerm)
         {
-            return KmDAL.GetByID(IdKM);
+            return KmDAL.GetKhuyenMaisByPartialTen(searchTerm);
         }
 
-        public List<KhuyenMai> LocDate(DateTime date)
+        public List<KhuyenMai> LocDate(DateTime startDate, DateTime endDate)
         {
-            return KmDAL.GetKhuyenMaisByDate(date);
+            return KmDAL.LocTheoNgay(startDate, endDate);
         }
 
-        public List<KhuyenMai> LocId(string id)
+        public List<KhuyenMai> GetKhuyenMaisById(string id)
         {
             return KmDAL.GetKhuyenMaisById(id);
         }
@@ -123,10 +129,7 @@ namespace BUS
             return KmDAL.GetAll();
         }
 
-        public List<KhuyenMai> LocHan(bool conHan)
-        {
-            return KmDAL.LocHan(conHan);
-        }
+       
         
     }
 }

@@ -1,5 +1,13 @@
 ﻿using DAL;
+
 using Data.Models;
+
+
+
+using Microsoft.EntityFrameworkCore;
+
+
+
 
 
 
@@ -10,16 +18,30 @@ namespace BUS
     {
         DanhSachSanPhamDAL DanhSachSanPhamDAL = new DanhSachSanPhamDAL();
         // sản phẩm
-        public List<SanPham> GetAllSanPhams(string search)
+        public List<SanPham> GetAllSanPhams(string search,string loaiSP)
         {
-            if (search == null || search == string.Empty)
+            var hoaDons = DanhSachSanPhamDAL.GetAllSanPhams().AsQueryable();
+            if (search != null || search != string.Empty)
             {
-                return DanhSachSanPhamDAL.GetAllSanPhams();
+               hoaDons= hoaDons.Where(x => x.IdsanPham.Contains(search) || x.TenSanPham.Contains(search));
             }
-            return DanhSachSanPhamDAL.GetAllSanPhams().Where(x => x.IdsanPham.Contains(search) || x.TenSanPham.Contains(search)).ToList();
 
+            if (loaiSP =="0")
+            {
+
+            }
+            else
+            {
+                hoaDons = hoaDons.Where(x => x.IdloaiSanPham == loaiSP);
+            }
+
+            return hoaDons.ToList();
         }
 
+        public List<LoaiSanPham> getAllLoaiSP()
+        {
+            return DanhSachSanPhamDAL.GetAllLoaiSP();
+        }
         public SanPham? GetSanPhamById(string maSanPham)
         {
             return DanhSachSanPhamDAL.GetSanPhamById(maSanPham);

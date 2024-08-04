@@ -60,6 +60,12 @@
             rdoConBan = new RadioButton();
             rdoNgungBan = new RadioButton();
             groupBox1 = new GroupBox();
+            label20 = new Label();
+            label14 = new Label();
+            label19 = new Label();
+            label18 = new Label();
+            txtSoLuong1 = new TextBox();
+            label1 = new Label();
             label15 = new Label();
             groupBox2 = new GroupBox();
             txtLsp = new TextBox();
@@ -72,8 +78,6 @@
             cbbTrangThai = new ComboBox();
             label17 = new Label();
             groupBox3 = new GroupBox();
-            label1 = new Label();
-            txtSoLuong1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvSanPham).BeginInit();
             grpdssanpham.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -87,7 +91,7 @@
             // 
             btnAddSp.BackColor = Color.FromArgb(128, 128, 255);
             btnAddSp.ForeColor = SystemColors.ButtonHighlight;
-            btnAddSp.Location = new Point(674, 464);
+            btnAddSp.Location = new Point(709, 483);
             btnAddSp.Name = "btnAddSp";
             btnAddSp.Size = new Size(150, 46);
             btnAddSp.TabIndex = 1;
@@ -99,7 +103,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(53, 71);
+            label2.Location = new Point(67, 65);
             label2.Name = "label2";
             label2.Size = new Size(165, 32);
             label2.TabIndex = 3;
@@ -120,7 +124,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F);
-            label4.Location = new Point(53, 198);
+            label4.Location = new Point(67, 189);
             label4.Name = "label4";
             label4.Size = new Size(136, 32);
             label4.TabIndex = 5;
@@ -130,7 +134,7 @@
             // 
             btnUpdateSp.BackColor = Color.FromArgb(128, 128, 255);
             btnUpdateSp.ForeColor = SystemColors.ButtonHighlight;
-            btnUpdateSp.Location = new Point(900, 464);
+            btnUpdateSp.Location = new Point(922, 483);
             btnUpdateSp.Name = "btnUpdateSp";
             btnUpdateSp.Size = new Size(150, 46);
             btnUpdateSp.TabIndex = 8;
@@ -142,17 +146,17 @@
             // 
             btnClearSp.BackColor = Color.FromArgb(128, 128, 255);
             btnClearSp.ForeColor = SystemColors.ButtonHighlight;
-            btnClearSp.Location = new Point(1086, 464);
+            btnClearSp.Location = new Point(1121, 483);
             btnClearSp.Name = "btnClearSp";
             btnClearSp.Size = new Size(150, 46);
             btnClearSp.TabIndex = 9;
-            btnClearSp.Text = "CLEAR";
+            btnClearSp.Text = "Quét sạch";
             btnClearSp.UseVisualStyleBackColor = false;
             btnClearSp.Click += btnClearSp_Click;
             // 
             // txtTenSanPham
             // 
-            txtTenSanPham.Location = new Point(272, 68);
+            txtTenSanPham.Location = new Point(272, 62);
             txtTenSanPham.Name = "txtTenSanPham";
             txtTenSanPham.Size = new Size(407, 39);
             txtTenSanPham.TabIndex = 12;
@@ -166,7 +170,7 @@
             // 
             // txtNguonGoc
             // 
-            txtNguonGoc.Location = new Point(272, 195);
+            txtNguonGoc.Location = new Point(272, 186);
             txtNguonGoc.Name = "txtNguonGoc";
             txtNguonGoc.Size = new Size(407, 39);
             txtNguonGoc.TabIndex = 15;
@@ -216,7 +220,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F);
-            label6.Location = new Point(53, 263);
+            label6.Location = new Point(67, 257);
             label6.Name = "label6";
             label6.Size = new Size(125, 32);
             label6.TabIndex = 20;
@@ -226,7 +230,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F);
-            label7.Location = new Point(53, 337);
+            label7.Location = new Point(67, 328);
             label7.Name = "label7";
             label7.Size = new Size(113, 32);
             label7.TabIndex = 21;
@@ -234,14 +238,14 @@
             // 
             // txtSPF
             // 
-            txtSPF.Location = new Point(272, 260);
+            txtSPF.Location = new Point(272, 254);
             txtSPF.Name = "txtSPF";
             txtSPF.Size = new Size(407, 39);
             txtSPF.TabIndex = 24;
             // 
             // txtFA
             // 
-            txtFA.Location = new Point(272, 334);
+            txtFA.Location = new Point(272, 325);
             txtFA.Name = "txtFA";
             txtFA.Size = new Size(407, 39);
             txtFA.TabIndex = 25;
@@ -250,7 +254,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Microsoft Sans Serif", 9F);
-            label9.Location = new Point(772, 75);
+            label9.Location = new Point(68, 398);
             label9.Name = "label9";
             label9.Size = new Size(135, 29);
             label9.TabIndex = 27;
@@ -261,7 +265,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Microsoft Sans Serif", 9F);
-            label10.Location = new Point(772, 145);
+            label10.Location = new Point(772, 132);
             label10.Name = "label10";
             label10.Size = new Size(154, 29);
             label10.TabIndex = 28;
@@ -271,7 +275,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Microsoft Sans Serif", 9F);
-            label11.Location = new Point(772, 202);
+            label11.Location = new Point(772, 191);
             label11.Name = "label11";
             label11.Size = new Size(114, 29);
             label11.TabIndex = 29;
@@ -281,7 +285,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Microsoft Sans Serif", 9F);
-            label12.Location = new Point(772, 267);
+            label12.Location = new Point(772, 259);
             label12.Name = "label12";
             label12.Size = new Size(98, 29);
             label12.TabIndex = 30;
@@ -289,23 +293,23 @@
             // 
             // txtKhoiLuong
             // 
-            txtKhoiLuong.Location = new Point(947, 70);
+            txtKhoiLuong.Location = new Point(272, 388);
             txtKhoiLuong.Name = "txtKhoiLuong";
-            txtKhoiLuong.Size = new Size(324, 39);
+            txtKhoiLuong.Size = new Size(316, 39);
             txtKhoiLuong.TabIndex = 31;
             // 
             // txtGiaNhap
             // 
-            txtGiaNhap.Location = new Point(947, 197);
+            txtGiaNhap.Location = new Point(947, 186);
             txtGiaNhap.Name = "txtGiaNhap";
-            txtGiaNhap.Size = new Size(324, 39);
+            txtGiaNhap.Size = new Size(241, 39);
             txtGiaNhap.TabIndex = 33;
             // 
             // txtGiaBan
             // 
-            txtGiaBan.Location = new Point(947, 262);
+            txtGiaBan.Location = new Point(947, 254);
             txtGiaBan.Name = "txtGiaBan";
-            txtGiaBan.Size = new Size(324, 39);
+            txtGiaBan.Size = new Size(241, 39);
             txtGiaBan.TabIndex = 34;
             txtGiaBan.TextChanged += textBox4_TextChanged;
             // 
@@ -313,17 +317,17 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Microsoft Sans Serif", 9F);
-            label13.Location = new Point(53, 143);
+            label13.Location = new Point(67, 132);
             label13.Name = "label13";
-            label13.Size = new Size(181, 29);
+            label13.Size = new Size(175, 29);
             label13.TabIndex = 35;
-            label13.Text = " Loại Sản Phẩm";
+            label13.Text = "Loại Sản Phẩm";
             label13.Click += label13_Click;
             // 
             // datetimeHsd
             // 
             datetimeHsd.Format = DateTimePickerFormat.Short;
-            datetimeHsd.Location = new Point(947, 140);
+            datetimeHsd.Location = new Point(947, 127);
             datetimeHsd.Name = "datetimeHsd";
             datetimeHsd.Size = new Size(324, 39);
             datetimeHsd.TabIndex = 37;
@@ -331,7 +335,7 @@
             // cbbLoaiSP
             // 
             cbbLoaiSP.FormattingEnabled = true;
-            cbbLoaiSP.Location = new Point(272, 137);
+            cbbLoaiSP.Location = new Point(272, 126);
             cbbLoaiSP.Name = "cbbLoaiSP";
             cbbLoaiSP.Size = new Size(407, 40);
             cbbLoaiSP.TabIndex = 38;
@@ -341,7 +345,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Microsoft Sans Serif", 9F);
-            label8.Location = new Point(772, 341);
+            label8.Location = new Point(772, 330);
             label8.Name = "label8";
             label8.Size = new Size(131, 29);
             label8.TabIndex = 39;
@@ -350,7 +354,7 @@
             // rdoConBan
             // 
             rdoConBan.AutoSize = true;
-            rdoConBan.Location = new Point(947, 337);
+            rdoConBan.Location = new Point(947, 326);
             rdoConBan.Name = "rdoConBan";
             rdoConBan.Size = new Size(135, 36);
             rdoConBan.TabIndex = 40;
@@ -361,7 +365,7 @@
             // rdoNgungBan
             // 
             rdoNgungBan.AutoSize = true;
-            rdoNgungBan.Location = new Point(1126, 337);
+            rdoNgungBan.Location = new Point(1105, 328);
             rdoNgungBan.Name = "rdoNgungBan";
             rdoNgungBan.Size = new Size(166, 36);
             rdoNgungBan.TabIndex = 41;
@@ -372,6 +376,10 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.FromArgb(210, 218, 255);
+            groupBox1.Controls.Add(label20);
+            groupBox1.Controls.Add(label14);
+            groupBox1.Controls.Add(label19);
+            groupBox1.Controls.Add(label18);
             groupBox1.Controls.Add(txtSoLuong1);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(txtTenSanPham);
@@ -406,6 +414,62 @@
             groupBox1.TabIndex = 46;
             groupBox1.TabStop = false;
             groupBox1.Text = "Sản Phẩm";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Microsoft Sans Serif", 9F);
+            label20.Location = new Point(1208, 68);
+            label20.Name = "label20";
+            label20.Size = new Size(49, 29);
+            label20.TabIndex = 57;
+            label20.Text = "Cái";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Microsoft Sans Serif", 9F);
+            label14.Location = new Point(607, 394);
+            label14.Name = "label14";
+            label14.Size = new Size(72, 29);
+            label14.TabIndex = 56;
+            label14.Text = "Gram";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Microsoft Sans Serif", 9F);
+            label19.Location = new Point(1208, 192);
+            label19.Name = "label19";
+            label19.Size = new Size(63, 29);
+            label19.TabIndex = 55;
+            label19.Text = "VND";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("Microsoft Sans Serif", 9F);
+            label18.Location = new Point(1208, 260);
+            label18.Name = "label18";
+            label18.Size = new Size(63, 29);
+            label18.TabIndex = 54;
+            label18.Text = "VND";
+            // 
+            // txtSoLuong1
+            // 
+            txtSoLuong1.Location = new Point(947, 62);
+            txtSoLuong1.Name = "txtSoLuong1";
+            txtSoLuong1.Size = new Size(241, 39);
+            txtSoLuong1.TabIndex = 52;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(772, 68);
+            label1.Name = "label1";
+            label1.Size = new Size(110, 32);
+            label1.TabIndex = 51;
+            label1.Text = "Số lượng";
             // 
             // label15
             // 
@@ -443,7 +507,7 @@
             // 
             btnSua.BackColor = Color.FromArgb(128, 128, 255);
             btnSua.ForeColor = SystemColors.ButtonHighlight;
-            btnSua.Location = new Point(508, 464);
+            btnSua.Location = new Point(505, 483);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(150, 46);
             btnSua.TabIndex = 54;
@@ -455,7 +519,7 @@
             // 
             btnThem.BackColor = Color.FromArgb(128, 128, 255);
             btnThem.ForeColor = SystemColors.ButtonHighlight;
-            btnThem.Location = new Point(186, 464);
+            btnThem.Location = new Point(183, 483);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(150, 46);
             btnThem.TabIndex = 53;
@@ -536,22 +600,6 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Tìm kiếm";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(68, 396);
-            label1.Name = "label1";
-            label1.Size = new Size(110, 32);
-            label1.TabIndex = 51;
-            label1.Text = "Số lượng";
-            // 
-            // txtSoLuong1
-            // 
-            txtSoLuong1.Location = new Point(272, 396);
-            txtSoLuong1.Name = "txtSoLuong1";
-            txtSoLuong1.Size = new Size(407, 39);
-            txtSoLuong1.TabIndex = 52;
-            // 
             // FormSanPham
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -629,5 +677,9 @@
         private GroupBox groupBox3;
         private TextBox txtSoLuong1;
         private Label label1;
+        private Label label20;
+        private Label label14;
+        private Label label19;
+        private Label label18;
     }
 }

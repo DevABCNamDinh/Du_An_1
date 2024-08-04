@@ -31,6 +31,7 @@ namespace GUI
     public partial class FormSanPham : Form
 
     {
+        DanhSachSanPhamBUS dssp = new DanhSachSanPhamBUS();
         LSanPhamBLL sanPhamBLL = new LSanPhamBLL();
         LLoaiSanPhamBLL lspBLL = new LLoaiSanPhamBLL();
         CsdlDuAn1Context context = new CsdlDuAn1Context();
@@ -66,14 +67,14 @@ namespace GUI
                 txtTenSanPham.Text = obj.TenSanPham;
                 txtSoLuong1.Text = Convert.ToString(obj.SoLuong);
                
-                txtGiaNhap.Text = Convert.ToDecimal(obj.GiaNhap).ToString("#,##0 'VND'");
+                txtGiaNhap.Text = Convert.ToString(obj.GiaNhap);
                 txtKhoiLuong.Text = Convert.ToString(obj.KhoiLuong);
                 txtNguonGoc.Text = obj.NguonGoc;
                 datetimeHsd.Text = Convert.ToString(obj.HanSuDung);
                 txtSPF.Text = obj.ChiSoSpf;
                 txtFA.Text = obj.ChiSoFa;
               
-                txtGiaBan.Text = Convert.ToDecimal(obj.GiaBan).ToString("#,##0 'VND'");
+                txtGiaBan.Text = Convert.ToString(obj.GiaBan);
                 if (obj.TrangThai == true)
                 {
                     rdoConBan.Checked = true;
@@ -286,20 +287,24 @@ namespace GUI
 
         public void ShowDS(DataGridView dgvSanPham, string input)
         {
-
-            dgvSanPham.ColumnCount = 12;
+            int i = 1;
+            dgvSanPham.ColumnCount = 13;
             dgvSanPham.Columns[0].Name = "IdSanPham";
-            dgvSanPham.Columns[1].Name = "TenSanPham";
-            dgvSanPham.Columns[2].Name = "SoLuong";
-            dgvSanPham.Columns[3].Name = "GiaNhap";
-            dgvSanPham.Columns[4].Name = "LoaiSanPham";
-            dgvSanPham.Columns[5].Name = "KhoiLuong";
-            dgvSanPham.Columns[6].Name = "NguonGoc";
-            dgvSanPham.Columns[7].Name = "HanSuDung";
-            dgvSanPham.Columns[8].Name = "ChiSoSpf";
-            dgvSanPham.Columns[9].Name = "ChiSoFa";
-            dgvSanPham.Columns[10].Name = "GiaBan";
-            dgvSanPham.Columns[11].Name = "TrangThai";
+            dgvSanPham.Columns[0].Visible = false;
+            dgvSanPham.Columns[1].Name = "STT";
+
+            dgvSanPham.Columns[2].Name = "TenSanPham";
+            dgvSanPham.Columns[3].Name = "LoaiSanPham";
+            dgvSanPham.Columns[4].Name = "NguonGoc";
+            dgvSanPham.Columns[5].Name = "ChiSoSpf";
+            dgvSanPham.Columns[6].Name = "ChiSoFa";
+            dgvSanPham.Columns[7].Name = "KhoiLuong";
+            dgvSanPham.Columns[8].Name = "SoLuong";
+            dgvSanPham.Columns[9].Name = "HanSuDung";
+            dgvSanPham.Columns[10].Name = "GiaNhap";
+            dgvSanPham.Columns[11].Name = "GiaBan";
+            dgvSanPham.Columns[12].Name = "TrangThai";
+            dgvSanPham.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
             dgvSanPham.Rows.Clear();
             var dssp = lspBLL.Getallloaisp().ToList();
@@ -331,8 +336,8 @@ namespace GUI
                 }
 
 
-                dgvSanPham.Rows.Add(item.IdsanPham, item.TenSanPham, item.SoLuong, Convert.ToDecimal(item.GiaNhap).ToString("#,##0 'VND'"), loaiSanPham,
-                    item.KhoiLuong, item.NguonGoc, item.HanSuDung, item.ChiSoSpf, item.ChiSoFa,Convert.ToDecimal( item.GiaBan).ToString("#,##0 'VND'"), TrangThai);
+                dgvSanPham.Rows.Add(item.IdsanPham, i++,item.TenSanPham, loaiSanPham, item.NguonGoc, item.ChiSoSpf, item.ChiSoFa, item.KhoiLuong, item.SoLuong, Convert.ToDecimal(item.GiaNhap).ToString("#,##0 'VND'"),
+                     item.HanSuDung,Convert.ToDecimal( item.GiaBan).ToString("#,##0 'VND'"), TrangThai);
             }
 
             //Convert.ToDecimal(item.Gia).ToString("#,##0 'VND'")
@@ -346,9 +351,16 @@ namespace GUI
             int stt = 1;
 
             dgvLoadLSP.Columns[0].Name = "STT";
-            dgvLoadLSP.Columns[1].Name = "ID Loại Sản Phẩm";
-            dgvLoadLSP.Columns[2].Name = "Id Khuyến Mãi";
-            dgvLoadLSP.Columns[3].Name = "Loại Sản Phẩm";
+            dgvLoadLSP.Columns[1].Name = "IDLoaiSanPham";
+            dgvLoadLSP.Columns[1].Visible = false;
+            dgvLoadLSP.Columns[2].Name = "LoaiSanPham";
+            dgvLoadLSP.Columns[3].Name = "KhuyenMai";
+            dgvLoadLSP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            dgvLoadLSP.Columns[3].FillWeight = 250;
+         
+
+
             dgvLoadLSP.Rows.Clear();
 
 
@@ -364,7 +376,7 @@ namespace GUI
 
             foreach (var item in lspBLL.Getallloaisp())
             {
-                dgvLoaiSP.Rows.Add(stt++, item.IdloaiSanPham, item.IdkhuyenMai, item.LoaiSanPham1);
+                dgvLoaiSP.Rows.Add(stt++,item.IdloaiSanPham, item.LoaiSanPham1,dssp.GetKhuyenMaiById(item.IdkhuyenMai).TenKhuyenMai);
             }
 
 
@@ -374,9 +386,9 @@ namespace GUI
          
             // Add a default option with null value
            
-            khuyenMaiDangHoatDong.Insert(0, new KhuyenMai { IdkhuyenMai = null });
+            //khuyenMaiDangHoatDong.Insert(0, new KhuyenMai { IdkhuyenMai =null, TenKhuyenMai ="Không khuyến mại"});
             cbbIdKm.DataSource = khuyenMaiDangHoatDong;
-            cbbIdKm.DisplayMember = "IdkhuyenMai";
+            cbbIdKm.DisplayMember = "TenKhuyenMai";
             cbbIdKm.ValueMember = "IdkhuyenMai";
 
 
@@ -507,7 +519,7 @@ namespace GUI
             if (obj != null)
             {
          
-                cbbIdKm.Text = obj.IdkhuyenMai;
+                cbbIdKm.Text = dssp.GetKhuyenMaiById(obj.IdkhuyenMai).TenKhuyenMai;
                 txtLsp.Text = obj.LoaiSanPham1;
             }
         }
@@ -553,18 +565,20 @@ namespace GUI
         {
             var updateLoaiSP = lspBLL.Getallloaisp().Find(x => x.IdloaiSanPham == _idCellClickLoaiSanPham);
             updateLoaiSP.LoaiSanPham1 = txtLsp.Text;
-            updateLoaiSP.IdkhuyenMai= cbbIdKm.Text;
+            updateLoaiSP.IdkhuyenMai= cbbIdKm.SelectedValue.ToString();
             
-            LoadLoaiSP(dgvLoaiSP);          
-            ShowDS(dgvSanPham, null);
+          
+           
 
 
             var chon = MessageBox.Show("Bạn có muốn sửa không?", "Cập nhật thông tin loại sản phẩm", MessageBoxButtons.YesNo);
             if (chon == DialogResult.Yes)
             {
-                MessageBox.Show(lspBLL.SuaLSP(updateLoaiSP));
+                MessageBox.Show(lspBLL.SuaLSP(updateLoaiSP)); 
+                LoadLoaiSP(dgvLoaiSP);    
+                ShowDS(dgvSanPham, null);     
             }
-
+            
             //DialogResult result = MessageBox.Show("Bạn có muốn sửa không?", "Cập nhật thông tin loại sản phẩm", MessageBoxButtons.YesNo);
             //if (result == DialogResult.Yes)
             //{

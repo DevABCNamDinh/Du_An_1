@@ -44,7 +44,6 @@
             dateLocNBD = new DateTimePicker();
             txtLocID = new TextBox();
             txtTim = new TextBox();
-            txtIDKhuyenMai = new TextBox();
             groupBox1 = new GroupBox();
             label18 = new Label();
             label17 = new Label();
@@ -58,7 +57,6 @@
             label33 = new Label();
             label32 = new Label();
             label31 = new Label();
-            label19 = new Label();
             groupBox3 = new GroupBox();
             dgvKhuyenMai = new DataGridView();
             panel1 = new Panel();
@@ -94,11 +92,11 @@
             // btnSua
             // 
             btnSua.BackColor = Color.SlateBlue;
-            btnSua.Font = new Font("Microsoft Sans Serif", 16.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSua.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSua.ForeColor = SystemColors.Window;
-            btnSua.Location = new Point(1859, 373);
+            btnSua.Location = new Point(1878, 397);
             btnSua.Name = "btnSua";
-            btnSua.Size = new Size(169, 91);
+            btnSua.Size = new Size(150, 46);
             btnSua.TabIndex = 28;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = false;
@@ -109,12 +107,12 @@
             btnThem.BackColor = Color.SlateBlue;
             btnThem.BackgroundImage = Properties.Resources.png_clipart_plus_and_minus_signs_symbol_add_sign_s_cross_sign_removebg_preview;
             btnThem.BackgroundImageLayout = ImageLayout.Center;
-            btnThem.Font = new Font("Microsoft Sans Serif", 16.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnThem.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnThem.ForeColor = SystemColors.Window;
             btnThem.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThem.Location = new Point(1541, 373);
+            btnThem.Location = new Point(1560, 397);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(185, 91);
+            btnThem.Size = new Size(150, 46);
             btnThem.TabIndex = 27;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = false;
@@ -123,23 +121,23 @@
             // txtMoTaKM
             // 
             txtMoTaKM.Cursor = Cursors.IBeam;
-            txtMoTaKM.Font = new Font("Microsoft Sans Serif", 10.8F);
-            txtMoTaKM.Location = new Point(1592, 193);
+            txtMoTaKM.Font = new Font("Segoe UI", 9F);
+            txtMoTaKM.Location = new Point(1592, 94);
             txtMoTaKM.Margin = new Padding(6);
             txtMoTaKM.Multiline = true;
             txtMoTaKM.Name = "txtMoTaKM";
-            txtMoTaKM.Size = new Size(436, 39);
+            txtMoTaKM.Size = new Size(436, 143);
             txtMoTaKM.TabIndex = 16;
             // 
             // txtGiamGia
             // 
             txtGiamGia.Cursor = Cursors.IBeam;
-            txtGiamGia.Font = new Font("Microsoft Sans Serif", 10.8F);
-            txtGiamGia.Location = new Point(1592, 97);
+            txtGiamGia.Font = new Font("Segoe UI", 9F);
+            txtGiamGia.Location = new Point(436, 198);
             txtGiamGia.Margin = new Padding(6);
             txtGiamGia.Multiline = true;
             txtGiamGia.Name = "txtGiamGia";
-            txtGiamGia.Size = new Size(241, 39);
+            txtGiamGia.Size = new Size(118, 39);
             txtGiamGia.TabIndex = 14;
             // 
             // dateNgayKetThuc
@@ -152,7 +150,7 @@
             dateNgayKetThuc.CalendarTrailingForeColor = Color.FromArgb(177, 178, 255);
             dateNgayKetThuc.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             dateNgayKetThuc.Format = DateTimePickerFormat.Custom;
-            dateNgayKetThuc.Location = new Point(801, 291);
+            dateNgayKetThuc.Location = new Point(864, 292);
             dateNgayKetThuc.Name = "dateNgayKetThuc";
             dateNgayKetThuc.Size = new Size(303, 39);
             dateNgayKetThuc.TabIndex = 12;
@@ -169,7 +167,7 @@
             dateNgayBatDau.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             dateNgayBatDau.DropDownAlign = LeftRightAlignment.Right;
             dateNgayBatDau.Format = DateTimePickerFormat.Custom;
-            dateNgayBatDau.Location = new Point(373, 291);
+            dateNgayBatDau.Location = new Point(436, 292);
             dateNgayBatDau.Name = "dateNgayBatDau";
             dateNgayBatDau.Size = new Size(294, 39);
             dateNgayBatDau.TabIndex = 11;
@@ -178,16 +176,17 @@
             // txtTenKhuyenMai
             // 
             txtTenKhuyenMai.Cursor = Cursors.IBeam;
-            txtTenKhuyenMai.Font = new Font("Microsoft Sans Serif", 10.8F);
-            txtTenKhuyenMai.Location = new Point(373, 193);
+            txtTenKhuyenMai.Font = new Font("Segoe UI", 9F);
+            txtTenKhuyenMai.Location = new Point(436, 90);
             txtTenKhuyenMai.Margin = new Padding(6);
             txtTenKhuyenMai.Multiline = true;
             txtTenKhuyenMai.Name = "txtTenKhuyenMai";
-            txtTenKhuyenMai.Size = new Size(278, 39);
+            txtTenKhuyenMai.Size = new Size(294, 39);
             txtTenKhuyenMai.TabIndex = 8;
             // 
             // cbbTrangThai
             // 
+            cbbTrangThai.Font = new Font("Segoe UI", 9F);
             cbbTrangThai.FormattingEnabled = true;
             cbbTrangThai.Location = new Point(1719, 57);
             cbbTrangThai.Name = "cbbTrangThai";
@@ -233,7 +232,7 @@
             // txtLocID
             // 
             txtLocID.Cursor = Cursors.IBeam;
-            txtLocID.Font = new Font("Microsoft Sans Serif", 10.8F);
+            txtLocID.Font = new Font("Segoe UI", 9F);
             txtLocID.Location = new Point(1084, 60);
             txtLocID.Margin = new Padding(6);
             txtLocID.Multiline = true;
@@ -246,7 +245,7 @@
             // 
             txtTim.BackColor = SystemColors.ControlLightLight;
             txtTim.Cursor = Cursors.IBeam;
-            txtTim.Font = new Font("Microsoft Sans Serif", 10.8F);
+            txtTim.Font = new Font("Segoe UI", 9F);
             txtTim.Location = new Point(217, 67);
             txtTim.Margin = new Padding(6);
             txtTim.Multiline = true;
@@ -254,17 +253,6 @@
             txtTim.Size = new Size(267, 39);
             txtTim.TabIndex = 18;
             txtTim.TextChanged += txtTim_TextChanged_1;
-            // 
-            // txtIDKhuyenMai
-            // 
-            txtIDKhuyenMai.Cursor = Cursors.IBeam;
-            txtIDKhuyenMai.Font = new Font("Microsoft Sans Serif", 10.8F);
-            txtIDKhuyenMai.Location = new Point(373, 97);
-            txtIDKhuyenMai.Margin = new Padding(6);
-            txtIDKhuyenMai.Multiline = true;
-            txtIDKhuyenMai.Name = "txtIDKhuyenMai";
-            txtIDKhuyenMai.Size = new Size(278, 39);
-            txtIDKhuyenMai.TabIndex = 2;
             // 
             // groupBox1
             // 
@@ -340,8 +328,6 @@
             groupBox2.Controls.Add(label33);
             groupBox2.Controls.Add(label32);
             groupBox2.Controls.Add(label31);
-            groupBox2.Controls.Add(label19);
-            groupBox2.Controls.Add(txtIDKhuyenMai);
             groupBox2.Controls.Add(txtTenKhuyenMai);
             groupBox2.Controls.Add(dateNgayBatDau);
             groupBox2.Controls.Add(dateNgayKetThuc);
@@ -368,7 +354,7 @@
             // label35
             // 
             label35.AutoSize = true;
-            label35.Location = new Point(1258, 196);
+            label35.Location = new Point(1258, 97);
             label35.Name = "label35";
             label35.Size = new Size(77, 32);
             label35.TabIndex = 17;
@@ -377,7 +363,7 @@
             // label34
             // 
             label34.AutoSize = true;
-            label34.Location = new Point(1258, 100);
+            label34.Location = new Point(163, 205);
             label34.Name = "label34";
             label34.Size = new Size(222, 32);
             label34.TabIndex = 15;
@@ -386,7 +372,7 @@
             // label33
             // 
             label33.AutoSize = true;
-            label33.Location = new Point(724, 294);
+            label33.Location = new Point(787, 295);
             label33.Name = "label33";
             label33.Size = new Size(42, 32);
             label33.TabIndex = 14;
@@ -404,20 +390,11 @@
             // label31
             // 
             label31.AutoSize = true;
-            label31.Location = new Point(163, 196);
+            label31.Location = new Point(163, 97);
             label31.Name = "label31";
             label31.Size = new Size(184, 32);
             label31.TabIndex = 4;
             label31.Text = "Tên khuyến mãi";
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Location = new Point(163, 100);
-            label19.Name = "label19";
-            label19.Size = new Size(169, 32);
-            label19.TabIndex = 3;
-            label19.Text = "ID khuyến mãi";
             // 
             // groupBox3
             // 
@@ -484,7 +461,6 @@
         }
 
         #endregion
-        private TextBox txtIDKhuyenMai;
         private DateTimePicker dateNgayBatDau;
         private TextBox txtTenKhuyenMai;
         private TextBox txtMoTaKM;
@@ -531,7 +507,6 @@
         private TextBox textBox35;
         private Button button8;
         private TextBox textBox36;
-        private Label label19;
         private DateTimePicker dateTimePicker1;
         private DateTimePicker dateTimePicker2;
         private Label label20;

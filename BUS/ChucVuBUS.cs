@@ -1,8 +1,6 @@
 ﻿using DAL;
-using Data.Model;
+using Data.Data;
 
-
-using Data.Models;
 
 
 using System;

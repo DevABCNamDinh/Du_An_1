@@ -1,7 +1,7 @@
 ﻿using DAL.Repository;
 
 
-using Data.Models;
+using Data.Data;
 
 using System;
 using System.Collections.Generic;

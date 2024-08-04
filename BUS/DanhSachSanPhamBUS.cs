@@ -1,7 +1,7 @@
 ﻿using DAL;
 
-using Data.Model;
 
+using Data.Models;
 
 
 

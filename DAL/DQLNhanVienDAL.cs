@@ -1,7 +1,6 @@
 
 ﻿using Data.Models;
 
-
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -26,6 +25,10 @@ namespace DAL
         {
             return dbcontext.NhanViens.Find(id);
         }
+        
+        
+        
+        
         public bool Create(NhanVien nhanVien)
         {
             try
@@ -38,35 +41,7 @@ namespace DAL
         }
 
 
-        //public bool Update(SanPham sanPham)
-        //{
-
-        //    try
-        //    {
-        //        var UpdateItem = dbContext.SanPhams.Find(sanPham.IdsanPham);
-
-        //        UpdateItem.IdkhuyenMai = sanPham.IdkhuyenMai;
-        //        UpdateItem.IdloaiSanPham = sanPham.IdloaiSanPham;
-        //        UpdateItem.TenSanPham = sanPham.TenSanPham;
-        //        UpdateItem.SoLuong = sanPham.SoLuong;
-        //        UpdateItem.GiaNhap = sanPham.GiaNhap;
-        //        UpdateItem.KhoiLuong = sanPham.KhoiLuong;
-        //        UpdateItem.NguonGoc = sanPham.NguonGoc;
-        //        UpdateItem.HanSuDung = sanPham.HanSuDung;
-        //        UpdateItem.ChiSoSpf = sanPham.ChiSoSpf;
-        //        UpdateItem.ChiSoFa = sanPham.ChiSoFa;
-        //        UpdateItem.GiaBan = sanPham.GiaBan;
-
-        //        dbContext.SanPhams.Update(UpdateItem);
-        //        dbContext.SaveChanges();
-        //        return true;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return false;
-        //    }
-
-        //}
+        
 
 
         public bool Update(NhanVien nhanVien)
@@ -90,50 +65,7 @@ namespace DAL
             }
             catch(Exception) { return false; }
         }
-        //public bool Delete(string id)
-        //{
-        //    try
-        //    {
-        //        var find = dbcontext.NhanViens.Find(id);
-        //        if (find != null)
-        //        {
-        //            dbcontext.NhanViens.Remove(find);
-        //            dbcontext.SaveChanges();
-        //        }
-        //        return true;
-        //    }
-        //    catch { return false; }
-        //}
-
-
-        //public bool Delete(string IdSanPham)
-        //{
-        //    try
-        //    {
-        //        var deleteItem = dbContext.SanPhams.Find(IdSanPham);
-        //        dbContext.SanPhams.Remove(deleteItem);
-        //        dbContext.SaveChanges();
-        //        return true;
-        //    }
-        //    catch (Exception) { return false; }
-
-        //}
-
-        //public bool UpdateTTLV(NhanVien nhanVien)
-        //{
-        //    try
-        //    {
-        //        var find = dbcontext.NhanViens.Find(nhanVien.IdnhanVien);
-        //        if (find != null)
-        //        {
-        //            find.TrangThaiLamViec = false;
-        //        }
-        //        dbcontext.NhanViens.Update(find);
-        //        dbcontext.SaveChanges();
-        //        return true;
-        //    }
-        //    catch { return false; }
-        //}
+        
 
         public bool UpdateTTLV(NhanVien nhanVien)
         {
@@ -165,6 +97,36 @@ namespace DAL
         }
 
 
+
+
+
+
+        public bool Update2(NhanVien nhanVien)
+        {
+            try
+            {
+
+                dbcontext.NhanViens.Update(nhanVien);
+                dbcontext.SaveChanges();
+                return true;
+            }
+            catch (Exception) { return false; }
+        }
+
+        public List<NhanVien> GetTimKiem()
+        {
+            return dbcontext.NhanViens.ToList();
+        }
+
+        public List<NhanVien> LocTheoTrangThai(bool trangThai)
+        {
+            return dbcontext.NhanViens.Where(nv => nv.TrangThaiLamViec == trangThai).ToList();
+        }
+
+        public List<NhanVien> LocTheoChucVu(string chucVu)
+        {
+            return dbcontext.NhanViens.Where(nv => nv.IdchucVu == chucVu).ToList();
+        }
 
     }
 }

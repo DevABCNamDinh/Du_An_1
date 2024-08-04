@@ -1,6 +1,7 @@
 ﻿using DAL;
 
 
+
 using Data.Models;
 
 
@@ -19,7 +20,7 @@ namespace BUS
 
         private CsdlDuAn1Context dbcontext = new CsdlDuAn1Context();
         DQLNhanVienDAL QLNVDAL = new DQLNhanVienDAL();
-        TQLNhanVienDAL TQLNhanVienDAL = new TQLNhanVienDAL();
+        //TQLNhanVienDAL TQLNhanVienDAL = new TQLNhanVienDAL();
 
         public List <NhanVien> Getallnhanvien()
         {
@@ -79,7 +80,7 @@ namespace BUS
         {
             
 
-            if (TQLNhanVienDAL.Update2(nv))
+            if (QLNVDAL.Update2(nv))
             {
                 return "Sửa thành công!";
             }
@@ -112,10 +113,10 @@ namespace BUS
         {
             if (timkiem == null || timkiem == string.Empty)
             {
-                return TQLNhanVienDAL.GetTimKiem();
+                return QLNVDAL.GetTimKiem();
 
             }
-            return TQLNhanVienDAL.GetTimKiem().Where(x => x.IdnhanVien.StartsWith(timkiem) || x.TenNhanVien.Contains(timkiem)).ToList();
+            return QLNVDAL.GetTimKiem().Where(x => x.IdnhanVien.StartsWith(timkiem) || x.TenNhanVien.Contains(timkiem)).ToList();
 
         }
 
@@ -123,9 +124,15 @@ namespace BUS
 
         public List<NhanVien> CNLocTheoTrangThai(bool trangThai)
         {
-            return TQLNhanVienDAL.LocTheoTrangThai(trangThai);
+            return QLNVDAL.LocTheoTrangThai(trangThai);
         }
 
+
+        public List<NhanVien> CNLocTheoChucVu(string chucVu)
+        {
+            return QLNVDAL.LocTheoChucVu(chucVu);
+
+        }
 
     }
 

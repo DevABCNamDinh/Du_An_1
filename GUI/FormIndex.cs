@@ -7,7 +7,6 @@ using Data.Models;
 
 
 
-
 namespace GUI
 
 {

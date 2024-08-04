@@ -63,7 +63,7 @@
             flowLayoutPanel1.Controls.Add(btn_dangXuat);
             flowLayoutPanel1.Dock = DockStyle.Left;
             flowLayoutPanel1.Location = new Point(0, 0);
-            flowLayoutPanel1.Margin = new Padding(4, 4, 4, 4);
+            flowLayoutPanel1.Margin = new Padding(4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(536, 1759);
             flowLayoutPanel1.TabIndex = 1;
@@ -74,7 +74,7 @@
             pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.Location = new Point(4, 4);
-            pictureBox1.Margin = new Padding(4, 4, 4, 4);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(528, 249);
             pictureBox1.TabIndex = 12;
@@ -88,7 +88,7 @@
             btn_hoaDon.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold);
             btn_hoaDon.ForeColor = Color.Black;
             btn_hoaDon.Location = new Point(4, 261);
-            btn_hoaDon.Margin = new Padding(4, 4, 4, 4);
+            btn_hoaDon.Margin = new Padding(4);
             btn_hoaDon.Name = "btn_hoaDon";
             btn_hoaDon.Size = new Size(532, 148);
             btn_hoaDon.TabIndex = 0;
@@ -104,7 +104,7 @@
             btn_sanPham.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold);
             btn_sanPham.ForeColor = Color.Black;
             btn_sanPham.Location = new Point(4, 417);
-            btn_sanPham.Margin = new Padding(4, 4, 4, 4);
+            btn_sanPham.Margin = new Padding(4);
             btn_sanPham.Name = "btn_sanPham";
             btn_sanPham.Size = new Size(532, 148);
             btn_sanPham.TabIndex = 5;
@@ -120,7 +120,7 @@
             btn_khuyenMai.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold);
             btn_khuyenMai.ForeColor = Color.Black;
             btn_khuyenMai.Location = new Point(4, 573);
-            btn_khuyenMai.Margin = new Padding(4, 4, 4, 4);
+            btn_khuyenMai.Margin = new Padding(4);
             btn_khuyenMai.Name = "btn_khuyenMai";
             btn_khuyenMai.Size = new Size(528, 145);
             btn_khuyenMai.TabIndex = 6;
@@ -136,7 +136,7 @@
             btn_quanLyNV.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold);
             btn_quanLyNV.ForeColor = Color.Black;
             btn_quanLyNV.Location = new Point(4, 726);
-            btn_quanLyNV.Margin = new Padding(4, 4, 4, 4);
+            btn_quanLyNV.Margin = new Padding(4);
             btn_quanLyNV.Name = "btn_quanLyNV";
             btn_quanLyNV.Size = new Size(528, 189);
             btn_quanLyNV.TabIndex = 7;
@@ -152,7 +152,7 @@
             btn_quanLyKH.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold);
             btn_quanLyKH.ForeColor = Color.Black;
             btn_quanLyKH.Location = new Point(4, 923);
-            btn_quanLyKH.Margin = new Padding(4, 4, 4, 4);
+            btn_quanLyKH.Margin = new Padding(4);
             btn_quanLyKH.Name = "btn_quanLyKH";
             btn_quanLyKH.Size = new Size(528, 189);
             btn_quanLyKH.TabIndex = 8;
@@ -168,7 +168,7 @@
             btn_quanlyhoadon.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold);
             btn_quanlyhoadon.ForeColor = Color.Black;
             btn_quanlyhoadon.Location = new Point(4, 1120);
-            btn_quanlyhoadon.Margin = new Padding(4, 4, 4, 4);
+            btn_quanlyhoadon.Margin = new Padding(4);
             btn_quanlyhoadon.Name = "btn_quanlyhoadon";
             btn_quanlyhoadon.Size = new Size(528, 189);
             btn_quanlyhoadon.TabIndex = 11;
@@ -184,7 +184,7 @@
             btn_thongTinTK.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold);
             btn_thongTinTK.ForeColor = Color.Black;
             btn_thongTinTK.Location = new Point(4, 1317);
-            btn_thongTinTK.Margin = new Padding(4, 4, 4, 4);
+            btn_thongTinTK.Margin = new Padding(4);
             btn_thongTinTK.Name = "btn_thongTinTK";
             btn_thongTinTK.Size = new Size(528, 189);
             btn_thongTinTK.TabIndex = 9;
@@ -194,13 +194,12 @@
             // 
             // btn_dangXuat
             // 
-            btn_dangXuat.BackColor = SystemColors.ActiveCaptionText;
-            btn_dangXuat.BackgroundImage = (Image)resources.GetObject("btn_dangXuat.BackgroundImage");
+            btn_dangXuat.BackColor = Color.White;
             btn_dangXuat.BackgroundImageLayout = ImageLayout.Stretch;
             btn_dangXuat.Font = new Font("Segoe UI", 13.875F, FontStyle.Bold);
             btn_dangXuat.ForeColor = Color.Black;
             btn_dangXuat.Location = new Point(4, 1514);
-            btn_dangXuat.Margin = new Padding(4, 4, 4, 4);
+            btn_dangXuat.Margin = new Padding(4);
             btn_dangXuat.Name = "btn_dangXuat";
             btn_dangXuat.Size = new Size(524, 221);
             btn_dangXuat.TabIndex = 10;
@@ -215,7 +214,7 @@
             pn_Body.Dock = DockStyle.Fill;
             pn_Body.ForeColor = Color.Blue;
             pn_Body.Location = new Point(536, 0);
-            pn_Body.Margin = new Padding(4, 4, 4, 4);
+            pn_Body.Margin = new Padding(4);
             pn_Body.Name = "pn_Body";
             pn_Body.Size = new Size(2348, 1759);
             pn_Body.TabIndex = 3;

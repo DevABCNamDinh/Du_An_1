@@ -1,4 +1,5 @@
-﻿using Data.Modele;
+
+﻿using Data.Models;
 
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -81,22 +82,36 @@ namespace DAL
             }
         }
 
-     
+        public List<KhuyenMai> GetKhuyenMaisByPartialTen(string searchTerm)
+        {
+            
+            return dbcontex.KhuyenMais
+                .Where(km => km.TenKhuyenMai.Contains(searchTerm))
+                .ToList();
+        }
+
         public KhuyenMai GetByID(string id)
         {
             return dbcontex.KhuyenMais.FirstOrDefault(km => km.IdkhuyenMai == id);
         }
 
-
-
-        public List<KhuyenMai> GetKhuyenMaisByDate(DateTime date)
+        public List<KhachHang> GetAllKH()
         {
-            return dbcontex.KhuyenMais.Where(km => km.NgayBatDau <= date && km.NgayKetThuc >= date).ToList();
+            return dbcontex.KhachHangs.ToList();
+        }
+
+        public List<KhuyenMai> LocTheoNgay(DateTime startDate, DateTime endDate)
+        {
+            return dbcontex.KhuyenMais
+                .Where(km => km.NgayBatDau >= startDate && km.NgayBatDau <= endDate)
+                .ToList();
         }
 
         public List<KhuyenMai> GetKhuyenMaisById(string id)
         {
-            return dbcontex.KhuyenMais.Where(km => km.IdkhuyenMai.Equals(id)).ToList();
+            return dbcontex.KhuyenMais
+                           .Where(km => km.IdkhuyenMai.Contains(id))
+                           .ToList();
         }
 
         public List<KhuyenMai> GetKhuyenMaisByDiscount(double discount)
@@ -106,31 +121,16 @@ namespace DAL
         public List<KhuyenMai> GetTrangThai(bool status)
         {
 
-            return dbcontex.KhuyenMais.Where(km => km.TrangThai == status).ToList();
+            return dbcontex.KhuyenMais
+                      .Where(km => km.TrangThai == status)
+                      .ToList();
 
         }
         public List<KhuyenMai> GetAllKm()
         {
             return dbcontex.KhuyenMais.ToList();
         }
-        public List<KhuyenMai> LocHan(bool conHan)
-        {
-            DateTime now = DateTime.Now;
-
-           
-            if (conHan)
-            {
-                return dbcontex.KhuyenMais
-                    .Where(km => km.NgayKetThuc.HasValue && km.NgayKetThuc.Value > now)
-                    .ToList();
-            }
-            else
-            {
-                return dbcontex.KhuyenMais
-                    .Where(km => km.NgayKetThuc.HasValue && km.NgayKetThuc.Value <= now)
-                    .ToList();
-            }
-        }
+      
 
     }
 }

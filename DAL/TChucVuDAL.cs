@@ -1,7 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-using Data.Data;
+using Data.Models;
 
 
 using System;

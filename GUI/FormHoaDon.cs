@@ -58,7 +58,7 @@ namespace GUI
             dtgview_danhSachSP.Columns[4].Name = "DonGia";
             dtgview_danhSachSP.Columns[5].Name = "SoLuong";
             dtgview_danhSachSP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dtgview_danhSachSP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dtgview_danhSachSP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             LoadCBX_LoaiSP();
             LoadData_dgvSanPhamChiTiet();
@@ -77,9 +77,9 @@ namespace GUI
             {
                 LoadData_dgvHoaDonChiTiet(HoaDonChiTietBUS.GetAllHoaDonCTByMaHoaDon(cbx_chonHoaDon1.SelectedValue.ToString()));
             }
-            dtgview_thongTinHoaDon1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dtgview_thongTinHoaDon1.Columns[2].FillWeight = 200;
-            dtgview_thongTinHoaDon1.Columns[0].FillWeight = 40;
+            //dtgview_thongTinHoaDon1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dtgview_thongTinHoaDon1.Columns[2].FillWeight = 200;
+            //dtgview_thongTinHoaDon1.Columns[0].FillWeight = 40;
 
             dtg_LichSuHoaDon.ColumnCount = 5;
             dtg_LichSuHoaDon.Columns[0].Name = "IDHoaDon";

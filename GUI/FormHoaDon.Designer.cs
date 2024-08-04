@@ -450,6 +450,7 @@
             // 
             // groupBox7
             // 
+            groupBox7.BackColor = SystemColors.InactiveBorder;
             groupBox7.Controls.Add(txt_daHuy);
             groupBox7.Controls.Add(txt_daThanhToan);
             groupBox7.Controls.Add(lbl_LichSuTienThua);
@@ -666,22 +667,26 @@
             // 
             // btn_huy1
             // 
+            btn_huy1.BackColor = Color.FromArgb(128, 128, 255);
+            btn_huy1.ForeColor = Color.White;
             btn_huy1.Location = new Point(590, 632);
             btn_huy1.Name = "btn_huy1";
             btn_huy1.Size = new Size(150, 46);
             btn_huy1.TabIndex = 40;
             btn_huy1.Text = "Hủy";
-            btn_huy1.UseVisualStyleBackColor = true;
+            btn_huy1.UseVisualStyleBackColor = false;
             btn_huy1.Click += btn_huy1_Click;
             // 
             // btn_thanhToan1
             // 
+            btn_thanhToan1.BackColor = Color.FromArgb(128, 128, 255);
+            btn_thanhToan1.ForeColor = Color.White;
             btn_thanhToan1.Location = new Point(590, 543);
             btn_thanhToan1.Name = "btn_thanhToan1";
             btn_thanhToan1.Size = new Size(150, 46);
             btn_thanhToan1.TabIndex = 39;
             btn_thanhToan1.Text = "Thanh toán";
-            btn_thanhToan1.UseVisualStyleBackColor = true;
+            btn_thanhToan1.UseVisualStyleBackColor = false;
             btn_thanhToan1.Click += btn_thanhToan1_Click;
             // 
             // lbl_tienThua1

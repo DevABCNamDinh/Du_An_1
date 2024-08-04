@@ -36,9 +36,9 @@ namespace GUI
             //dtg_hienthi.Columns[0].FillWeight = 50;
 
             var khachHangs = service.GetKhachHangs(txt_search.Text);
-            if (!string.IsNullOrWhiteSpace(txt_searchPhone.Text))
+            if (!string.IsNullOrWhiteSpace(txt_search.Text))
             {
-                khachHangs = khachHangs.Where(kh => kh.Sdt.Contains(txt_searchPhone.Text)).ToList();
+                khachHangs = khachHangs.Where(kh => kh.Sdt.Contains(txt_search.Text)).ToList();
             }
 
             foreach (var kh in service.GetKhachHangs(txt_search.Text))

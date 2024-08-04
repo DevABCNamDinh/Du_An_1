@@ -28,6 +28,8 @@ namespace GUI
 {
     public partial class FormKhuyenMai : Form
     {
+        string idwhenClick;
+
         public FormKhuyenMai()
         {
             InitializeComponent();
@@ -62,20 +64,23 @@ namespace GUI
                 dgvKhuyenMai.ColumnCount = 8;
                 dgvKhuyenMai.Columns[0].HeaderText = "STT";
                 dgvKhuyenMai.Columns[1].HeaderText = "ID Khuyến Mãi";
-                dgvKhuyenMai.Columns[2].HeaderText = "Tên Khuyến Mãi";
-                dgvKhuyenMai.Columns[3].HeaderText = "Ngày Bắt Đầu";
-                dgvKhuyenMai.Columns[4].HeaderText = "Ngày Kết Thúc";
-                dgvKhuyenMai.Columns[5].HeaderText = "Phần Trăm Giảm Giá";
-                dgvKhuyenMai.Columns[6].HeaderText = "Mô Tả";
-                dgvKhuyenMai.Columns[7].HeaderText = "Trạng Thái";
+                dgvKhuyenMai.Columns[1].Visible=false;
+                dgvKhuyenMai.Columns[2].HeaderText = "TenKhuyenMai";
+                dgvKhuyenMai.Columns[3].HeaderText = "NgayBatDau";
+                dgvKhuyenMai.Columns[4].HeaderText = "NgayKetThuc";
+                dgvKhuyenMai.Columns[5].HeaderText = "PhanTramGiamGia";
+                dgvKhuyenMai.Columns[6].HeaderText = "MoTa";
+                dgvKhuyenMai.Columns[7].HeaderText = "TrangThai";
+                dgvKhuyenMai.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
             }
 
             // Thiết lập màu sắc cho tiêu đề cột và hàng
-            dgvKhuyenMai.ColumnHeadersDefaultCellStyle.BackColor = Color.SlateBlue;
-            dgvKhuyenMai.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvKhuyenMai.DefaultCellStyle.SelectionBackColor = Color.HotPink;
-            dgvKhuyenMai.DefaultCellStyle.SelectionForeColor = Color.White;
-            dgvKhuyenMai.EnableHeadersVisualStyles = false;
+            //dgvKhuyenMai.ColumnHeadersDefaultCellStyle.BackColor = Color.SlateBlue;
+            //dgvKhuyenMai.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            //dgvKhuyenMai.DefaultCellStyle.SelectionBackColor = Color.HotPink;
+            //dgvKhuyenMai.DefaultCellStyle.SelectionForeColor = Color.White;
+            //dgvKhuyenMai.EnableHeadersVisualStyles = false;
 
             int stt = 1;
 
@@ -86,7 +91,15 @@ namespace GUI
                     : "Không xác định";
 
                 // Thêm hàng mới vào DataGridView
-                dgvKhuyenMai.Rows.Add(stt++, item.IdkhuyenMai, item.TenKhuyenMai, item.NgayBatDau, item.NgayKetThuc, item.PhanTramGiamGia, item.MoTa, trangThai);
+                if (item.IdkhuyenMai == "KM000")
+                {
+
+                }
+                else
+                {
+                    dgvKhuyenMai.Rows.Add(stt++, item.IdkhuyenMai, item.TenKhuyenMai, item.NgayBatDau, item.NgayKetThuc, item.PhanTramGiamGia+"%", item.MoTa, trangThai);
+
+                }
             }
         }
 
@@ -98,11 +111,11 @@ namespace GUI
                 {
                     DataGridViewRow row = dgvKhuyenMai.Rows[e.RowIndex];
 
-                    txtIDKhuyenMai.Text = row.Cells[1].Value?.ToString();
+                    idwhenClick = row.Cells[1].Value?.ToString();
                     txtTenKhuyenMai.Text = row.Cells[2].Value?.ToString();
                     if (row.Cells[3].Value != null && DateTime.TryParse(row.Cells[3].Value.ToString(), out DateTime ngayBatDau))
                     {
-                        dateNgayBatDau.Text = ngayBatDau.ToString("yyyy-MM-dd");
+                        dateNgayBatDau.Text = ngayBatDau.ToString("dd-MM-yyyy");
                     }
                     else
                     {
@@ -111,7 +124,7 @@ namespace GUI
 
                     if (row.Cells[4].Value != null && DateTime.TryParse(row.Cells[4].Value.ToString(), out DateTime ngayKetThuc))
                     {
-                        dateNgayKetThuc.Text = ngayKetThuc.ToString("yyyy-MM-dd");
+                        dateNgayKetThuc.Text = ngayKetThuc.ToString("dd-MM-yyyy");
                     }
                     else
                     {
@@ -164,6 +177,7 @@ namespace GUI
             {
                 MessageBox.Show("Ngày kết thúc không thể nhỏ hơn ngày hiện tại.", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 dateNgayKetThuc.Value = DateTime.Now; // Đặt lại giá trị ngày kết thúc về hiện tại
+                return;
             }
 
             if (string.IsNullOrWhiteSpace(txtGiamGia.Text) || !double.TryParse(txtGiamGia.Text, out GiamGia) || GiamGia < 0 || GiamGia > 100)
@@ -194,7 +208,7 @@ namespace GUI
                 TrangThai = false;
             }
 
-            string id = "KM" + (BUS.CNHien().Count + 1);
+            string id = "KM" + (BUS.CNHien().Count );
 
             DialogResult dl = MessageBox.Show("Bạn có muốn thêm khuyến mãi không?", "Thêm Mới", MessageBoxButtons.YesNo);
             if (dl == DialogResult.Yes)
@@ -210,14 +224,14 @@ namespace GUI
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            string IdKm = txtIDKhuyenMai.Text;
+          
             string TenKM = txtTenKhuyenMai.Text;
             DateTime NgayBD = dateNgayBatDau.Value;
             DateTime NgayKT = dateNgayKetThuc.Value;
             double GiamGia;
 
 
-            if (string.IsNullOrWhiteSpace(IdKm) || string.IsNullOrWhiteSpace(TenKM) ||
+            if (string.IsNullOrWhiteSpace(idwhenClick) || string.IsNullOrWhiteSpace(TenKM) ||
                 NgayBD > NgayKT ||
                 string.IsNullOrWhiteSpace(txtGiamGia.Text) ||
                 !double.TryParse(txtGiamGia.Text, out GiamGia) || GiamGia < 0 || GiamGia > 100)
@@ -248,7 +262,7 @@ namespace GUI
                 try
                 {
 
-                    string kq = BUS.CNSua(IdKm, TenKM, NgayBD, NgayKT, GiamGia, MoTa, TrangThai);
+                    string kq = BUS.CNSua(idwhenClick, TenKM, NgayBD, NgayKT, GiamGia, MoTa, TrangThai);
                     MessageBox.Show(kq);
 
                     List<KhuyenMai> km = BUS.CNHien();

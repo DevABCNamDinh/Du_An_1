@@ -39,12 +39,11 @@
             btn_quanlyhoadon = new Button();
             btn_thongTinTK = new Button();
             btn_dangXuat = new Button();
-            pn_Body = new Panel();
             panel1 = new Panel();
             label1 = new Label();
+            pn_Body = new Panel();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            pn_Body.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -207,19 +206,6 @@
             btn_dangXuat.UseVisualStyleBackColor = false;
             btn_dangXuat.Click += button8_Click;
             // 
-            // pn_Body
-            // 
-            pn_Body.BackgroundImageLayout = ImageLayout.None;
-            pn_Body.Controls.Add(panel1);
-            pn_Body.Dock = DockStyle.Fill;
-            pn_Body.ForeColor = Color.Blue;
-            pn_Body.Location = new Point(536, 0);
-            pn_Body.Margin = new Padding(4);
-            pn_Body.Name = "pn_Body";
-            pn_Body.Size = new Size(2348, 1759);
-            pn_Body.TabIndex = 3;
-            pn_Body.Paint += pn_Body_Paint;
-            // 
             // panel1
             // 
             panel1.BackColor = Color.Orange;
@@ -227,7 +213,7 @@
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.ForeColor = SystemColors.ButtonHighlight;
-            panel1.Location = new Point(0, 0);
+            panel1.Location = new Point(536, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(2348, 153);
             panel1.TabIndex = 0;
@@ -238,11 +224,20 @@
             label1.AutoSize = true;
             label1.Font = new Font("Comic Sans MS", 28.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(919, 12);
+            label1.Location = new Point(920, 12);
             label1.Name = "label1";
             label1.Size = new Size(569, 104);
             label1.TabIndex = 0;
             label1.Text = "Sunscreen FPL";
+            // 
+            // pn_Body
+            // 
+            pn_Body.BackColor = Color.White;
+            pn_Body.Dock = DockStyle.Fill;
+            pn_Body.Location = new Point(536, 153);
+            pn_Body.Name = "pn_Body";
+            pn_Body.Size = new Size(2348, 1606);
+            pn_Body.TabIndex = 0;
             // 
             // FormIndex
             // 
@@ -250,6 +245,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2884, 1759);
             Controls.Add(pn_Body);
+            Controls.Add(panel1);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             IsMdiContainer = true;
@@ -258,7 +254,6 @@
             Load += Index_Load;
             flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            pn_Body.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -273,10 +268,10 @@
         private Button btn_quanLyKH;
         private Button btn_thongTinTK;
         private Button btn_dangXuat;
-        private Panel pn_Body;
         private Button btn_quanlyhoadon;
         private PictureBox pictureBox1;
         private Panel panel1;
         private Label label1;
+        private Panel pn_Body;
     }
 }

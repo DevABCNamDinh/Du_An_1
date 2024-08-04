@@ -1,5 +1,5 @@
 ﻿using DAL;
-using Data.Data;
+using Data.Model;
 
 using Microsoft.EntityFrameworkCore;
 using System;

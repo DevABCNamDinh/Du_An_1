@@ -1,6 +1,6 @@
 ﻿using BUS;
 using DAL;
-using Data.Data;
+using Data.Model;
 
 using System;
 using System.Collections.Generic;

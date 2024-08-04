@@ -1,5 +1,5 @@
 ﻿using BUS;
-using Data.Data;
+using Data.Model;
 
 
 using System;

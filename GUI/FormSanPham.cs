@@ -17,7 +17,7 @@ using Microsoft.Identity.Client;
 
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using Data.Data;
+using Data.Model;
 using System.Security.Cryptography;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -63,13 +63,15 @@ namespace GUI
                 cbbLoaiSP.Text = lspBLL.Getbyid(obj.IdloaiSanPham).LoaiSanPham1;
                 txtTenSanPham.Text = obj.TenSanPham;
                 txtSoLuong1.Text = Convert.ToString(obj.SoLuong);
-                txtGiaNhap.Text = Convert.ToString(obj.GiaNhap);
+               
+                txtGiaNhap.Text = Convert.ToDecimal(obj.GiaNhap).ToString("#,##0 'VND'");
                 txtKhoiLuong.Text = Convert.ToString(obj.KhoiLuong);
                 txtNguonGoc.Text = obj.NguonGoc;
                 datetimeHsd.Text = Convert.ToString(obj.HanSuDung);
                 txtSPF.Text = obj.ChiSoSpf;
                 txtFA.Text = obj.ChiSoFa;
-                txtGiaBan.Text = Convert.ToString(obj.GiaBan);
+              
+                txtGiaBan.Text = Convert.ToDecimal(obj.GiaBan).ToString("#,##0 'VND'");
                 if (obj.TrangThai == true)
                 {
                     rdoConBan.Checked = true;
@@ -153,17 +155,7 @@ namespace GUI
 
                 TrangThai = TrangThai,
             };
-            //DialogResult dl = MessageBox.Show("ban co muon them khong?", "them moi", MessageBoxButtons.YesNo);
-            //if (dl == DialogResult.Yes)
-            //{
-            //    string kq = sanPhamBLL.TaoSanPham(sanPham);
-            //    MessageBox.Show(kq);
-
-            //    List<SanPham> sanPhams = sanPhamBLL.GetAllSanPham(txtTimKiemSp.Text);
-
-            //    ShowDS();
-            //    return;
-            //}
+          
             if (sanPhamBLL.CreateSanPham(sanPham))
             {
                 MessageBox.Show("Thêm sản phẩm thành công");
@@ -179,6 +171,9 @@ namespace GUI
         private void btnUpdateSp_Click(object sender, EventArgs e)
         {
             int soLuong;
+            decimal giaNhap, giaBan;
+            double khoiLuong;
+           
             bool isNumber = int.TryParse(txtSoLuong1.Text, out soLuong);
 
             bool TrangThai = false;
@@ -198,6 +193,41 @@ namespace GUI
                 MessageBox.Show("vui lòng nhập đúng số lượng");
 
             }
+            if (!decimal.TryParse(txtGiaNhap.Text, out giaNhap))
+            {
+                MessageBox.Show("Giá nhập phải là số.");
+                return;
+            }
+
+            if (!decimal.TryParse(txtGiaBan.Text, out giaBan))
+            {
+                MessageBox.Show("Giá bán phải là số.");
+                return;
+            }
+
+            if (!double.TryParse(txtKhoiLuong.Text, out khoiLuong))
+            {
+                MessageBox.Show("Khối lượng phải là số.");
+                return;
+            }
+            if (!decimal.TryParse(txtSPF.Text, out decimal spf) || spf < 30 || spf > 60)
+            {
+                MessageBox.Show("Chỉ số SPF phải là số nguyên từ 30 đến 60.");
+                return;
+            }
+
+            if (!decimal.TryParse(txtFA.Text, out decimal fa) || fa < 8 || fa > 30)
+            {
+                MessageBox.Show("Chỉ số FA phải là số nguyên từ 8 đến 30.");
+                return;
+            }
+            if ( datetimeHsd.Value > DateTime.Now)
+            {
+                MessageBox.Show("Hạn sử dụng không hợp lệ.");
+                return;
+            }
+
+
             else
             {
                 var updateSP = sanPhamBLL.GetAllSP().Find(x => x.IdsanPham == _idCellClickSanPham);
@@ -299,11 +329,11 @@ namespace GUI
                 }
 
 
-                dgvSanPham.Rows.Add(item.IdsanPham, item.TenSanPham, item.SoLuong, item.GiaNhap, loaiSanPham,
-                    item.KhoiLuong, item.NguonGoc, item.HanSuDung, item.ChiSoSpf, item.ChiSoFa, item.GiaBan, TrangThai);
+                dgvSanPham.Rows.Add(item.IdsanPham, item.TenSanPham, item.SoLuong, Convert.ToDecimal(item.GiaNhap).ToString("#,##0 'VND'"), loaiSanPham,
+                    item.KhoiLuong, item.NguonGoc, item.HanSuDung, item.ChiSoSpf, item.ChiSoFa,Convert.ToDecimal( item.GiaBan).ToString("#,##0 'VND'"), TrangThai);
             }
 
-
+            //Convert.ToDecimal(item.Gia).ToString("#,##0 'VND'")
 
 
         }
@@ -319,14 +349,31 @@ namespace GUI
             dgvLoadLSP.Columns[3].Name = "Loại Sản Phẩm";
             dgvLoadLSP.Rows.Clear();
 
+
+
+            List<KhuyenMai> khuyenMaiDangHoatDong = new List<KhuyenMai>();
+            foreach (var km in sanPhamBLL.GetAllKhuyenMai())
+            {
+                if ((bool)km.TrangThai)
+                {
+                    khuyenMaiDangHoatDong.Add(km);
+                }
+            }
+
             foreach (var item in lspBLL.Getallloaisp())
             {
                 dgvLoaiSP.Rows.Add(stt++, item.IdloaiSanPham, item.IdkhuyenMai, item.LoaiSanPham1);
             }
 
-            var dslsp = sanPhamBLL.GetAllKhuyenMai().ToList();
-            dslsp.Insert(0, new KhuyenMai { IdkhuyenMai = null });
-            cbbIdKm.DataSource = dslsp;
+
+            // Lấy danh sách các Khuyến Mãi đang hoạt động
+       
+            //var dslsp = sanPhamBLL.GetAllKhuyenMai().ToList();
+         
+            // Add a default option with null value
+           
+            khuyenMaiDangHoatDong.Insert(0, new KhuyenMai { IdkhuyenMai = null });
+            cbbIdKm.DataSource = khuyenMaiDangHoatDong;
             cbbIdKm.DisplayMember = "IdkhuyenMai";
             cbbIdKm.ValueMember = "IdkhuyenMai";
 
@@ -363,9 +410,9 @@ namespace GUI
                 return;
             }
 
-            if (soLuong <= 10)
+            if (soLuong < 0)
             {
-                MessageBox.Show("Số lượng phải lớn hơn 10.");
+                MessageBox.Show("Số lượng phải lớn hơn 0.");
                 return;
             }
 
@@ -395,6 +442,11 @@ namespace GUI
             if (!decimal.TryParse(txtFA.Text, out decimal fa) || fa < 8 || fa > 30)
             {
                 MessageBox.Show("Chỉ số FA phải là số nguyên từ 8 đến 30.");
+                return;
+            }
+            if ( datetimeHsd.Value < DateTime.Now)
+            {
+                MessageBox.Show("Hạn sử dụng không hợp lệ.");
                 return;
             }
 
@@ -558,7 +610,7 @@ namespace GUI
 
                 var LoaiSanPham = lspBLL.Getbyid(item.IdloaiSanPham).LoaiSanPham1;
 
-                dataGridView.Rows.Add(stt++, item.IdsanPham, item.TenSanPham, item.SoLuong, item.GiaNhap, LoaiSanPham, item.KhoiLuong, item.NguonGoc, item.HanSuDung, item.ChiSoSpf, item.ChiSoFa, item.GiaBan, trangthai);
+                dataGridView.Rows.Add(stt++, item.IdsanPham, item.TenSanPham, item.SoLuong, Convert.ToDecimal(item.GiaNhap).ToString("#,##0 'VND'"), LoaiSanPham, item.KhoiLuong, item.NguonGoc, item.HanSuDung, item.ChiSoSpf, item.ChiSoFa, Convert.ToDecimal(item.GiaBan).ToString("#,##0 'VND'"), trangthai);
             }
         }
         private void cbbLoaiSP_SelectedIndexChanged(object sender, EventArgs e)

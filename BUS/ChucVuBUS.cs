@@ -1,6 +1,6 @@
 ﻿using DAL;
+using Data.Model;
 
-using Data.Data;
 
 using System;
 using System.Collections.Generic;

@@ -29,7 +29,10 @@ namespace DAL
         }
 
 
-       
+        public List<LoaiSanPham> GetAllLoaiSP()
+        {
+            return dbContext.LoaiSanPhams.ToList();
+        }
 
         public void UpdateSoLuong(SanPham sp)
         {

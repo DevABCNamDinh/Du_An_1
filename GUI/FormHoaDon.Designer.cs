@@ -57,6 +57,8 @@
             cbx_chonHoaDon = new ComboBox();
             label5 = new Label();
             groupBox3 = new GroupBox();
+            cbx_loaiSP = new ComboBox();
+            label20 = new Label();
             label11 = new Label();
             txt_timkiem = new TextBox();
             dtgview_danhSachSP = new DataGridView();
@@ -372,6 +374,8 @@
             // groupBox3
             // 
             groupBox3.BackColor = Color.FromArgb(210, 218, 255);
+            groupBox3.Controls.Add(cbx_loaiSP);
+            groupBox3.Controls.Add(label20);
             groupBox3.Controls.Add(label11);
             groupBox3.Controls.Add(txt_timkiem);
             groupBox3.Controls.Add(dtgview_danhSachSP);
@@ -383,10 +387,28 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Danh sách sản phẩm";
             // 
+            // cbx_loaiSP
+            // 
+            cbx_loaiSP.FormattingEnabled = true;
+            cbx_loaiSP.Location = new Point(756, 42);
+            cbx_loaiSP.Name = "cbx_loaiSP";
+            cbx_loaiSP.Size = new Size(242, 40);
+            cbx_loaiSP.TabIndex = 11;
+            cbx_loaiSP.TextChanged += cbx_loaiSP_TextChanged;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(562, 46);
+            label20.Name = "label20";
+            label20.Size = new Size(168, 32);
+            label20.TabIndex = 10;
+            label20.Text = "Loại sản phẩm";
+            // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(24, 41);
+            label11.Location = new Point(24, 46);
             label11.Name = "label11";
             label11.Size = new Size(113, 32);
             label11.TabIndex = 9;
@@ -394,9 +416,9 @@
             // 
             // txt_timkiem
             // 
-            txt_timkiem.Location = new Point(163, 38);
+            txt_timkiem.Location = new Point(163, 43);
             txt_timkiem.Name = "txt_timkiem";
-            txt_timkiem.Size = new Size(512, 39);
+            txt_timkiem.Size = new Size(335, 39);
             txt_timkiem.TabIndex = 8;
             txt_timkiem.TextChanged += textBox4_TextChanged;
             // 
@@ -407,6 +429,7 @@
             dtgview_danhSachSP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgview_danhSachSP.Location = new Point(30, 97);
             dtgview_danhSachSP.Name = "dtgview_danhSachSP";
+            dtgview_danhSachSP.ReadOnly = true;
             dtgview_danhSachSP.RowHeadersWidth = 82;
             dtgview_danhSachSP.Size = new Size(968, 636);
             dtgview_danhSachSP.TabIndex = 7;
@@ -575,6 +598,7 @@
             dtg_lichSuChiTietHoaDon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtg_lichSuChiTietHoaDon.Location = new Point(22, 56);
             dtg_lichSuChiTietHoaDon.Name = "dtg_lichSuChiTietHoaDon";
+            dtg_lichSuChiTietHoaDon.ReadOnly = true;
             dtg_lichSuChiTietHoaDon.RowHeadersWidth = 82;
             dtg_lichSuChiTietHoaDon.Size = new Size(874, 385);
             dtg_lichSuChiTietHoaDon.TabIndex = 25;
@@ -595,6 +619,7 @@
             dtg_LichSuHoaDon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtg_LichSuHoaDon.Location = new Point(34, 56);
             dtg_LichSuHoaDon.Name = "dtg_LichSuHoaDon";
+            dtg_LichSuHoaDon.ReadOnly = true;
             dtg_LichSuHoaDon.RowHeadersWidth = 82;
             dtg_LichSuHoaDon.Size = new Size(694, 385);
             dtg_LichSuHoaDon.TabIndex = 24;
@@ -647,6 +672,7 @@
             btn_huy1.TabIndex = 40;
             btn_huy1.Text = "Hủy";
             btn_huy1.UseVisualStyleBackColor = true;
+            btn_huy1.Click += btn_huy1_Click;
             // 
             // btn_thanhToan1
             // 
@@ -773,6 +799,7 @@
             dtgview_thongTinHoaDon1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgview_thongTinHoaDon1.Location = new Point(41, 97);
             dtgview_thongTinHoaDon1.Name = "dtgview_thongTinHoaDon1";
+            dtgview_thongTinHoaDon1.ReadOnly = true;
             dtgview_thongTinHoaDon1.RowHeadersWidth = 82;
             dtgview_thongTinHoaDon1.Size = new Size(699, 323);
             dtgview_thongTinHoaDon1.TabIndex = 10;
@@ -888,5 +915,7 @@
         private Label label29;
         private Label label30;
         private TextBox txt_tienKhachDua1;
+        private Label label20;
+        private ComboBox cbx_loaiSP;
     }
 }

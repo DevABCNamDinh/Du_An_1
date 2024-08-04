@@ -36,6 +36,7 @@ namespace GUI
             LoadTrangThai();
             dateTime_end.Value = DateTime.Now;
             dtgDisplay();
+            
         }
 
         public void dtgDisplay()
@@ -99,6 +100,7 @@ namespace GUI
                 {
                     Load_LS_HoaDon(item.IdhoaDon);
                 }
+
                 dtg_LichSuHoaDon.Rows.Add(demso++, item.IdhoaDon, DQLNhanVienBUS.GetnhanvienByID(item.IdnhanVien).TenNhanVien, ThongTinKhachHangBUS.GetTenKHByID(item.IdkhachHang).Ten, ThongTinKhachHangBUS.GetTenKHByID(item.IdkhachHang).Sdt, TrangThai, item.NgayDatHang);
 
             }
@@ -155,7 +157,11 @@ namespace GUI
             idwhenclick = dtg_LichSuHoaDon.Rows[index].Cells[1].Value.ToString();
             foreach (var item in HoaDonChiTietBUS.GetAllHoaDonCTByMaHoaDon(idwhenclick))
             {
-                dtg_lichSuChiTietHoaDon.Rows.Add(i++, item.IdsanPham, DSSP.GetSanPhamById(item.IdsanPham).TenSanPham, DSSP.GetSanPhamById(item.IdsanPham).NguonGoc, Convert.ToDecimal(item.Gia).ToString("#,##0.00 'VND'"), item.KhuyenMai + "%", item.SoLuong);
+                if (item.SoLuong != 0)
+                {
+                    dtg_lichSuChiTietHoaDon.Rows.Add(i++, item.IdsanPham, DSSP.GetSanPhamById(item.IdsanPham).TenSanPham, DSSP.GetSanPhamById(item.IdsanPham).NguonGoc, Convert.ToDecimal(item.Gia).ToString("#,##0.00 'VND'"), item.KhuyenMai + "%", item.SoLuong);
+                    
+                }
             }
             var x = ThanhTienBUS.GetThanhtienbyMaHoaDon(idwhenclick);
             if (x != null)
@@ -201,7 +207,7 @@ namespace GUI
         public string idNhanvien()
         {
             return cbx_nhanVien.SelectedValue.ToString();
-
+           
         }
         public void LoadTrangThai()
         {

@@ -43,7 +43,6 @@
             dateLocNKT = new DateTimePicker();
             dateLocNBD = new DateTimePicker();
             txtLocID = new TextBox();
-            btnTim = new Button();
             txtTim = new TextBox();
             txtIDKhuyenMai = new TextBox();
             groupBox1 = new GroupBox();
@@ -113,7 +112,7 @@
             btnThem.Font = new Font("Microsoft Sans Serif", 16.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnThem.ForeColor = SystemColors.Window;
             btnThem.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThem.Location = new Point(1414, 373);
+            btnThem.Location = new Point(1541, 373);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(185, 91);
             btnThem.TabIndex = 27;
@@ -194,6 +193,7 @@
             cbbTrangThai.Name = "cbbTrangThai";
             cbbTrangThai.Size = new Size(387, 40);
             cbbTrangThai.TabIndex = 56;
+            cbbTrangThai.SelectedIndexChanged += cbbTrangThai_SelectedIndexChanged;
             // 
             // dateLocNKT
             // 
@@ -210,6 +210,7 @@
             dateLocNKT.Size = new Size(303, 39);
             dateLocNKT.TabIndex = 42;
             dateLocNKT.Value = new DateTime(2022, 12, 16, 21, 3, 0, 0);
+            dateLocNKT.ValueChanged += dateLocNKT_ValueChanged;
             // 
             // dateLocNBD
             // 
@@ -226,7 +227,8 @@
             dateLocNBD.Name = "dateLocNBD";
             dateLocNBD.Size = new Size(294, 39);
             dateLocNBD.TabIndex = 41;
-            dateLocNBD.Value = new DateTime(2022, 12, 16, 21, 3, 0, 0);
+            dateLocNBD.Value = new DateTime(2020, 12, 16, 21, 3, 0, 0);
+            dateLocNBD.ValueChanged += dateLocNBD_ValueChanged;
             // 
             // txtLocID
             // 
@@ -238,19 +240,7 @@
             txtLocID.Name = "txtLocID";
             txtLocID.Size = new Size(276, 39);
             txtLocID.TabIndex = 38;
-            // 
-            // btnTim
-            // 
-            btnTim.BackColor = Color.SlateBlue;
-            btnTim.Font = new Font("Microsoft Sans Serif", 10.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTim.ForeColor = SystemColors.Window;
-            btnTim.Location = new Point(536, 63);
-            btnTim.Name = "btnTim";
-            btnTim.Size = new Size(150, 46);
-            btnTim.TabIndex = 33;
-            btnTim.Text = "Tìm";
-            btnTim.UseVisualStyleBackColor = false;
-            btnTim.Click += btnTim_Click;
+            txtLocID.TextChanged += txtLocID_TextChanged;
             // 
             // txtTim
             // 
@@ -263,6 +253,7 @@
             txtTim.Name = "txtTim";
             txtTim.Size = new Size(267, 39);
             txtTim.TabIndex = 18;
+            txtTim.TextChanged += txtTim_TextChanged_1;
             // 
             // txtIDKhuyenMai
             // 
@@ -283,7 +274,6 @@
             groupBox1.Controls.Add(label16);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(txtTim);
-            groupBox1.Controls.Add(btnTim);
             groupBox1.Controls.Add(txtLocID);
             groupBox1.Controls.Add(dateLocNBD);
             groupBox1.Controls.Add(dateLocNKT);
@@ -453,6 +443,7 @@
             dgvKhuyenMai.Size = new Size(2042, 512);
             dgvKhuyenMai.TabIndex = 74;
             dgvKhuyenMai.CellClick += dgvKhuyenMai_CellClick;
+            dgvKhuyenMai.CellContentClick += dgvKhuyenMai_CellContentClick;
             // 
             // panel1
             // 
@@ -502,7 +493,6 @@
         private TextBox txtTim;
         private Button btnSua;
         private Button btnThem;
-        private Button btnTim;
         private RadioButton rdoTat;
         private RadioButton rdoBat;
         private DateTimePicker dateLocNKT;

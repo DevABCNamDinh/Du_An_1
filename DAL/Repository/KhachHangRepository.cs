@@ -1,6 +1,6 @@
-﻿using Data.Model;
 
 
+﻿using Data.Models;
 
 using Microsoft.EntityFrameworkCore;
 using System;

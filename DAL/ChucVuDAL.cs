@@ -1,5 +1,5 @@
 ﻿
-using Data.Data;
+using Data.Models;
 
 
 using Microsoft.EntityFrameworkCore;

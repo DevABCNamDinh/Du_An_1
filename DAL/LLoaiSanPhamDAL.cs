@@ -1,5 +1,6 @@
 
-﻿using Data.Data;
+
+using Data.Modee;
 
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -68,23 +69,9 @@ namespace DAL
                 return false;
             }
         }
-    
-        public List<string> GetFilteredOptions(string filter)
-            {
-                
-                List<string> options = new List<string>
-                 {
-                    "Cơ Thể",
-                    "Mặt"
-          
-                    };
-
-                return options.Where(o => o.StartsWith(filter)).ToList();
-            }
 
 
-
-
+       
         public bool SuaLoaiSanPham(LoaiSanPham sp)
         {
             if (sp == null)

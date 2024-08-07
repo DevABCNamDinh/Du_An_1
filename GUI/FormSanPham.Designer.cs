@@ -78,6 +78,8 @@
             cbbTrangThai = new ComboBox();
             label17 = new Label();
             groupBox3 = new GroupBox();
+            label21 = new Label();
+            txtLoaiSP = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvSanPham).BeginInit();
             grpdssanpham.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -476,9 +478,9 @@
             label15.AutoSize = true;
             label15.Location = new Point(96, 153);
             label15.Name = "label15";
-            label15.Size = new Size(172, 32);
+            label15.Size = new Size(187, 32);
             label15.TabIndex = 48;
-            label15.Text = "ID Khuyến Mãi";
+            label15.Text = "Tên Khuyến Mãi";
             // 
             // groupBox2
             // 
@@ -589,16 +591,35 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(txtLoaiSP);
+            groupBox3.Controls.Add(label21);
             groupBox3.Controls.Add(txtTimKiemSp);
             groupBox3.Controls.Add(label17);
             groupBox3.Controls.Add(label5);
             groupBox3.Controls.Add(cbbTrangThai);
             groupBox3.Location = new Point(60, 39);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(1382, 203);
+            groupBox3.Size = new Size(2270, 203);
             groupBox3.TabIndex = 42;
             groupBox3.TabStop = false;
             groupBox3.Text = "Tìm kiếm";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(1354, 75);
+            label21.Name = "label21";
+            label21.Size = new Size(170, 32);
+            label21.TabIndex = 56;
+            label21.Text = "Loại Sản Phẩm";
+            // 
+            // txtLoaiSP
+            // 
+            txtLoaiSP.Location = new Point(1571, 72);
+            txtLoaiSP.Name = "txtLoaiSP";
+            txtLoaiSP.Size = new Size(200, 39);
+            txtLoaiSP.TabIndex = 57;
+            txtLoaiSP.TextChanged += txtLoaiSP_TextChanged;
             // 
             // FormSanPham
             // 
@@ -681,5 +702,7 @@
         private Label label14;
         private Label label19;
         private Label label18;
+        private Label label21;
+        private TextBox txtLoaiSP;
     }
 }

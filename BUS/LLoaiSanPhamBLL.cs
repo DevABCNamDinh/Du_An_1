@@ -1,7 +1,8 @@
 ﻿using DAL;
 
 
-using Data.Data;
+
+using Data.Modee;
 
 
 
@@ -68,6 +69,20 @@ namespace BUS
             }
             return "Sua that bai";
         }
+        public List<LoaiSanPham> GetAllLoai(string timKiemLSp)
+        {
+
+            // Nếu chuỗi tìm kiếm là null hoặc rỗng, trả về tất cả sản phẩm
+            if (string.IsNullOrEmpty(timKiemLSp))
+            {
+                return _loaispDAL.GetallLoaiSanPham();
+            }
+
+            //    // Tìm kiếm sản phẩm có tên chứa chuỗi tìm kiếm
+            return _loaispDAL.GetallLoaiSanPham().Where(sp => sp.LoaiSanPham1.Contains(timKiemLSp)).ToList();
+
+        }
+
 
     }
 }

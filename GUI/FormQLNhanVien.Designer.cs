@@ -176,15 +176,15 @@
             label9.AutoSize = true;
             label9.Location = new Point(129, 67);
             label9.Name = "label9";
-            label9.Size = new Size(113, 32);
+            label9.Size = new Size(310, 32);
             label9.TabIndex = 16;
-            label9.Text = "Tìm kiếm";
+            label9.Text = "Tìm kiếm(ID/Tên nhân viên)";
             // 
             // txtSeach
             // 
-            txtSeach.Location = new Point(248, 63);
+            txtSeach.Location = new Point(470, 64);
             txtSeach.Name = "txtSeach";
-            txtSeach.Size = new Size(430, 39);
+            txtSeach.Size = new Size(311, 39);
             txtSeach.TabIndex = 17;
             txtSeach.TextChanged += txtSeach_TextChanged;
             // 
@@ -345,7 +345,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(800, 63);
+            label12.Location = new Point(873, 67);
             label12.Name = "label12";
             label12.Size = new Size(120, 32);
             label12.TabIndex = 26;
@@ -355,7 +355,7 @@
             // 
             cboLoc.FormattingEnabled = true;
             cboLoc.Items.AddRange(new object[] { "Tất cả", "Đang làm", "Đã nghỉ" });
-            cboLoc.Location = new Point(949, 59);
+            cboLoc.Location = new Point(1074, 63);
             cboLoc.Margin = new Padding(4);
             cboLoc.Name = "cboLoc";
             cboLoc.Size = new Size(304, 40);
@@ -381,7 +381,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Tất cả", "Nhân viên", "Admin" });
-            comboBox1.Location = new Point(1654, 59);
+            comboBox1.Location = new Point(1687, 63);
             comboBox1.Margin = new Padding(4);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(295, 40);
@@ -391,7 +391,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(1494, 67);
+            label1.Location = new Point(1529, 67);
             label1.Name = "label1";
             label1.Size = new Size(101, 32);
             label1.TabIndex = 28;

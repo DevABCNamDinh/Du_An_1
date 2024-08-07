@@ -49,6 +49,7 @@
             label12 = new Label();
             label3 = new Label();
             groupBox2 = new GroupBox();
+            label1 = new Label();
             btn_tiepTuc = new Button();
             btn_tamNgung = new Button();
             label36 = new Label();
@@ -60,7 +61,6 @@
             groupBox3 = new GroupBox();
             dgvKhuyenMai = new DataGridView();
             panel1 = new Panel();
-            label1 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -193,7 +193,7 @@
             // 
             cbbTrangThai.Font = new Font("Segoe UI", 9F);
             cbbTrangThai.FormattingEnabled = true;
-            cbbTrangThai.Location = new Point(1484, 71);
+            cbbTrangThai.Location = new Point(1484, 67);
             cbbTrangThai.Name = "cbbTrangThai";
             cbbTrangThai.Size = new Size(387, 40);
             cbbTrangThai.TabIndex = 56;
@@ -209,7 +209,7 @@
             dateLocNKT.CalendarTrailingForeColor = Color.FromArgb(177, 178, 255);
             dateLocNKT.CustomFormat = "HH:mm:ss dd-MM-yyyy";
             dateLocNKT.Format = DateTimePickerFormat.Custom;
-            dateLocNKT.Location = new Point(744, 178);
+            dateLocNKT.Location = new Point(907, 178);
             dateLocNKT.Name = "dateLocNKT";
             dateLocNKT.Size = new Size(303, 39);
             dateLocNKT.TabIndex = 42;
@@ -227,7 +227,7 @@
             dateLocNBD.CustomFormat = "HH:mm:ss dd-MM-yyyy";
             dateLocNBD.DropDownAlign = LeftRightAlignment.Right;
             dateLocNBD.Format = DateTimePickerFormat.Custom;
-            dateLocNBD.Location = new Point(299, 178);
+            dateLocNBD.Location = new Point(462, 178);
             dateLocNBD.Name = "dateLocNBD";
             dateLocNBD.Size = new Size(294, 39);
             dateLocNBD.TabIndex = 41;
@@ -239,7 +239,7 @@
             txtTim.BackColor = SystemColors.ControlLightLight;
             txtTim.Cursor = Cursors.IBeam;
             txtTim.Font = new Font("Segoe UI", 9F);
-            txtTim.Location = new Point(299, 71);
+            txtTim.Location = new Point(458, 68);
             txtTim.Margin = new Padding(6);
             txtTim.Multiline = true;
             txtTim.Name = "txtTim";
@@ -276,7 +276,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(645, 183);
+            label17.Location = new Point(808, 183);
             label17.Name = "label17";
             label17.Size = new Size(47, 32);
             label17.TabIndex = 42;
@@ -296,9 +296,9 @@
             label3.AutoSize = true;
             label3.Location = new Point(95, 71);
             label3.Name = "label3";
-            label3.Size = new Size(113, 32);
+            label3.Size = new Size(297, 32);
             label3.TabIndex = 34;
-            label3.Text = "Tìm kiếm";
+            label3.Text = "Tìm kiếm(Tên khuyến mãi)";
             // 
             // groupBox2
             // 
@@ -326,6 +326,15 @@
             groupBox2.TabIndex = 75;
             groupBox2.TabStop = false;
             groupBox2.Text = "Khuyến mãi";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(516, 205);
+            label1.Name = "label1";
+            label1.Size = new Size(34, 32);
+            label1.TabIndex = 40;
+            label1.Text = "%";
             // 
             // btn_tiepTuc
             // 
@@ -443,15 +452,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(2377, 1601);
             panel1.TabIndex = 75;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(516, 205);
-            label1.Name = "label1";
-            label1.Size = new Size(34, 32);
-            label1.TabIndex = 40;
-            label1.Text = "%";
             // 
             // FormKhuyenMai
             // 

@@ -33,13 +33,11 @@
             label3 = new Label();
             label4 = new Label();
             label6 = new Label();
-            label7 = new Label();
             label8 = new Label();
             Nu = new RadioButton();
             Nam = new RadioButton();
             txtIDNhanVien = new TextBox();
             txtTaiKhoan = new TextBox();
-            txtMatKhau = new TextBox();
             txtTenNhanVien = new TextBox();
             txtSdt = new TextBox();
             txtEmail = new TextBox();
@@ -73,7 +71,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(107, 204);
+            label2.Location = new Point(107, 208);
             label2.Name = "label2";
             label2.Size = new Size(165, 32);
             label2.TabIndex = 1;
@@ -82,7 +80,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(107, 285);
+            label3.Location = new Point(1163, 115);
             label3.Name = "label3";
             label3.Size = new Size(156, 32);
             label3.TabIndex = 2;
@@ -100,25 +98,16 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(1264, 285);
+            label6.Location = new Point(1163, 299);
             label6.Name = "label6";
             label6.Size = new Size(115, 32);
             label6.TabIndex = 5;
             label6.Text = "Tài khoản";
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(1264, 369);
-            label7.Name = "label7";
-            label7.Size = new Size(115, 32);
-            label7.TabIndex = 6;
-            label7.Text = "Mật khẩu";
-            // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(1264, 204);
+            label8.Location = new Point(107, 299);
             label8.Name = "label8";
             label8.Size = new Size(101, 32);
             label8.TabIndex = 7;
@@ -156,17 +145,10 @@
             // 
             // txtTaiKhoan
             // 
-            txtTaiKhoan.Location = new Point(1540, 285);
+            txtTaiKhoan.Location = new Point(1476, 291);
             txtTaiKhoan.Name = "txtTaiKhoan";
             txtTaiKhoan.Size = new Size(506, 39);
             txtTaiKhoan.TabIndex = 11;
-            // 
-            // txtMatKhau
-            // 
-            txtMatKhau.Location = new Point(1540, 369);
-            txtMatKhau.Name = "txtMatKhau";
-            txtMatKhau.Size = new Size(506, 39);
-            txtMatKhau.TabIndex = 12;
             // 
             // txtTenNhanVien
             // 
@@ -177,16 +159,16 @@
             // 
             // txtSdt
             // 
-            txtSdt.Location = new Point(420, 282);
+            txtSdt.Location = new Point(1476, 108);
             txtSdt.Name = "txtSdt";
-            txtSdt.Size = new Size(540, 39);
+            txtSdt.Size = new Size(506, 39);
             txtSdt.TabIndex = 14;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(420, 366);
+            txtEmail.Location = new Point(1476, 201);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(540, 39);
+            txtEmail.Size = new Size(506, 39);
             txtEmail.TabIndex = 15;
             // 
             // label9
@@ -267,7 +249,7 @@
             // 
             cboChucVu.FormattingEnabled = true;
             cboChucVu.Items.AddRange(new object[] { "Nhân viên", "Admin" });
-            cboChucVu.Location = new Point(1540, 204);
+            cboChucVu.Location = new Point(420, 291);
             cboChucVu.Margin = new Padding(4);
             cboChucVu.Name = "cboChucVu";
             cboChucVu.Size = new Size(506, 40);
@@ -311,11 +293,9 @@
             grpThaoTac.Controls.Add(label4);
             grpThaoTac.Controls.Add(label8);
             grpThaoTac.Controls.Add(txtTenNhanVien);
-            grpThaoTac.Controls.Add(txtMatKhau);
             grpThaoTac.Controls.Add(txtSdt);
             grpThaoTac.Controls.Add(txtTaiKhoan);
             grpThaoTac.Controls.Add(txtEmail);
-            grpThaoTac.Controls.Add(label7);
             grpThaoTac.Controls.Add(label6);
             grpThaoTac.Location = new Point(72, 262);
             grpThaoTac.Margin = new Padding(4);
@@ -330,7 +310,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(107, 376);
+            label10.Location = new Point(1163, 208);
             label10.Name = "label10";
             label10.Size = new Size(71, 32);
             label10.TabIndex = 28;
@@ -340,7 +320,7 @@
             // 
             groupBox2.Controls.Add(rdoFalse);
             groupBox2.Controls.Add(rdoTrue);
-            groupBox2.Location = new Point(1264, 474);
+            groupBox2.Location = new Point(1163, 474);
             groupBox2.Margin = new Padding(4);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(4);
@@ -353,7 +333,7 @@
             // 
             groupBox1.Controls.Add(Nu);
             groupBox1.Controls.Add(Nam);
-            groupBox1.Location = new Point(107, 477);
+            groupBox1.Location = new Point(107, 474);
             groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4);
@@ -374,7 +354,7 @@
             // cboLoc
             // 
             cboLoc.FormattingEnabled = true;
-            cboLoc.Items.AddRange(new object[] { "Đang làm", "Đã nghỉ" });
+            cboLoc.Items.AddRange(new object[] { "Tất cả", "Đang làm", "Đã nghỉ" });
             cboLoc.Location = new Point(949, 59);
             cboLoc.Margin = new Padding(4);
             cboLoc.Name = "cboLoc";
@@ -400,7 +380,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Nhân viên", "Admin" });
+            comboBox1.Items.AddRange(new object[] { "Tất cả", "Nhân viên", "Admin" });
             comboBox1.Location = new Point(1654, 59);
             comboBox1.Margin = new Padding(4);
             comboBox1.Name = "comboBox1";
@@ -451,11 +431,9 @@
         private Label label3;
         private Label label4;
         private Label label6;
-        private Label label7;
         private Label label8;
         private TextBox txtIDNhanVien;
         private TextBox txtTaiKhoan;
-        private TextBox txtMatKhau;
         private TextBox txtTenNhanVien;
         private RadioButton Nu;
         private RadioButton Nam;

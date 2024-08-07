@@ -45,7 +45,7 @@ namespace GUI
         public FormSanPham()
         {
             InitializeComponent();
-
+            loadTrangThai();
         }
 
 
@@ -68,14 +68,18 @@ namespace GUI
                 txtTenSanPham.Text = obj.TenSanPham;
                 txtSoLuong1.Text = Convert.ToString(obj.SoLuong);
 
-                txtGiaNhap.Text = Convert.ToString(obj.GiaNhap);
+
+                txtGiaNhap.Text = Convert.ToDecimal(obj.GiaNhap).ToString("#,##0");
+
                 txtKhoiLuong.Text = Convert.ToString(obj.KhoiLuong);
                 txtNguonGoc.Text = obj.NguonGoc;
                 datetimeHsd.Text = Convert.ToString(obj.HanSuDung);
                 txtSPF.Text = obj.ChiSoSpf;
                 txtFA.Text = obj.ChiSoFa;
 
-                txtGiaBan.Text = Convert.ToString(obj.GiaBan);
+
+                txtGiaBan.Text = Convert.ToDecimal(obj.GiaBan).ToString("#,##0");
+
                 if (obj.TrangThai == true)
                 {
                     rdoConBan.Checked = true;
@@ -104,8 +108,10 @@ namespace GUI
 
         private void FormSanPham_Load_3(object sender, EventArgs e)
         {
-            ShowDS(dgvSanPham, null);
-            LoadLoaiSP(dgvLoaiSP, null);
+
+            ShowDS(dgvSanPham);
+            LoadLoaiSP(dgvLoaiSP);
+
             dgvLoaiSP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
@@ -119,7 +125,12 @@ namespace GUI
         }
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
-
+            decimal price;
+            if (decimal.TryParse(txtGiaBan.Text.Replace(",", ""), out price))
+            {
+                txtGiaBan.Text = price.ToString("N0");
+                txtGiaBan.SelectionStart = txtGiaBan.Text.Length;
+            }
         }
         public void loadhu()
         {
@@ -168,7 +179,7 @@ namespace GUI
             {
                 MessageBox.Show("Thêm sản phẩm thất bại");
             }
-            ShowDS(dgvSanPham, null);
+            ShowDS(dgvSanPham);
 
         }
 
@@ -226,7 +237,9 @@ namespace GUI
                 MessageBox.Show("Chỉ số FA phải là số nguyên từ 8 đến 30.");
                 return;
             }
-            if (datetimeHsd.Value < DateTime.Now)
+
+            if (datetimeHsd.Value > DateTime.Now)
+
             {
                 MessageBox.Show("Hạn sử dụng không hợp lệ.");
                 return;
@@ -255,7 +268,7 @@ namespace GUI
                     MessageBox.Show(sanPhamBLL.SuaSP(updateSP));
                 }
 
-                ShowDS(dgvSanPham, null);
+                ShowDS(dgvSanPham);
 
             }
 
@@ -282,12 +295,11 @@ namespace GUI
 
         private void txtTimKiemSp_TextChanged(object sender, EventArgs e)
         {
-            string timKiem = this.txtTimKiemSp.Text;
-            ShowDS(dgvSanPham, timKiem);
+            ShowDS(dgvSanPham);
         }
 
 
-        public void ShowDS(DataGridView dgvSanPham, string input)
+        public void ShowDS(DataGridView dgvSanPham)
         {
             int i = 1;
             dgvSanPham.ColumnCount = 13;
@@ -313,14 +325,33 @@ namespace GUI
             cbbLoaiSP.DataSource = dssp;
             cbbLoaiSP.DisplayMember = "LoaiSanPham1";
             cbbLoaiSP.ValueMember = "IdloaiSanPham";
+            int trangThai = 0;
+            if (cbbTrangThai.Text=="Tất cả")
+            {
+                trangThai = 0;
+            }else if(cbbTrangThai.Text=="Ngừng bán")
+            {
+                trangThai = 1;
+            }
+            else if (cbbTrangThai.Text=="Còn bán")
+            {
+                trangThai = 2;
+            }
+            else if (cbbTrangThai.Text=="Hết hàng")
+            {
+                trangThai = 3;
+            }
 
-            foreach (var item in sanPhamBLL.GetAllSanPham(/*txtTimKiemSp.Text*/ input))
+            foreach (var item in sanPhamBLL.GetAllSanPham(txtTimKiemSp.Text,trangThai))
             {
 
                 string TrangThai;
-                if (item.TrangThai == true)
+                if (item.TrangThai == true&&item.SoLuong!=0)
                 {
                     TrangThai = "Còn Bán";
+                }else if (item.TrangThai==true&&item.SoLuong==0)
+                {
+                    TrangThai = "Hết hàng";
                 }
                 else
                 {
@@ -500,7 +531,7 @@ namespace GUI
                 MessageBox.Show("Thêm sản phẩm thất bại");
             }
 
-            ShowDS(dgvSanPham, null);
+            ShowDS(dgvSanPham);
         }
 
         private void btnQLLSP_Click(object sender, EventArgs e)
@@ -552,8 +583,10 @@ namespace GUI
             Console.WriteLine("Them loai san pham thanh cong");
 
 
-            LoadLoaiSP(dgvLoaiSP, null);
-            ShowDS(dgvSanPham, null);
+
+            LoadLoaiSP(dgvLoaiSP);
+            ShowDS(dgvSanPham);
+
 
 
         }
@@ -577,8 +610,10 @@ namespace GUI
             if (chon == DialogResult.Yes)
             {
                 MessageBox.Show(lspBLL.SuaLSP(updateLoaiSP));
-                LoadLoaiSP(dgvLoaiSP, null);
-                ShowDS(dgvSanPham, null);
+
+                LoadLoaiSP(dgvLoaiSP);
+                ShowDS(dgvSanPham);
+
             }
 
             //DialogResult result = MessageBox.Show("Bạn có muốn sửa không?", "Cập nhật thông tin loại sản phẩm", MessageBoxButtons.YesNo);
@@ -592,9 +627,7 @@ namespace GUI
 
         private void cbbTrangThai_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool trangThai = cbbTrangThai.SelectedItem.ToString() == "Còn Bán";
-            List<SanPham> sanPhams = sanPhamBLL.LocTrangThai(trangThai);
-            LoadGrid2(dgvSanPham, sanPhams);
+            ShowDS(dgvSanPham);
 
 
         }
@@ -640,6 +673,28 @@ namespace GUI
 
         private void label2_Click(object sender, EventArgs e)
         {
+
+        }
+
+
+        private void txtGiaNhap_TextChanged(object sender, EventArgs e)
+        {
+            decimal price;
+            if (decimal.TryParse(txtGiaNhap.Text.Replace(",", ""), out price))
+            {
+                txtGiaNhap.Text = price.ToString("N0");
+                txtGiaNhap.SelectionStart = txtGiaNhap.Text.Length;
+            }
+        }
+
+        public void loadTrangThai()
+        {
+            cbbTrangThai.Items.Clear();
+            cbbTrangThai.Items.Add("Tất cả");
+            cbbTrangThai.Items.Add("Còn bán");
+            cbbTrangThai.Items.Add("Ngừng bán");
+            cbbTrangThai.Items.Add("Hết hàng");
+            cbbTrangThai.SelectedIndex = 0;
 
         }
 
@@ -702,6 +757,7 @@ namespace GUI
 
 
         }
+
 
     }
 }

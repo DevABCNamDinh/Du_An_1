@@ -101,7 +101,7 @@
             // 
             btn_add.BackColor = Color.FromArgb(128, 128, 255);
             btn_add.ForeColor = Color.White;
-            btn_add.Location = new Point(1447, 480);
+            btn_add.Location = new Point(1539, 480);
             btn_add.Margin = new Padding(4);
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(150, 46);
@@ -241,6 +241,7 @@
             groupBox2.TabIndex = 45;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin";
+            groupBox2.Enter += groupBox2_Enter;
             // 
             // groupBox3
             // 

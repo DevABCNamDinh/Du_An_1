@@ -91,7 +91,7 @@
             btn_hoaDon.Name = "btn_hoaDon";
             btn_hoaDon.Size = new Size(532, 148);
             btn_hoaDon.TabIndex = 0;
-            btn_hoaDon.Text = "\U0001f6d2Hóa đơn";
+            btn_hoaDon.Text = "\U0001f6d2Bán hàng";
             btn_hoaDon.UseVisualStyleBackColor = false;
             btn_hoaDon.Click += button1_Click_1;
             // 

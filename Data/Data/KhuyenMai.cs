@@ -18,6 +18,7 @@ public partial class KhuyenMai
     public string? MoTa { get; set; }
 
     public bool? TrangThai { get; set; }
+    public bool? TamNgung { get; set; }
 
     public virtual ICollection<LoaiSanPham> LoaiSanPhams { get; set; } = new List<LoaiSanPham>();
 }

@@ -144,16 +144,13 @@ namespace GUI
             foreach (SanPham sp in DSSP.GetAllSanPhams(txt_timkiem.Text, idLoaiSP()))
             {
                 string khuyenmai;
-                if (sp.SoLuong == 0)
-                {
-                    sp.TrangThai = false;
-                }
+              
 
-                if (sp.TrangThai == true)
+                if (sp.TrangThai == true&&sp.SoLuong>0)
                 {
                     if (DSSP.GetLoaiSanPhamById((DSSP.GetSanPhamById(sp.IdsanPham).IdloaiSanPham)).IdkhuyenMai != null)
                     {
-                        if (DSSP.GetKhuyenMaiById(DSSP.GetLoaiSanPhamById((DSSP.GetSanPhamById(sp.IdsanPham).IdloaiSanPham)).IdkhuyenMai).TrangThai == true)
+                        if (DSSP.GetKhuyenMaiById(DSSP.GetLoaiSanPhamById((DSSP.GetSanPhamById(sp.IdsanPham).IdloaiSanPham)).IdkhuyenMai).TrangThai == true&& DSSP.GetKhuyenMaiById(DSSP.GetLoaiSanPhamById((DSSP.GetSanPhamById(sp.IdsanPham).IdloaiSanPham)).IdkhuyenMai).TamNgung == false)
                         {
                             khuyenmai = Convert.ToString(DSSP.GetKhuyenMaiById(DSSP.GetLoaiSanPhamById(DSSP.GetSanPhamById(sp.IdsanPham).IdloaiSanPham).IdkhuyenMai).PhanTramGiamGia);
                         }
@@ -673,13 +670,11 @@ namespace GUI
             // In tiêu đề hóa đơn
             graphics.DrawString("SUNSCREEN FPL", new Font("Arial", 18), new SolidBrush(Color.Black), startX, startY);
             offsetY += (int)fontHeight + 10;
-            graphics.DrawString("Địa chỉ: [Địa chỉ cửa hàng]", font, new SolidBrush(Color.Black), startX, startY + offsetY);
+            graphics.DrawString("Địa chỉ: Số 10, Đường Trịnh Văn Bô, Quận Nam Từ Liêm ", font, new SolidBrush(Color.Black), startX, startY + offsetY);
             offsetY += (int)fontHeight + 10;
-            graphics.DrawString("Số điện thoại: [Điện thoại cửa hàng]", font, new SolidBrush(Color.Black), startX, startY + offsetY);
+            graphics.DrawString("Số điện thoại: 0999922278", font, new SolidBrush(Color.Black), startX, startY + offsetY);
             offsetY += (int)fontHeight + 10;
-            graphics.DrawString("Mã số thuế: [Mã số thuế nếu có]", font, new SolidBrush(Color.Black), startX, startY + offsetY);
-            offsetY += (int)fontHeight + 30;
-
+       
             // In thông tin hóa đơn
             graphics.DrawString("HÓA ĐƠN BÁN HÀNG", new Font("Arial", 16), new SolidBrush(Color.Black), startX, startY + offsetY);
             offsetY += (int)fontHeight + 20;
@@ -691,7 +686,8 @@ namespace GUI
             //offsetY += (int)fontHeight + 30;
 
             // In thông tin khách hàng
-            graphics.DrawString("Thông tin khách hàng:", font, new SolidBrush(Color.Black), startX, startY + offsetY);
+            graphics.DrawString("THÔNG TIN KHÁCH HÀNG", new Font("Arial", 16), new SolidBrush(Color.Black), startX, startY + offsetY);
+
             offsetY += (int)fontHeight + 10;
             graphics.DrawString($"Số điện thoại: {txt_sodienthoai.Text}", font, new SolidBrush(Color.Black), startX, startY + offsetY);
             offsetY += (int)fontHeight + 10;
@@ -736,7 +732,7 @@ namespace GUI
 
                 // Đơn giá
                 graphics.DrawRectangle(blackPen, tableStartX + cellWidth * 3, tableStartY, cellWidth, cellHeight);
-                graphics.DrawString(Convert.ToString(sp.Gia), font, new SolidBrush(Color.Black), tableStartX + cellWidth * 3, tableStartY);
+                graphics.DrawString(Convert.ToDecimal(sp.Gia).ToString("#,##0 'VND'"), font, new SolidBrush(Color.Black), tableStartX + cellWidth * 3, tableStartY);
 
                 // Khuyến mãi
                 graphics.DrawRectangle(blackPen, tableStartX + cellWidth * 4, tableStartY, cellWidth, cellHeight);
@@ -757,18 +753,18 @@ namespace GUI
             //in tổng tiền, khuyến mãi, thành tiền, tiền khách đưa và tiền thừa
 
             var thanhTien = ThanhTienBUS.GetThanhtienbyMaHoaDon(idhoaDonIN);
-            graphics.DrawString($"Tổng hóa đơn: {thanhTien.TongHoaDon}", font, new SolidBrush(Color.Black), startX, startY + offsetY);
+            graphics.DrawString($"Tổng hóa đơn: {Convert.ToDecimal(thanhTien.TongHoaDon).ToString("#,##0 'VND'")}", font, new SolidBrush(Color.Black), startX, startY + offsetY);
             offsetY += (int)fontHeight + 10;
-            graphics.DrawString($"Khuyến mãi: {thanhTien.KhuyenMai}", font, new SolidBrush(Color.Black), startX, startY + offsetY);
-            offsetY += (int)fontHeight + 10;
-
-            graphics.DrawString($"Thành tiền: {thanhTien.ThanhTien1}", font, new SolidBrush(Color.Black), startX, startY + offsetY);
+            graphics.DrawString($"Khuyến mãi: {Convert.ToDecimal(thanhTien.KhuyenMai).ToString("#,##0 'VND'")}", font, new SolidBrush(Color.Black), startX, startY + offsetY);
             offsetY += (int)fontHeight + 10;
 
-            graphics.DrawString($"Tiền khách đưa: {thanhTien.TienKhachDua}", font, new SolidBrush(Color.Black), startX, startY + offsetY);
+            graphics.DrawString($"Thành tiền: {Convert.ToDecimal(thanhTien.ThanhTien1).ToString("#,##0 'VND'")}", font, new SolidBrush(Color.Black), startX, startY + offsetY);
             offsetY += (int)fontHeight + 10;
 
-            graphics.DrawString($"Tiền thừa: {thanhTien.TienThua}", font, new SolidBrush(Color.Black), startX, startY + offsetY);
+            graphics.DrawString($"Tiền khách đưa: {Convert.ToDecimal(thanhTien.TienKhachDua).ToString("#,##0 'VND'")}", font, new SolidBrush(Color.Black), startX, startY + offsetY);
+            offsetY += (int)fontHeight + 10;
+
+            graphics.DrawString($"Tiền thừa: {Convert.ToDecimal(thanhTien.TienThua).ToString("#,##0 'VND'")}", font, new SolidBrush(Color.Black), startX, startY + offsetY);
             offsetY += (int)fontHeight + 30;
 
             // in thông báo 
@@ -855,47 +851,59 @@ namespace GUI
 
         private void btn_thanhToan1_Click(object sender, EventArgs e)
         {
-            if (cbx_chonHoaDon1.Text != "")
+            var x = MessageBox.Show("Xác nhận thanh toán.", "Thanh toán", MessageBoxButtons.YesNo);
+            if (x == DialogResult.Yes)
             {
-                if (thanhTien(cbx_chonHoaDon1.SelectedValue.ToString()) > 0)
+                if (cbx_chonHoaDon1.Text != "")
                 {
-                    if (daThanhToanDu)
+                    if (thanhTien(cbx_chonHoaDon1.SelectedValue.ToString()) > 0)
                     {
-                        HoaDonBUS.SuaTrangThai(cbx_chonHoaDon1.SelectedValue.ToString(), 1);
-                        MessageBox.Show("Đã thanh toán hóa đơn!");
-                        ThanhTien thanhtien = new ThanhTien();
-                        thanhtien.IdthanhTien = "TT" + (ThanhTienBUS.GetAllThanhtien().Count + 1);
-                        thanhtien.IdhoaDon = cbx_chonHoaDon1.Text;
-                        thanhtien.TongHoaDon = TinhTongTienHoaDon(cbx_chonHoaDon1.SelectedValue.ToString());
-                        thanhtien.KhuyenMai = khuyenMai(cbx_chonHoaDon1.SelectedValue.ToString());
-                        thanhtien.ThanhTien1 = thanhTien(cbx_chonHoaDon1.SelectedValue.ToString());
-                        thanhtien.TienKhachDua = Convert.ToDecimal(txt_tienKhachDua1.Text);
-                        thanhtien.TienThua = thanhtien.TienKhachDua - thanhtien.ThanhTien1;
-                        ThanhTienBUS.TaoThanhTien(thanhtien);
-                        idhoaDonIN = cbx_chonHoaDon1.SelectedValue.ToString();
-                        RefreshToanBoForm();
-                        PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
-                        printPreviewDialog.Document = printDocument1;
-                        printPreviewDialog.ShowDialog();
+                        if (daThanhToanDu)
+                        {
+                            HoaDonBUS.SuaTrangThai(cbx_chonHoaDon1.SelectedValue.ToString(), 1);
+                            MessageBox.Show("Đã thanh toán hóa đơn!");
+                            ThanhTien thanhtien = new ThanhTien();
+                            thanhtien.IdthanhTien = "TT" + (ThanhTienBUS.GetAllThanhtien().Count + 1);
+                            thanhtien.IdhoaDon = cbx_chonHoaDon1.Text;
+                            thanhtien.TongHoaDon = TinhTongTienHoaDon(cbx_chonHoaDon1.SelectedValue.ToString());
+                            thanhtien.KhuyenMai = khuyenMai(cbx_chonHoaDon1.SelectedValue.ToString());
+                            thanhtien.ThanhTien1 = thanhTien(cbx_chonHoaDon1.SelectedValue.ToString());
+                            thanhtien.TienKhachDua = Convert.ToDecimal(txt_tienKhachDua1.Text);
+                            thanhtien.TienThua = thanhtien.TienKhachDua - thanhtien.ThanhTien1;
+                            ThanhTienBUS.TaoThanhTien(thanhtien);
+                            idhoaDonIN = cbx_chonHoaDon1.SelectedValue.ToString();
 
+                            PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+                            printPreviewDialog.Document = printDocument1;
+                            printPreviewDialog.ShowDialog();
+                            RefreshToanBoForm();
 
-                    }
-                    else
-                    {
-                        MessageBox.Show("Tiền khách đưa chưa đủ!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tiền khách đưa chưa đủ!");
+                        }
                     }
                 }
-            }
 
-            else
-            {
-                MessageBox.Show("Hóa đơn trống!");
-            }
+                else
+                {
+                    MessageBox.Show("Hóa đơn trống!");
+                }
 
+
+            }
 
         }
         private void txt_tienKhachDua1_TextChanged(object sender, EventArgs e)
         {
+         
+            decimal price;
+            if (decimal.TryParse(txt_tienKhachDua1.Text.Replace(",", ""), out price))
+            {
+                txt_tienKhachDua1.Text = price.ToString("N0") ;
+                txt_tienKhachDua1.SelectionStart = txt_tienKhachDua1.Text.Length;
+            }
             if (txt_tienKhachDua1.Text == "")
             {
                 daThanhToanDu = false;
@@ -903,13 +911,17 @@ namespace GUI
             else {
                 decimal tienKhachDua = 0;
                 int dem = 0;
-                foreach (var item in HoaDonChiTietBUS.GetAllHoaDonCTByMaHoaDon(cbx_chonHoaDon1.SelectedValue.ToString()))
+                if (cbx_chonHoaDon1.Text != "")
                 {
-                    if (item.SoLuong != 0)
-                    {
-                        dem++;
+                      foreach (var item in HoaDonChiTietBUS.GetAllHoaDonCTByMaHoaDon(cbx_chonHoaDon1.SelectedValue.ToString()))
+                            {
+                                if (item.SoLuong != 0)
+                                {
+                                    dem++;
+                                }
                     }
                 }
+               
                 if (cbx_chonHoaDon1.Text == "" || dem == 0)
                 {
                     txt_tienKhachDua1.Text = null;
@@ -965,11 +977,15 @@ namespace GUI
                 thanhtien.ThanhTien1 = thanhTien(cbx_chonHoaDon1.SelectedValue.ToString());
                 thanhtien.TienKhachDua = 0;
                 thanhtien.TienThua = 0;
-                ThanhTienBUS.TaoThanhTien(thanhtien);
-                HoaDonBUS.SuaTrangThai(cbx_chonHoaDon1.SelectedValue.ToString(), 2);
-
+                var x = MessageBox.Show("Xác nhận hủy.", "Hủy", MessageBoxButtons.YesNo);
+                if (x == DialogResult.Yes)
+                {
+                    ThanhTienBUS.TaoThanhTien(thanhtien);
+                    HoaDonBUS.SuaTrangThai(cbx_chonHoaDon1.SelectedValue.ToString(), 2);
+               
                 MessageBox.Show("Đã hủy hóa đơn!");
-                RefreshToanBoForm();
+                RefreshToanBoForm(); 
+                }
             }
             else
             {

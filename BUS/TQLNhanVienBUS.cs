@@ -110,14 +110,34 @@ namespace BUS
        
 
 
-        public List<NhanVien> GetAllNV(string timkiem)
+        public List<NhanVien> GetAllNV(string timkiem,int trangThai,string chucVu)
         {
-            if (timkiem == null || timkiem == string.Empty)
+            var nv = QLNVDAL.GetTimKiem().AsQueryable();
+            if (!string.IsNullOrEmpty(timkiem))
             {
-                return QLNVDAL.GetTimKiem();
+                nv=nv.Where(x => x.IdnhanVien.StartsWith(timkiem) || x.TenNhanVien.Contains(timkiem));
+            }
+
+            if (trangThai==1)
+            {
+                nv=nv.Where(x=>x.TrangThaiLamViec==true);
+            }
+            else if(trangThai ==2)
+            {
+                nv = nv.Where(x => x.TrangThaiLamViec == false);
+            }
+
+            if (chucVu=="Admin")
+            {
+                nv = nv.Where(x => x.IdchucVu == "CV001");
+            }
+            else if (chucVu=="Nhân viên")
+            {
+                nv = nv.Where(x => x.IdchucVu == "CV002");
 
             }
-            return QLNVDAL.GetTimKiem().Where(x => x.IdnhanVien.StartsWith(timkiem) || x.TenNhanVien.Contains(timkiem)).ToList();
+
+            return nv.ToList();
 
         }
 

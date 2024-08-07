@@ -31,17 +31,31 @@ namespace BUS
         //    return sanPhamDAL.GetLoaiSanPhamById(IdLoaiSanPham);
         //}
 
-        public List<SanPham> GetAllSanPham(string timKiem)
+        public List<SanPham> GetAllSanPham(string timKiem,int trangThai)
         {
+            var sanpham = sanPhamDAL.GetAllSanPham().AsQueryable();
 
-            // Nếu chuỗi tìm kiếm là null hoặc rỗng, trả về tất cả sản phẩm
-            if (string.IsNullOrEmpty(timKiem))
+            if (!string.IsNullOrEmpty(timKiem))
             {
-                return sanPhamDAL.GetAllSanPham();
+               sanpham = sanpham.Where(sp => sp.TenSanPham.Contains(timKiem));
             }
 
-            //    // Tìm kiếm sản phẩm có tên chứa chuỗi tìm kiếm
-                return sanPhamDAL.GetAllSanPham().Where(sp => sp.TenSanPham.Contains(timKiem)).ToList();
+            if (trangThai == 1)
+            {
+                sanpham = sanpham.Where(sp => sp.TrangThai==false);
+
+            }
+            else  if (trangThai == 2)
+                {
+                    sanpham = sanpham.Where(sp => sp.TrangThai == true&&sp.SoLuong!=0);
+
+            }
+            else if (trangThai == 3)
+            {
+                sanpham = sanpham.Where(sp => sp.TrangThai == true && sp.SoLuong == 0) ;
+
+            }
+            return sanpham.ToList();
 
         }
             

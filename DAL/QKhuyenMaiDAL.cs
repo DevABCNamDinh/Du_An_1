@@ -36,7 +36,11 @@ namespace DAL
             }
         }
 
-
+        public void UpdateKMTheoThoiGian(KhuyenMai km)
+        {
+            dbcontex.KhuyenMais.Update(km);
+            dbcontex.SaveChanges();
+        }
         public bool UpdateKm(KhuyenMai km)
         {
             try
@@ -94,7 +98,7 @@ namespace DAL
 
         public KhuyenMai GetByID(string id)
         {
-            return dbcontex.KhuyenMais.FirstOrDefault(km => km.IdkhuyenMai == id);
+            return dbcontex.KhuyenMais.Find(id);
         }
 
         public List<KhachHang> GetAllKH()
@@ -133,6 +137,6 @@ namespace DAL
             return dbcontex.KhuyenMais.ToList();
         }
       
-
+      
     }
 }

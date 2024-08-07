@@ -28,6 +28,7 @@ namespace GUI
         public FormDangNhap()
         {
             InitializeComponent();
+            txt_matkhau.PasswordChar = '*';
         }
 
         private void grb_thongtindangnhap_Enter(object sender, EventArgs e)
@@ -68,7 +69,11 @@ namespace GUI
                 return;
             }
             var dangNhap = dangNhapBUS.DangNhap(username, password);
-            if (dangNhap != null)
+            if (dangNhap == null)
+            {
+                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không chính xác.", "Đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (dangNhap.TrangThaiLamViec==true)
             {
                 this.Hide();
                 //FormHoaDon formHoaDon = new FormHoaDon(dangNhap);
@@ -79,10 +84,7 @@ namespace GUI
                 formIndex.Show();
                 MessageBox.Show("Đăng nhập thành công.", "Đăng nhập", MessageBoxButtons.OK);
             }
-            else
-            {
-                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không chính xác.", "Đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
         private void btn_dangnhap_Click(object sender, EventArgs e)
         {

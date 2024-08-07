@@ -78,8 +78,9 @@
             cbbTrangThai = new ComboBox();
             label17 = new Label();
             groupBox3 = new GroupBox();
-            label21 = new Label();
             txtLoaiSP = new TextBox();
+            label21 = new Label();
+            groupBox4 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dgvSanPham).BeginInit();
             grpdssanpham.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -87,6 +88,7 @@
             grpLoaiSP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvLoaiSP).BeginInit();
             groupBox3.SuspendLayout();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // btnAddSp
@@ -181,15 +183,15 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(35, 60);
+            label5.Location = new Point(57, 92);
             label5.Name = "label5";
-            label5.Size = new Size(120, 32);
+            label5.Size = new Size(283, 32);
             label5.TabIndex = 16;
-            label5.Text = "Tìm kiếm ";
+            label5.Text = "Tìm kiếm (Tên sản phẩm)";
             // 
             // txtTimKiemSp
             // 
-            txtTimKiemSp.Location = new Point(193, 56);
+            txtTimKiemSp.Location = new Point(411, 89);
             txtTimKiemSp.Name = "txtTimKiemSp";
             txtTimKiemSp.Size = new Size(320, 39);
             txtTimKiemSp.TabIndex = 17;
@@ -334,6 +336,7 @@
             datetimeHsd.Name = "datetimeHsd";
             datetimeHsd.Size = new Size(324, 39);
             datetimeHsd.TabIndex = 37;
+            datetimeHsd.ValueChanged += datetimeHsd_ValueChanged;
             // 
             // cbbLoaiSP
             // 
@@ -494,7 +497,7 @@
             groupBox2.Controls.Add(label15);
             groupBox2.Location = new Point(1486, 294);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(844, 568);
+            groupBox2.Size = new Size(790, 568);
             groupBox2.TabIndex = 49;
             groupBox2.TabStop = false;
             groupBox2.Text = "Loại Sản Phẩm";
@@ -554,7 +557,7 @@
             grpLoaiSP.Controls.Add(dgvLoaiSP);
             grpLoaiSP.Location = new Point(1486, 904);
             grpLoaiSP.Name = "grpLoaiSP";
-            grpLoaiSP.Size = new Size(844, 650);
+            grpLoaiSP.Size = new Size(790, 650);
             grpLoaiSP.TabIndex = 50;
             grpLoaiSP.TabStop = false;
             grpLoaiSP.Text = "Danh sách loại sản phẩm";
@@ -567,14 +570,14 @@
             dgvLoaiSP.Location = new Point(35, 65);
             dgvLoaiSP.Name = "dgvLoaiSP";
             dgvLoaiSP.RowHeadersWidth = 82;
-            dgvLoaiSP.Size = new Size(750, 543);
+            dgvLoaiSP.Size = new Size(721, 543);
             dgvLoaiSP.TabIndex = 0;
             dgvLoaiSP.CellClick += dgvLoaiSP_CellClick;
             // 
             // cbbTrangThai
             // 
             cbbTrangThai.FormattingEnabled = true;
-            cbbTrangThai.Location = new Point(815, 60);
+            cbbTrangThai.Location = new Point(932, 88);
             cbbTrangThai.Name = "cbbTrangThai";
             cbbTrangThai.Size = new Size(324, 40);
             cbbTrangThai.TabIndex = 54;
@@ -583,7 +586,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(663, 63);
+            label17.Location = new Point(780, 92);
             label17.Name = "label17";
             label17.Size = new Size(120, 32);
             label17.TabIndex = 55;
@@ -591,35 +594,44 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(txtLoaiSP);
-            groupBox3.Controls.Add(label21);
             groupBox3.Controls.Add(txtTimKiemSp);
             groupBox3.Controls.Add(label17);
             groupBox3.Controls.Add(label5);
             groupBox3.Controls.Add(cbbTrangThai);
             groupBox3.Location = new Point(60, 39);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(2270, 203);
+            groupBox3.Size = new Size(1381, 203);
             groupBox3.TabIndex = 42;
             groupBox3.TabStop = false;
             groupBox3.Text = "Tìm kiếm";
             // 
+            // txtLoaiSP
+            // 
+            txtLoaiSP.Location = new Point(345, 85);
+            txtLoaiSP.Name = "txtLoaiSP";
+            txtLoaiSP.Size = new Size(200, 39);
+            txtLoaiSP.TabIndex = 57;
+            txtLoaiSP.TextChanged += txtLoaiSP_TextChanged;
+            // 
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(1354, 75);
+            label21.Location = new Point(128, 88);
             label21.Name = "label21";
             label21.Size = new Size(170, 32);
             label21.TabIndex = 56;
             label21.Text = "Loại Sản Phẩm";
             // 
-            // txtLoaiSP
+            // groupBox4
             // 
-            txtLoaiSP.Location = new Point(1571, 72);
-            txtLoaiSP.Name = "txtLoaiSP";
-            txtLoaiSP.Size = new Size(200, 39);
-            txtLoaiSP.TabIndex = 57;
-            txtLoaiSP.TextChanged += txtLoaiSP_TextChanged;
+            groupBox4.Controls.Add(txtLoaiSP);
+            groupBox4.Controls.Add(label21);
+            groupBox4.Location = new Point(1486, 39);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(790, 203);
+            groupBox4.TabIndex = 56;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Tìm kiếm";
             // 
             // FormSanPham
             // 
@@ -629,6 +641,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(2377, 1601);
+            Controls.Add(groupBox4);
             Controls.Add(groupBox3);
             Controls.Add(grpLoaiSP);
             Controls.Add(groupBox2);
@@ -648,6 +661,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvLoaiSP).EndInit();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -702,7 +717,8 @@
         private Label label14;
         private Label label19;
         private Label label18;
-        private Label label21;
         private TextBox txtLoaiSP;
+        private Label label21;
+        private GroupBox groupBox4;
     }
 }

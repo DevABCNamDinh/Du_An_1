@@ -90,10 +90,10 @@
             // 
             // txt_search
             // 
-            txt_search.Location = new Point(218, 55);
+            txt_search.Location = new Point(373, 55);
             txt_search.Margin = new Padding(4);
             txt_search.Name = "txt_search";
-            txt_search.Size = new Size(614, 39);
+            txt_search.Size = new Size(542, 39);
             txt_search.TabIndex = 41;
             txt_search.TextChanged += txt_search_TextChanged;
             // 
@@ -259,9 +259,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(68, 55);
             label1.Name = "label1";
-            label1.Size = new Size(113, 32);
+            label1.Size = new Size(269, 32);
             label1.TabIndex = 44;
-            label1.Text = "Tìm kiếm";
+            label1.Text = "Tìm kiếm(Số điện thoại)";
             // 
             // FormQLKhachHang
             // 

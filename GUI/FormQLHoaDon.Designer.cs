@@ -151,7 +151,7 @@
             // 
             // txt_khachHang
             // 
-            txt_khachHang.Location = new Point(1785, 91);
+            txt_khachHang.Location = new Point(1785, 78);
             txt_khachHang.Name = "txt_khachHang";
             txt_khachHang.Size = new Size(321, 39);
             txt_khachHang.TabIndex = 5;
@@ -161,7 +161,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(1551, 87);
+            label4.Location = new Point(1551, 81);
             label4.Name = "label4";
             label4.Size = new Size(187, 32);
             label4.TabIndex = 4;
@@ -171,7 +171,7 @@
             // 
             cbx_nhanVien.FormattingEnabled = true;
             cbx_nhanVien.Items.AddRange(new object[] { "Tất cả nhân viên" });
-            cbx_nhanVien.Location = new Point(972, 87);
+            cbx_nhanVien.Location = new Point(972, 77);
             cbx_nhanVien.Name = "cbx_nhanVien";
             cbx_nhanVien.Size = new Size(482, 40);
             cbx_nhanVien.TabIndex = 3;
@@ -181,7 +181,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(755, 91);
+            label2.Location = new Point(755, 81);
             label2.Name = "label2";
             label2.Size = new Size(124, 32);
             label2.TabIndex = 2;
@@ -190,17 +190,17 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(74, 84);
+            label1.Location = new Point(69, 81);
             label1.Name = "label1";
-            label1.Size = new Size(113, 32);
+            label1.Size = new Size(246, 32);
             label1.TabIndex = 1;
-            label1.Text = "Tìm kiếm";
+            label1.Text = "Tìm kiếm(ID hóa đơn)";
             // 
             // txt_timKiem
             // 
-            txt_timKiem.Location = new Point(245, 81);
+            txt_timKiem.Location = new Point(337, 78);
             txt_timKiem.Name = "txt_timKiem";
-            txt_timKiem.Size = new Size(374, 39);
+            txt_timKiem.Size = new Size(337, 39);
             txt_timKiem.TabIndex = 0;
             txt_timKiem.TextChanged += txt_timKiem_TextChanged;
             // 

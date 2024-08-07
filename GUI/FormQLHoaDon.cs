@@ -272,6 +272,8 @@ namespace GUI
 
         private void txt_khachHang_TextChanged(object sender, EventArgs e)
         {
+            dtgDisplay();
+
         }
 
         private void txt_khachHang_KeyDown(object sender, KeyEventArgs e)

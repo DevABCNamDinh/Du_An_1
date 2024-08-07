@@ -238,7 +238,7 @@ namespace GUI
                 return;
             }
 
-            if (datetimeHsd.Value > DateTime.Now)
+            if (datetimeHsd.Value < DateTime.Now)
 
             {
                 MessageBox.Show("Hạn sử dụng không hợp lệ.");
@@ -326,30 +326,32 @@ namespace GUI
             cbbLoaiSP.DisplayMember = "LoaiSanPham1";
             cbbLoaiSP.ValueMember = "IdloaiSanPham";
             int trangThai = 0;
-            if (cbbTrangThai.Text=="Tất cả")
+            if (cbbTrangThai.Text == "Tất cả")
             {
                 trangThai = 0;
-            }else if(cbbTrangThai.Text=="Ngừng bán")
+            }
+            else if (cbbTrangThai.Text == "Ngừng bán")
             {
                 trangThai = 1;
             }
-            else if (cbbTrangThai.Text=="Còn bán")
+            else if (cbbTrangThai.Text == "Còn bán")
             {
                 trangThai = 2;
             }
-            else if (cbbTrangThai.Text=="Hết hàng")
+            else if (cbbTrangThai.Text == "Hết hàng")
             {
                 trangThai = 3;
             }
 
-            foreach (var item in sanPhamBLL.GetAllSanPham(txtTimKiemSp.Text,trangThai))
+            foreach (var item in sanPhamBLL.GetAllSanPham(txtTimKiemSp.Text, trangThai))
             {
 
                 string TrangThai;
-                if (item.TrangThai == true&&item.SoLuong!=0)
+                if (item.TrangThai == true && item.SoLuong != 0)
                 {
                     TrangThai = "Còn Bán";
-                }else if (item.TrangThai==true&&item.SoLuong==0)
+                }
+                else if (item.TrangThai == true && item.SoLuong == 0)
                 {
                     TrangThai = "Hết hàng";
                 }
@@ -705,8 +707,8 @@ namespace GUI
 
         private void txtLoaiSP_TextChanged(object sender, EventArgs e)
         {
-             string timKiemLSp = this.txtLoaiSP.Text;
-           
+            string timKiemLSp = this.txtLoaiSP.Text;
+
             LoadLoai(dgvLoaiSP, timKiemLSp);
         }
         public void LoadLoai(DataGridView dgvLoadLSP, string input)
@@ -758,7 +760,10 @@ namespace GUI
 
         }
 
+        private void datetimeHsd_ValueChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
 

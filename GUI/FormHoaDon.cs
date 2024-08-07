@@ -1,10 +1,7 @@
 ﻿using BUS;
 using DAL;
+using Data.Data;
 
-
-
-
-using Data.Modee;
 
 
 
@@ -46,6 +43,8 @@ namespace GUI
 
 
         }
+
+      
 
         public void dtgDisplay()
         {

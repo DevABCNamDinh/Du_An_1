@@ -18,7 +18,7 @@ using Microsoft.Identity.Client;
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-using Data.Modee;
+using Data.Data;
 
 using System.Security.Cryptography;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -378,7 +378,7 @@ namespace GUI
 
         }
 
-        public void LoadLoaiSP(DataGridView dgvLoadLSP, string input)
+        public void LoadLoaiSP(DataGridView dgvLoadLSP)
         {
             dgvLoadLSP.ColumnCount = 4;
             int stt = 1;

@@ -18,10 +18,11 @@ using Microsoft.Identity.Client;
 
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-using Data.Data;
+using Data.Modee;
 
 using System.Security.Cryptography;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using MailKit.Search;
 
 
 
@@ -67,14 +68,18 @@ namespace GUI
                 txtTenSanPham.Text = obj.TenSanPham;
                 txtSoLuong1.Text = Convert.ToString(obj.SoLuong);
 
+
                 txtGiaNhap.Text = Convert.ToDecimal(obj.GiaNhap).ToString("#,##0");
+
                 txtKhoiLuong.Text = Convert.ToString(obj.KhoiLuong);
                 txtNguonGoc.Text = obj.NguonGoc;
                 datetimeHsd.Text = Convert.ToString(obj.HanSuDung);
                 txtSPF.Text = obj.ChiSoSpf;
                 txtFA.Text = obj.ChiSoFa;
 
+
                 txtGiaBan.Text = Convert.ToDecimal(obj.GiaBan).ToString("#,##0");
+
                 if (obj.TrangThai == true)
                 {
                     rdoConBan.Checked = true;
@@ -103,8 +108,10 @@ namespace GUI
 
         private void FormSanPham_Load_3(object sender, EventArgs e)
         {
+
             ShowDS(dgvSanPham);
             LoadLoaiSP(dgvLoaiSP);
+
             dgvLoaiSP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
@@ -230,7 +237,9 @@ namespace GUI
                 MessageBox.Show("Chỉ số FA phải là số nguyên từ 8 đến 30.");
                 return;
             }
+
             if (datetimeHsd.Value > DateTime.Now)
+
             {
                 MessageBox.Show("Hạn sử dụng không hợp lệ.");
                 return;
@@ -369,7 +378,7 @@ namespace GUI
 
         }
 
-        public void LoadLoaiSP(DataGridView dgvLoadLSP)
+        public void LoadLoaiSP(DataGridView dgvLoadLSP, string input)
         {
             dgvLoadLSP.ColumnCount = 4;
             int stt = 1;
@@ -574,8 +583,10 @@ namespace GUI
             Console.WriteLine("Them loai san pham thanh cong");
 
 
+
             LoadLoaiSP(dgvLoaiSP);
             ShowDS(dgvSanPham);
+
 
 
         }
@@ -599,8 +610,10 @@ namespace GUI
             if (chon == DialogResult.Yes)
             {
                 MessageBox.Show(lspBLL.SuaLSP(updateLoaiSP));
+
                 LoadLoaiSP(dgvLoaiSP);
                 ShowDS(dgvSanPham);
+
             }
 
             //DialogResult result = MessageBox.Show("Bạn có muốn sửa không?", "Cập nhật thông tin loại sản phẩm", MessageBoxButtons.YesNo);
@@ -651,6 +664,8 @@ namespace GUI
                 dataGridView.Rows.Add(stt++, item.IdsanPham, item.TenSanPham, item.SoLuong, Convert.ToDecimal(item.GiaNhap).ToString("#,##0 'VND'"), LoaiSanPham, item.KhoiLuong, item.NguonGoc, item.HanSuDung, item.ChiSoSpf, item.ChiSoFa, Convert.ToDecimal(item.GiaBan).ToString("#,##0 'VND'"), trangthai);
             }
         }
+
+
         private void cbbLoaiSP_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -660,6 +675,7 @@ namespace GUI
         {
 
         }
+
 
         private void txtGiaNhap_TextChanged(object sender, EventArgs e)
         {
@@ -681,6 +697,68 @@ namespace GUI
             cbbTrangThai.SelectedIndex = 0;
 
         }
+
+        private void cbbLoaiSanPham_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLoaiSP_TextChanged(object sender, EventArgs e)
+        {
+             string timKiemLSp = this.txtLoaiSP.Text;
+           
+            LoadLoai(dgvLoaiSP, timKiemLSp);
+        }
+        public void LoadLoai(DataGridView dgvLoadLSP, string input)
+        {
+            dgvLoadLSP.ColumnCount = 4;
+            int stt = 1;
+
+            dgvLoadLSP.Columns[0].Name = "STT";
+            dgvLoadLSP.Columns[1].Name = "IDLoaiSanPham";
+            dgvLoadLSP.Columns[1].Visible = false;
+            dgvLoadLSP.Columns[2].Name = "LoaiSanPham";
+            dgvLoadLSP.Columns[3].Name = "KhuyenMai";
+            dgvLoadLSP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            dgvLoadLSP.Columns[3].FillWeight = 250;
+
+
+
+            dgvLoadLSP.Rows.Clear();
+
+
+
+            List<KhuyenMai> khuyenMaiDangHoatDong = new List<KhuyenMai>();
+            foreach (var km in sanPhamBLL.GetAllKhuyenMai())
+            {
+                if ((bool)km.TrangThai)
+                {
+                    khuyenMaiDangHoatDong.Add(km);
+                }
+            }
+
+            foreach (var item in lspBLL.GetAllLoai(input))
+            {
+                dgvLoaiSP.Rows.Add(stt++, item.IdloaiSanPham, item.LoaiSanPham1, dssp.GetKhuyenMaiById(item.IdkhuyenMai).TenKhuyenMai);
+            }
+
+
+            // Lấy danh sách các Khuyến Mãi đang hoạt động
+
+            //var dslsp = sanPhamBLL.GetAllKhuyenMai().ToList();
+
+            // Add a default option with null value
+
+            //khuyenMaiDangHoatDong.Insert(0, new KhuyenMai { IdkhuyenMai =null, TenKhuyenMai ="Không khuyến mại"});
+            cbbIdKm.DataSource = khuyenMaiDangHoatDong;
+            cbbIdKm.DisplayMember = "TenKhuyenMai";
+            cbbIdKm.ValueMember = "IdkhuyenMai";
+
+
+        }
+
+
     }
 }
 

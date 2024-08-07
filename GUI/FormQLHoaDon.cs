@@ -147,6 +147,11 @@ namespace GUI
                 txt_daThanhToan.Text = "";
                 txt_daHuy.Text = "Đã hủy";
             }
+            else if (HoaDonBUS.GetHoaDonbyMaHoaDon(idHoaDon).TrangThaiThanhToan == 0)
+            {
+                txt_daThanhToan.Text = "";
+                txt_daHuy.Text = "Chưa thanh toán";
+            }
         }
         private void dtg_LichSuHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -186,6 +191,11 @@ namespace GUI
             {
                 txt_daThanhToan.Text = "";
                 txt_daHuy.Text = "Đã hủy";
+            }
+            else if (HoaDonBUS.GetHoaDonbyMaHoaDon(idwhenclick).TrangThaiThanhToan == 0)
+            {
+                txt_daThanhToan.Text = "";
+                txt_daHuy.Text = "Chưa thanh toán";
             }
 
         }

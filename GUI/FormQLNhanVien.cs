@@ -36,17 +36,20 @@ namespace GUI
         List<string> _lstchucvu = new List<string>();
 
         private string _idCellClick;
+        string matKhauTam;
         public FormQLNhanVien(NhanVien nv)
         {
             InitializeComponent();
-            LoadGrid(dtgv_thongtinNhanVien, null);
+            LoadGrid(dtgv_thongtinNhanVien);
             NhanVien = nv;
+            cboLoc.SelectedIndex = 0;
+            comboBox1.SelectedIndex = 0;
         }
 
 
 
 
-        public void LoadGrid(DataGridView dataGridView, string input)
+        public void LoadGrid(DataGridView dataGridView)
         {
 
             int stt = 1;
@@ -64,10 +67,18 @@ namespace GUI
             dataGridView.Columns[8].Name = "Trạng thái làm việc";
 
             dataGridView.Rows.Clear();
+            int trangThai=0;
+            if (cboLoc.Text=="Đang làm")
+            {
+                trangThai=1;
+            }
+            else if(cboLoc.Text=="Đã nghỉ")
+            {
+                trangThai =2;
+            }
 
 
-
-            foreach (var item in _qlnvBUS.GetAllNV(input))
+            foreach (var item in _qlnvBUS.GetAllNV(txtSeach.Text,trangThai, comboBox1.Text))
             {
                 string gioitinh;
                 if (item.GioiTinh == true)
@@ -137,10 +148,19 @@ namespace GUI
             {
                 idChucvu = "CV002";
             }
+            if (checkTkAdd())
+            {
+                MessageBox.Show("Tài khoản đã bị trùng", "Lỗi",MessageBoxButtons.OK);
+                return;
+            }
+            Random random = new Random();
+            int num1 = random.Next(100, 1000);
+            int num2 = random.Next(100, 1000);
+            int num3 = random.Next(100, 1000);
 
 
 
-            
+            matKhauTam = $"NhanVien-{num1}-{num2}-{num3}";
             NhanVien nhanVien = new NhanVien()
             {
                 //IdnhanVien = txtIDNhanVien.Text,
@@ -151,11 +171,11 @@ namespace GUI
                 Sdt = txtSdt.Text,
                 GioiTinh = gioitinh,
                 Taikhoan = txtTaiKhoan.Text,
-                MatKhau = txtMatKhau.Text,
+                 MatKhau=matKhauTam,
                 TrangThaiLamViec = trangthailamviec,
             };
 
-            if (cboChucVu.Text == "" || txtTaiKhoan.Text == "" || txtMatKhau.Text == "" ||
+            if (cboChucVu.Text == "" || txtTaiKhoan.Text == "" ||
                 txtTenNhanVien.Text == "" || txtSdt.Text == "" || txtEmail.Text == "" ||
                 (Nam.Checked == false && Nu.Checked == false) || (rdoTrue.Checked == false && rdoFalse.Checked == false))
             {
@@ -192,8 +212,8 @@ namespace GUI
                     }
                     
 
-                    txtMatKhau.Clear();
-                    LoadGrid(dtgv_thongtinNhanVien, null);
+                   
+                    LoadGrid(dtgv_thongtinNhanVien);
                     
                 }
                 else
@@ -249,6 +269,7 @@ namespace GUI
                 }
                 else
                 {
+
                     string idnhanvien = txtIDNhanVien.Text;
                     string idchucvu = "";
                     if (cboChucVu.Text == "Admin")
@@ -286,18 +307,18 @@ namespace GUI
                     {
                         trangthai = false;
                     }
-
+                    if (checkTkUpdate())
+                    {
+                        MessageBox.Show("Tài khoản đã bị trùng", "Lỗi", MessageBoxButtons.OK);
+                        return;
+                    }
 
                     DialogResult dl = MessageBox.Show("Ban có muốn sửa không?", "Sửa thành công", MessageBoxButtons.YesNo);
                     if (dl == DialogResult.Yes)
                     {
                         
-                        if (txtMatKhau.Text != "")
-                        {
-                            MessageBox.Show("Bạn không thể thay đổi mật khẩu !");
-                            txtMatKhau.Clear();
-                        }
-                        else if (txtSdt.Text.Length != 10)
+                        
+                        if (txtSdt.Text.Length != 10)
                         {
                             MessageBox.Show("Số điện thoại không hợp lệ !");
                         }
@@ -313,15 +334,15 @@ namespace GUI
                                     SendMailUpdate();
                                     MessageBox.Show(kq);
 
-                                    LoadGrid(dtgv_thongtinNhanVien, null);
+                                    LoadGrid(dtgv_thongtinNhanVien);
                                     return;
                                 }
                                 else
                                 {
                                     MessageBox.Show("Số điện thoại không hợp lệ.");
                                 }
-                                txtMatKhau.Clear();
-                                LoadGrid(dtgv_thongtinNhanVien, null);
+                               
+                                LoadGrid(dtgv_thongtinNhanVien);
 
                             }
 
@@ -334,7 +355,7 @@ namespace GUI
                     }
                     else if (dl == DialogResult.No)
                     {
-                        LoadGrid(dtgv_thongtinNhanVien, null);
+                        LoadGrid(dtgv_thongtinNhanVien);
                         return;
                     }
                     
@@ -352,7 +373,7 @@ namespace GUI
             txtEmail.Clear();
             txtSdt.Clear();
             txtTaiKhoan.Clear();
-            txtMatKhau.Clear();
+            
             txtTenNhanVien.Clear();
             Nam.Checked = false;
             Nu.Checked = false;
@@ -369,19 +390,19 @@ namespace GUI
             if (txtIDNhanVien.Text == "")
             {
                 MessageBox.Show("Form đang trống !");
-                LoadGrid(dtgv_thongtinNhanVien, null);
+                LoadGrid(dtgv_thongtinNhanVien);
             }
             else
             {
                 Clear();
-                LoadGrid(dtgv_thongtinNhanVien, null);
+                LoadGrid(dtgv_thongtinNhanVien);
             }
 
         }
 
         private void txtSeach_TextChanged(object sender, EventArgs e)
         {
-            LoadGrid(dtgv_thongtinNhanVien, txtSeach.Text/*.ToUpper()*/);
+            LoadGrid(dtgv_thongtinNhanVien);
         }
 
 
@@ -420,9 +441,8 @@ namespace GUI
 
         private void cboLoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool trangThai = cboLoc.SelectedItem.ToString() == "Đang làm";
-            List<NhanVien> nhanViens = _qlnvBUS.CNLocTheoTrangThai(trangThai);
-            LoadGrid2(dtgv_thongtinNhanVien, nhanViens);
+            LoadGrid(dtgv_thongtinNhanVien);
+
         }
 
         private void rdoTrue_CheckedChanged(object sender, EventArgs e)
@@ -474,20 +494,7 @@ namespace GUI
         
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string chucvui = "";
-            if (comboBox1.Text == "Nhân viên")
-            {
-                chucvui = "CV002";
-                List<NhanVien> nhanViens = _qlnvBUS.CNLocTheoChucVu(chucvui);
-                LoadGrid2(dtgv_thongtinNhanVien, nhanViens);
-            }
-
-            else if(comboBox1.Text == "Admin")
-            {
-                chucvui = "CV001";
-                List<NhanVien> nhanViens = _qlnvBUS.CNLocTheoChucVu(chucvui);
-                LoadGrid2(dtgv_thongtinNhanVien, nhanViens);
-            }
+            LoadGrid(dtgv_thongtinNhanVien);
 
         }
 
@@ -505,7 +512,7 @@ namespace GUI
             string email = $"Emai: {txtEmail.Text}";
             string chucvu = $"Chức vụ: {cboChucVu.Text}";
             string tk = $"Tên đăng nhập: {txtTaiKhoan.Text}";
-            string mk = $"Mật khẩu: {txtMatKhau.Text}";
+            string mk = $"Mật khẩu: {matKhauTam}";
             string thongdiep = "Sau khi nhận được email này, bạn vui lòng đăng nhập vào hệ thống và đổi mật khẩu mới !";
 
             MailMessage mail = new MailMessage();
@@ -546,7 +553,6 @@ namespace GUI
             string email = $"Emai: {txtEmail.Text}";
             string chucvu = $"Chức vụ: {cboChucVu.Text}";
             string tk = $"Tên đăng nhập: {txtTaiKhoan.Text}";
-            string mk = $"Mật khẩu: {txtMatKhau.Text}";
             string thongdiep = "Nếu thông tin cá nhân không chính xác, vui lòng liên hệ với quản lý !";
 
             MailMessage mail = new MailMessage();
@@ -569,6 +575,33 @@ namespace GUI
             {
                 MessageBox.Show("gửi email thất bại");
             }
+        }
+        private bool checkTkAdd()
+        {
+
+            foreach (var item in _qlnvBUS.Getallnhanvien())
+            {
+                if (item.Taikhoan == txtTaiKhoan.Text)
+                {
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        private bool checkTkUpdate()
+        {
+            var nv = _qlnvBUS.GetnhanvienByID(_idCellClick);
+            foreach (var item in _qlnvBUS.Getallnhanvien().Where(nvx => nvx.IdnhanVien != _idCellClick))
+            {
+                if (item.Taikhoan == txtTaiKhoan.Text)
+                {
+                    return true;
+                }
+
+            }
+            return false;
         }
     }
 }       

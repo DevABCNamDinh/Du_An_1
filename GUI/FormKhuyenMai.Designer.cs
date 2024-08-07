@@ -42,15 +42,15 @@
             cbbTrangThai = new ComboBox();
             dateLocNKT = new DateTimePicker();
             dateLocNBD = new DateTimePicker();
-            txtLocID = new TextBox();
             txtTim = new TextBox();
             groupBox1 = new GroupBox();
             label18 = new Label();
             label17 = new Label();
             label12 = new Label();
-            label16 = new Label();
             label3 = new Label();
             groupBox2 = new GroupBox();
+            btn_tiepTuc = new Button();
+            btn_tamNgung = new Button();
             label36 = new Label();
             label35 = new Label();
             label34 = new Label();
@@ -60,6 +60,7 @@
             groupBox3 = new GroupBox();
             dgvKhuyenMai = new DataGridView();
             panel1 = new Panel();
+            label1 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -70,7 +71,8 @@
             // rdoTat
             // 
             rdoTat.AutoSize = true;
-            rdoTat.Location = new Point(1886, 292);
+            rdoTat.Enabled = false;
+            rdoTat.Location = new Point(1778, 288);
             rdoTat.Name = "rdoTat";
             rdoTat.Size = new Size(142, 36);
             rdoTat.TabIndex = 37;
@@ -81,7 +83,8 @@
             // rdoBat
             // 
             rdoBat.AutoSize = true;
-            rdoBat.Location = new Point(1592, 292);
+            rdoBat.Enabled = false;
+            rdoBat.Location = new Point(1484, 288);
             rdoBat.Name = "rdoBat";
             rdoBat.Size = new Size(226, 36);
             rdoBat.TabIndex = 36;
@@ -94,7 +97,7 @@
             btnSua.BackColor = Color.SlateBlue;
             btnSua.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSua.ForeColor = SystemColors.Window;
-            btnSua.Location = new Point(1878, 397);
+            btnSua.Location = new Point(1778, 397);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(150, 46);
             btnSua.TabIndex = 28;
@@ -110,7 +113,7 @@
             btnThem.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnThem.ForeColor = SystemColors.Window;
             btnThem.ImageAlign = ContentAlignment.MiddleLeft;
-            btnThem.Location = new Point(1560, 397);
+            btnThem.Location = new Point(1484, 397);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(150, 46);
             btnThem.TabIndex = 27;
@@ -122,11 +125,11 @@
             // 
             txtMoTaKM.Cursor = Cursors.IBeam;
             txtMoTaKM.Font = new Font("Segoe UI", 9F);
-            txtMoTaKM.Location = new Point(1592, 94);
+            txtMoTaKM.Location = new Point(1484, 81);
             txtMoTaKM.Margin = new Padding(6);
             txtMoTaKM.Multiline = true;
             txtMoTaKM.Name = "txtMoTaKM";
-            txtMoTaKM.Size = new Size(436, 143);
+            txtMoTaKM.Size = new Size(622, 143);
             txtMoTaKM.TabIndex = 16;
             // 
             // txtGiamGia
@@ -137,7 +140,7 @@
             txtGiamGia.Margin = new Padding(6);
             txtGiamGia.Multiline = true;
             txtGiamGia.Name = "txtGiamGia";
-            txtGiamGia.Size = new Size(118, 39);
+            txtGiamGia.Size = new Size(71, 39);
             txtGiamGia.TabIndex = 14;
             // 
             // dateNgayKetThuc
@@ -148,13 +151,14 @@
             dateNgayKetThuc.CalendarTitleBackColor = Color.FromArgb(177, 178, 255);
             dateNgayKetThuc.CalendarTitleForeColor = Color.FromArgb(177, 178, 255);
             dateNgayKetThuc.CalendarTrailingForeColor = Color.FromArgb(177, 178, 255);
-            dateNgayKetThuc.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            dateNgayKetThuc.CustomFormat = "HH:mm:ss dd-MM-yyyy";
             dateNgayKetThuc.Format = DateTimePickerFormat.Custom;
             dateNgayKetThuc.Location = new Point(864, 292);
             dateNgayKetThuc.Name = "dateNgayKetThuc";
             dateNgayKetThuc.Size = new Size(303, 39);
             dateNgayKetThuc.TabIndex = 12;
-            dateNgayKetThuc.Value = new DateTime(2022, 12, 16, 21, 3, 0, 0);
+            dateNgayKetThuc.Value = new DateTime(2025, 12, 16, 21, 3, 0, 0);
+            dateNgayKetThuc.ValueChanged += dateNgayKetThuc_ValueChanged;
             // 
             // dateNgayBatDau
             // 
@@ -164,7 +168,7 @@
             dateNgayBatDau.CalendarTitleBackColor = Color.FromArgb(177, 178, 255);
             dateNgayBatDau.CalendarTitleForeColor = Color.FromArgb(177, 178, 255);
             dateNgayBatDau.CalendarTrailingForeColor = Color.FromArgb(177, 178, 255);
-            dateNgayBatDau.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            dateNgayBatDau.CustomFormat = "HH:mm:ss dd-MM-yyyy";
             dateNgayBatDau.DropDownAlign = LeftRightAlignment.Right;
             dateNgayBatDau.Format = DateTimePickerFormat.Custom;
             dateNgayBatDau.Location = new Point(436, 292);
@@ -172,6 +176,7 @@
             dateNgayBatDau.Size = new Size(294, 39);
             dateNgayBatDau.TabIndex = 11;
             dateNgayBatDau.Value = new DateTime(2022, 12, 16, 21, 3, 0, 0);
+            dateNgayBatDau.ValueChanged += dateNgayBatDau_ValueChanged;
             // 
             // txtTenKhuyenMai
             // 
@@ -188,7 +193,7 @@
             // 
             cbbTrangThai.Font = new Font("Segoe UI", 9F);
             cbbTrangThai.FormattingEnabled = true;
-            cbbTrangThai.Location = new Point(1719, 57);
+            cbbTrangThai.Location = new Point(1484, 71);
             cbbTrangThai.Name = "cbbTrangThai";
             cbbTrangThai.Size = new Size(387, 40);
             cbbTrangThai.TabIndex = 56;
@@ -202,13 +207,13 @@
             dateLocNKT.CalendarTitleBackColor = Color.FromArgb(177, 178, 255);
             dateLocNKT.CalendarTitleForeColor = Color.FromArgb(177, 178, 255);
             dateLocNKT.CalendarTrailingForeColor = Color.FromArgb(177, 178, 255);
-            dateLocNKT.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            dateLocNKT.CustomFormat = "HH:mm:ss dd-MM-yyyy";
             dateLocNKT.Format = DateTimePickerFormat.Custom;
-            dateLocNKT.Location = new Point(1529, 170);
+            dateLocNKT.Location = new Point(744, 178);
             dateLocNKT.Name = "dateLocNKT";
             dateLocNKT.Size = new Size(303, 39);
             dateLocNKT.TabIndex = 42;
-            dateLocNKT.Value = new DateTime(2022, 12, 16, 21, 3, 0, 0);
+            dateLocNKT.Value = new DateTime(2025, 1, 1, 0, 0, 0, 0);
             dateLocNKT.ValueChanged += dateLocNKT_ValueChanged;
             // 
             // dateLocNBD
@@ -219,38 +224,26 @@
             dateLocNBD.CalendarTitleBackColor = Color.FromArgb(177, 178, 255);
             dateLocNBD.CalendarTitleForeColor = Color.FromArgb(177, 178, 255);
             dateLocNBD.CalendarTrailingForeColor = Color.FromArgb(177, 178, 255);
-            dateLocNBD.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            dateLocNBD.CustomFormat = "HH:mm:ss dd-MM-yyyy";
             dateLocNBD.DropDownAlign = LeftRightAlignment.Right;
             dateLocNBD.Format = DateTimePickerFormat.Custom;
-            dateLocNBD.Location = new Point(1084, 170);
+            dateLocNBD.Location = new Point(299, 178);
             dateLocNBD.Name = "dateLocNBD";
             dateLocNBD.Size = new Size(294, 39);
             dateLocNBD.TabIndex = 41;
-            dateLocNBD.Value = new DateTime(2020, 12, 16, 21, 3, 0, 0);
+            dateLocNBD.Value = new DateTime(2021, 1, 1, 0, 0, 0, 0);
             dateLocNBD.ValueChanged += dateLocNBD_ValueChanged;
-            // 
-            // txtLocID
-            // 
-            txtLocID.Cursor = Cursors.IBeam;
-            txtLocID.Font = new Font("Segoe UI", 9F);
-            txtLocID.Location = new Point(1084, 60);
-            txtLocID.Margin = new Padding(6);
-            txtLocID.Multiline = true;
-            txtLocID.Name = "txtLocID";
-            txtLocID.Size = new Size(276, 39);
-            txtLocID.TabIndex = 38;
-            txtLocID.TextChanged += txtLocID_TextChanged;
             // 
             // txtTim
             // 
             txtTim.BackColor = SystemColors.ControlLightLight;
             txtTim.Cursor = Cursors.IBeam;
             txtTim.Font = new Font("Segoe UI", 9F);
-            txtTim.Location = new Point(217, 67);
+            txtTim.Location = new Point(299, 71);
             txtTim.Margin = new Padding(6);
             txtTim.Multiline = true;
             txtTim.Name = "txtTim";
-            txtTim.Size = new Size(267, 39);
+            txtTim.Size = new Size(294, 39);
             txtTim.TabIndex = 18;
             txtTim.TextChanged += txtTim_TextChanged_1;
             // 
@@ -259,10 +252,8 @@
             groupBox1.Controls.Add(label18);
             groupBox1.Controls.Add(label17);
             groupBox1.Controls.Add(label12);
-            groupBox1.Controls.Add(label16);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(txtTim);
-            groupBox1.Controls.Add(txtLocID);
             groupBox1.Controls.Add(dateLocNBD);
             groupBox1.Controls.Add(dateLocNKT);
             groupBox1.Controls.Add(cbbTrangThai);
@@ -276,7 +267,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(1529, 60);
+            label18.Location = new Point(1274, 71);
             label18.Name = "label18";
             label18.Size = new Size(120, 32);
             label18.TabIndex = 43;
@@ -285,7 +276,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(1430, 175);
+            label17.Location = new Point(645, 183);
             label17.Name = "label17";
             label17.Size = new Size(47, 32);
             label17.TabIndex = 42;
@@ -294,20 +285,11 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(874, 177);
+            label12.Location = new Point(89, 185);
             label12.Name = "label12";
             label12.Size = new Size(114, 32);
             label12.TabIndex = 40;
             label12.Text = "Thời gian";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Location = new Point(874, 67);
-            label16.Name = "label16";
-            label16.Size = new Size(169, 32);
-            label16.TabIndex = 39;
-            label16.Text = "ID khuyến mãi";
             // 
             // label3
             // 
@@ -320,6 +302,9 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(label1);
+            groupBox2.Controls.Add(btn_tiepTuc);
+            groupBox2.Controls.Add(btn_tamNgung);
             groupBox2.Controls.Add(rdoTat);
             groupBox2.Controls.Add(label36);
             groupBox2.Controls.Add(rdoBat);
@@ -341,6 +326,30 @@
             groupBox2.TabIndex = 75;
             groupBox2.TabStop = false;
             groupBox2.Text = "Khuyến mãi";
+            // 
+            // btn_tiepTuc
+            // 
+            btn_tiepTuc.BackColor = Color.DeepSkyBlue;
+            btn_tiepTuc.ForeColor = Color.White;
+            btn_tiepTuc.Location = new Point(1966, 283);
+            btn_tiepTuc.Name = "btn_tiepTuc";
+            btn_tiepTuc.Size = new Size(150, 46);
+            btn_tiepTuc.TabIndex = 39;
+            btn_tiepTuc.Text = "Tiếp tục";
+            btn_tiepTuc.UseVisualStyleBackColor = false;
+            btn_tiepTuc.Click += btn_tiepTuc_Click;
+            // 
+            // btn_tamNgung
+            // 
+            btn_tamNgung.BackColor = Color.Red;
+            btn_tamNgung.ForeColor = Color.White;
+            btn_tamNgung.Location = new Point(1966, 281);
+            btn_tamNgung.Name = "btn_tamNgung";
+            btn_tamNgung.Size = new Size(150, 46);
+            btn_tamNgung.TabIndex = 38;
+            btn_tamNgung.Text = "Tạm ngưng";
+            btn_tamNgung.UseVisualStyleBackColor = false;
+            btn_tamNgung.Click += btn_tamNgung_Click;
             // 
             // label36
             // 
@@ -435,6 +444,15 @@
             panel1.Size = new Size(2377, 1601);
             panel1.TabIndex = 75;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(516, 205);
+            label1.Name = "label1";
+            label1.Size = new Size(34, 32);
+            label1.TabIndex = 40;
+            label1.Text = "%";
+            // 
             // FormKhuyenMai
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -473,12 +491,10 @@
         private RadioButton rdoBat;
         private DateTimePicker dateLocNKT;
         private DateTimePicker dateLocNBD;
-        private TextBox txtLocID;
         private ComboBox cbbTrangThai;
         private Panel panel3;
         private RadioButton radioButton1;
         private RadioButton radioButton2;
-        private Label label16;
         private TextBox textBox21;
         private TextBox textBox22;
         private Button button2;
@@ -555,5 +571,8 @@
         private GroupBox groupBox3;
         private DataGridView dgvKhuyenMai;
         private Panel panel1;
+        private Button btn_tamNgung;
+        private Button btn_tiepTuc;
+        private Label label1;
     }
 }

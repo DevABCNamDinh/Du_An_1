@@ -246,7 +246,7 @@
             txt_daHuy.AutoSize = true;
             txt_daHuy.Font = new Font("Arial Narrow", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txt_daHuy.ForeColor = Color.Red;
-            txt_daHuy.Location = new Point(249, 366);
+            txt_daHuy.Location = new Point(195, 369);
             txt_daHuy.Name = "txt_daHuy";
             txt_daHuy.Size = new Size(189, 43);
             txt_daHuy.TabIndex = 29;

@@ -26,7 +26,7 @@ namespace BUS
             return KmDAL.GetAllKH();
         }
 
-        public string CNThem(string IdKm, string TenKM, DateTime NgayBD, DateTime NgayKT, double GiamGia, string MoTa , bool TrangThai)
+        public string CNThem(string IdKm, string TenKM, DateTime NgayBD, DateTime NgayKT, double GiamGia, string MoTa , bool TrangThai,bool tamNgung)
         {
             KhuyenMai km = new KhuyenMai()
             {
@@ -36,8 +36,8 @@ namespace BUS
                 NgayKetThuc = NgayKT,
                 PhanTramGiamGia = GiamGia,
                 MoTa = MoTa , 
-                TrangThai = TrangThai 
-
+                TrangThai = TrangThai,
+                TamNgung = tamNgung
             };
 
             
@@ -55,7 +55,10 @@ namespace BUS
             }
         }
 
-
+        public void UpdateKhuyenMaiTheoThoiGian(KhuyenMai km)
+        {
+            KmDAL.UpdateKMTheoThoiGian(km);
+        }
        
         public string CNSua(string IdKm, string TenKM, DateTime NgayBD, DateTime NgayKT, double GiamGia, string MoTa, bool TrangThai)
         {
@@ -128,8 +131,54 @@ namespace BUS
         {
             return KmDAL.GetAll();
         }
-
+        public KhuyenMai GetKMByID_M(string id)
+        {
+            return KmDAL.GetByID(id);
+        }
        
+
+        public List<KhuyenMai> getAllKM(string timkiem, int trangThai, DateTime? TGStart,DateTime? TGEnd)
+        {
+            var km = KmDAL.GetAllKm().AsQueryable();
+            if (!string.IsNullOrEmpty(timkiem))
+            {
+                km = km.Where(x => x.TenKhuyenMai.Contains(timkiem));
+            }
+
+            if (trangThai == 2)
+            {
+                km = km.Where(x => x.TrangThai == true && x.TamNgung == false);
+            }else if (trangThai == 3)
+            {
+                km = km.Where(x => x.TrangThai == true && x.TamNgung == true);
+
+            }
+            else if (trangThai==4)
+            {
+                km = km.Where(x => x.TrangThai == false && x.NgayKetThuc < DateTime.Now);
+            }else if (trangThai == 5)
+            {
+                km = km.Where(x => x.TrangThai == false && x.NgayBatDau > DateTime.Now);
+            }
+
+            //km = km.Where(x => x.NgayBatDau <= TGStart.Value && x.NgayKetThuc >= TGStart.Value); ;
+
+            //km = km.Where(x => x.NgayBatDau <= TGEnd.Value && x.NgayKetThuc.Value >= TGEnd);
+
+            //km = km.Where(x => x.NgayBatDau>=TGStart&&x.NgayKetThuc<=TGEnd )
+            //    .Where(x => x.NgayBatDau <= TGStart.Value && x.NgayKetThuc >= TGStart.Value)
+            //    .Where(x => x.NgayBatDau <= TGEnd.Value && x.NgayKetThuc.Value >= TGEnd);
+
+
+            km = km.Where(x => (x.NgayBatDau >= TGStart && x.NgayKetThuc <= TGEnd)?true
+                :(x.NgayBatDau <= TGStart.Value && x.NgayKetThuc >= TGStart.Value)
+                ?true:(x.NgayBatDau <= TGEnd.Value && x.NgayKetThuc.Value >= TGEnd)
+                );
+               
+            return km.ToList();
+            
+
+        }
         
     }
 }

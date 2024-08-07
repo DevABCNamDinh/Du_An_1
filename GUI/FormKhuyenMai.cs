@@ -29,7 +29,7 @@ namespace GUI
     public partial class FormKhuyenMai : Form
     {
         string idwhenClick;
-
+        QKhuyenMaiBUS BUS = new QKhuyenMaiBUS();
         public FormKhuyenMai()
         {
             InitializeComponent();
@@ -38,33 +38,50 @@ namespace GUI
             textBox.Multiline = true;
             textBox.Dock = DockStyle.Fill;
             this.Controls.Add(textBox);
+            btn_tiepTuc.Visible= false;
+            btn_tamNgung.Visible= false;
 
-
+            UpdateTrangThai();
+            ShowData();
         }
-        QKhuyenMaiBUS BUS = new QKhuyenMaiBUS();
 
 
-
-
-        public void ShowData(List<KhuyenMai> khuyenMais)
+        public void UpdateTrangThai()
         {
-            if (khuyenMais == null || !khuyenMais.Any())
+            foreach (var item in BUS.CNHien())
             {
-                dgvKhuyenMai.DataSource = null; // Đặt nguồn dữ liệu là null nếu danh sách rỗng
-                dgvKhuyenMai.Rows.Clear();
-                return; // Không làm gì khác nếu không có dữ liệu
+                var km = BUS.GetKMByID_M(item.IdkhuyenMai);
+                if (km.NgayBatDau <= DateTime.Now && km.NgayKetThuc >= DateTime.Now)
+                {
+                    km.TrangThai = true;
+                }
+                else
+                {
+                    km.TrangThai = false;
+                }
+                BUS.UpdateKhuyenMaiTheoThoiGian(km);
             }
+        }
 
-            dgvKhuyenMai.DataSource = null; // Xóa nguồn dữ liệu hiện tại
+
+        public void ShowData()
+        {
+            //if (BUS.getAllKM(txtTim.Text, trangThai(), dateLocNBD.Value,dateLocNKT.Value) == null || !BUS.getAllKM(txtTim.Text, trangThai(), dateLocNBD.Value, dateLocNKT.Value).Any())
+            //{
+            //    dgvKhuyenMai.DataSource = null; // Đặt nguồn dữ liệu là null nếu danh sách rỗng
+            //    dgvKhuyenMai.Rows.Clear();
+            //    return; // Không làm gì khác nếu không có dữ liệu
+            //}
+
+            //dgvKhuyenMai.DataSource = null; // Xóa nguồn dữ liệu hiện tại
             dgvKhuyenMai.Rows.Clear(); // Xóa tất cả các hàng
 
             // Thiết lập cấu trúc cột nếu chưa được thiết lập
-            if (dgvKhuyenMai.Columns.Count == 0)
-            {
+           
                 dgvKhuyenMai.ColumnCount = 8;
                 dgvKhuyenMai.Columns[0].HeaderText = "STT";
                 dgvKhuyenMai.Columns[1].HeaderText = "ID Khuyến Mãi";
-                dgvKhuyenMai.Columns[1].Visible=false;
+                dgvKhuyenMai.Columns[1].Visible = false;
                 dgvKhuyenMai.Columns[2].HeaderText = "TenKhuyenMai";
                 dgvKhuyenMai.Columns[3].HeaderText = "NgayBatDau";
                 dgvKhuyenMai.Columns[4].HeaderText = "NgayKetThuc";
@@ -73,7 +90,7 @@ namespace GUI
                 dgvKhuyenMai.Columns[7].HeaderText = "TrangThai";
                 dgvKhuyenMai.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            }
+            
 
             // Thiết lập màu sắc cho tiêu đề cột và hàng
             //dgvKhuyenMai.ColumnHeadersDefaultCellStyle.BackColor = Color.SlateBlue;
@@ -84,11 +101,25 @@ namespace GUI
 
             int stt = 1;
 
-            foreach (var item in khuyenMais)
+            foreach (var item in BUS.getAllKM(txtTim.Text, trangThai(), dateLocNBD.Value, dateLocNKT.Value))
             {
-                string trangThai = item.TrangThai.HasValue
-                    ? (item.TrangThai.Value ? "Đang hoạt động" : "Đã tắt")
-                    : "Không xác định";
+                var trangThai = "";
+                if (item.TrangThai == true&&item.TamNgung==false)
+                {
+                    trangThai = "Đang hoạt động"; ;
+                }
+                else if (item.TrangThai == true && item.TamNgung == true)
+                {
+                    trangThai = "Tạm ngưng"; ;
+                }
+                else if (item.TrangThai == false && DateTime.Now > item.NgayKetThuc)
+                {
+                    trangThai = "Đã kết thúc";
+                }
+                else
+                {
+                    trangThai = "Chưa bắt đầu";
+                }
 
                 // Thêm hàng mới vào DataGridView
                 if (item.IdkhuyenMai == "KM000")
@@ -97,7 +128,7 @@ namespace GUI
                 }
                 else
                 {
-                    dgvKhuyenMai.Rows.Add(stt++, item.IdkhuyenMai, item.TenKhuyenMai, item.NgayBatDau, item.NgayKetThuc, item.PhanTramGiamGia+"%", item.MoTa, trangThai);
+                    dgvKhuyenMai.Rows.Add(stt++, item.IdkhuyenMai, item.TenKhuyenMai, item.NgayBatDau, item.NgayKetThuc, item.PhanTramGiamGia + "%", item.MoTa, trangThai);
 
                 }
             }
@@ -105,51 +136,70 @@ namespace GUI
 
         private void dgvKhuyenMai_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            var x = BUS.getAllKM(txtTim.Text, trangThai(), dateLocNBD.Value, dateLocNKT.Value).Count();
+            if (e.RowIndex<0||e.RowIndex >= x)
             {
+                return;
+               }    
+            
                 try
                 {
                     DataGridViewRow row = dgvKhuyenMai.Rows[e.RowIndex];
 
                     idwhenClick = row.Cells[1].Value?.ToString();
-                    txtTenKhuyenMai.Text = row.Cells[2].Value?.ToString();
-                    if (row.Cells[3].Value != null && DateTime.TryParse(row.Cells[3].Value.ToString(), out DateTime ngayBatDau))
-                    {
-                        dateNgayBatDau.Text = ngayBatDau.ToString("dd-MM-yyyy");
-                    }
-                    else
-                    {
-                        dateNgayBatDau.Text = "";
-                    }
-
-                    if (row.Cells[4].Value != null && DateTime.TryParse(row.Cells[4].Value.ToString(), out DateTime ngayKetThuc))
-                    {
-                        dateNgayKetThuc.Text = ngayKetThuc.ToString("dd-MM-yyyy");
-                    }
-                    else
-                    {
-                        dateNgayKetThuc.Text = "";
-                    }
-
-                    txtGiamGia.Text = row.Cells[5].Value?.ToString();
-                    txtMoTaKM.Text = row.Cells[6].Value?.ToString();
+                    var km = BUS.GetKMByID_M(idwhenClick);
+                    txtTenKhuyenMai.Text = km.TenKhuyenMai;
 
 
-                    if (Convert.ToString(row.Cells[7].Value) == "Đang hoạt động")
+
+                    dateNgayKetThuc.Value = Convert.ToDateTime(km.NgayKetThuc);
+                    dateNgayBatDau.Value = Convert.ToDateTime(km.NgayBatDau);
+
+
+                    txtGiamGia.Text = Convert.ToString(km.PhanTramGiamGia);
+                    txtMoTaKM.Text = km.MoTa;
+
+                    if (km.TrangThai == true)
                     {
                         rdoBat.Checked = true;
                     }
-                    else if (Convert.ToString(row.Cells[7].Value) == "Đã tắt") { rdoTat.Checked = true; }
+                    else
+                    {
+                        rdoTat.Checked = true;
+                    }
+                    if (km.TrangThai == true && km.TamNgung == true)
+                    {
+                        rdoBat.Checked = false;
+                        rdoTat.Checked = false;
 
 
+                    }
 
+                    if (km.TrangThai==true&&km.TamNgung == true)
+                    {
+                        btn_tiepTuc.Visible = true;
+                    }
+                    else
+                    {
+                        btn_tiepTuc.Visible = false;
+
+                    }
+                    if (km.TrangThai==true&&km.TamNgung == false)
+                    {
+                        btn_tamNgung.Visible = true;
+                    }
+                    else
+                    {
+                        btn_tamNgung.Visible = false;
+
+                    }
 
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
+            
 
         }
 
@@ -208,15 +258,15 @@ namespace GUI
                 TrangThai = false;
             }
 
-            string id = "KM" + (BUS.CNHien().Count );
+            string id = "KM" + (BUS.CNHien().Count);
 
             DialogResult dl = MessageBox.Show("Bạn có muốn thêm khuyến mãi không?", "Thêm Mới", MessageBoxButtons.YesNo);
             if (dl == DialogResult.Yes)
             {
-                string kq = BUS.CNThem(id, TenKM, NgayBD, NgayKT, GiamGia, MoTa, TrangThai);
+                string kq = BUS.CNThem(id, TenKM, NgayBD, NgayKT, GiamGia, MoTa, TrangThai, false);
                 MessageBox.Show(kq);
-                List<KhuyenMai> km = BUS.CNHien();
-                ShowData(km);
+                
+                ShowData();
                 return;
             }
 
@@ -224,15 +274,33 @@ namespace GUI
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-          
+
             string TenKM = txtTenKhuyenMai.Text;
             DateTime NgayBD = dateNgayBatDau.Value;
             DateTime NgayKT = dateNgayKetThuc.Value;
             double GiamGia;
 
+            var kmID = BUS.GetKMByID_M(idwhenClick);
 
+            if (kmID.NgayKetThuc < DateTime.Now)
+            {
+                MessageBox.Show("Khuyến mãi đã kết thúc, không thể thay đổi!", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (NgayBD > NgayKT)
+            {
+                MessageBox.Show("Thời gian bắt đầu nhỏ hơn thời gian kết thúc", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (NgayBD > DateTime.Now && rdoBat.Checked == true)
+            {
+                MessageBox.Show("Không thể thay đổi trạng thái", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (string.IsNullOrWhiteSpace(idwhenClick) || string.IsNullOrWhiteSpace(TenKM) ||
-                NgayBD > NgayKT ||
+
                 string.IsNullOrWhiteSpace(txtGiamGia.Text) ||
                 !double.TryParse(txtGiamGia.Text, out GiamGia) || GiamGia < 0 || GiamGia > 100)
             {
@@ -265,8 +333,8 @@ namespace GUI
                     string kq = BUS.CNSua(idwhenClick, TenKM, NgayBD, NgayKT, GiamGia, MoTa, TrangThai);
                     MessageBox.Show(kq);
 
-                    List<KhuyenMai> km = BUS.CNHien();
-                    ShowData(km);
+                   
+                    ShowData();
                 }
                 catch (Exception ex)
                 {
@@ -297,15 +365,17 @@ namespace GUI
 
         private void FormKhuyenMai_Load_1(object sender, EventArgs e)
         {
-            List<KhuyenMai> khuyenMais = BUS.CNHien();
 
-            ShowData(khuyenMais);
+           
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None;
             this.TopMost = true;
             cbbTrangThai.Items.Add("Tất cả");
             cbbTrangThai.Items.Add("Đang hoạt động");
-            cbbTrangThai.Items.Add("Đã tắt");
+            cbbTrangThai.Items.Add("Tạm ngưng");
+            cbbTrangThai.Items.Add("Đã kết thúc");
+            cbbTrangThai.Items.Add("Chưa bắt đầu");
+
             cbbTrangThai.SelectedIndex = 0;
 
             dateNgayBatDau.Value = DateTime.Now; // Ngày bắt đầu mặc định là thời điểm hiện tại
@@ -318,7 +388,7 @@ namespace GUI
             //    cbbIDKhuyenMai.Items.Add(km.IdkhuyenMai);
             //}
 
-
+            ShowData();
 
 
         }
@@ -359,7 +429,7 @@ namespace GUI
 
         private void btnLocID_Click(object sender, EventArgs e)
         {
-            filterId = txtLocID.Text;
+            
             ApplyFilters();
         }
 
@@ -408,47 +478,47 @@ namespace GUI
             filterDiscount = null;
             filterStatus = null;
 
-            List<KhuyenMai> km = BUS.CNHien();
-            ShowData(km);
+           
+            ShowData();
         }
 
         private void ApplyFilters()
         {
-            List<KhuyenMai> filteredList = BUS.CNHien();
+            //List<KhuyenMai> filteredList = BUS.CNHien();
 
-            if (!string.IsNullOrEmpty(filterId))
-            {
-                filteredList = filteredList.Where(km => km.IdkhuyenMai.Contains(filterId)).ToList();
-            }
+            //if (!string.IsNullOrEmpty(filterId))
+            //{
+            //    filteredList = filteredList.Where(km => km.IdkhuyenMai.Contains(filterId)).ToList();
+            //}
 
-            if (filterDate.HasValue)
-            {
-                filteredList = filteredList.Where(km => km.NgayBatDau.HasValue && km.NgayBatDau.Value.Date == filterDate.Value.Date).ToList();
-            }
+            //if (filterDate.HasValue)
+            //{
+            //    filteredList = filteredList.Where(km => km.NgayBatDau.HasValue && km.NgayBatDau.Value.Date == filterDate.Value.Date).ToList();
+            //}
 
-            if (filterDiscount.HasValue)
-            {
-                filteredList = filteredList.Where(km => km.PhanTramGiamGia >= filterDiscount.Value).ToList();
-            }
-
-
-
-
-            if (dateLocNBD.Value <= dateLocNKT.Value) // So sánh đầy đủ bao gồm cả giờ
-            {
-                filteredList = filteredList.Where(km => km.NgayBatDau.HasValue
-                    && km.NgayBatDau.Value >= dateLocNBD.Value
-                    && km.NgayBatDau.Value <= dateLocNKT.Value).ToList();
-            }
-            else
-            {
-                MessageBox.Show("Ngày bắt đầu phải trước hoặc cùng ngày với ngày kết thúc.", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Không lọc dữ liệu nếu ngày không hợp lệ
-            }
+            //if (filterDiscount.HasValue)
+            //{
+            //    filteredList = filteredList.Where(km => km.PhanTramGiamGia >= filterDiscount.Value).ToList();
+            //}
 
 
 
-            ShowData(filteredList);
+
+            //if (dateLocNBD.Value <= dateLocNKT.Value) // So sánh đầy đủ bao gồm cả giờ
+            //{
+            //    filteredList = filteredList.Where(km => km.NgayBatDau.HasValue
+            //        && km.NgayBatDau.Value >= dateLocNBD.Value
+            //        && km.NgayBatDau.Value <= dateLocNKT.Value).ToList();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Ngày bắt đầu phải trước hoặc cùng ngày với ngày kết thúc.", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return; // Không lọc dữ liệu nếu ngày không hợp lệ
+            //}
+
+
+
+            //ShowData(filteredList);
         }
 
 
@@ -591,8 +661,8 @@ namespace GUI
 
             if (string.IsNullOrEmpty(searchTerm))
             {
-                List<KhuyenMai> khuyenMais = BUS.CNHien();
-                ShowData(khuyenMais);
+                
+                ShowData();
                 return;
             }
 
@@ -605,9 +675,9 @@ namespace GUI
             {
                 await Task.Delay(5, token);
 
-                List<KhuyenMai> khuyenMais = BUS.CNTimByPartialTen(searchTerm);
+               
 
-                ShowData(khuyenMais);
+                ShowData();
             }
             catch (TaskCanceledException)
             {
@@ -618,68 +688,146 @@ namespace GUI
 
         private async void txtLocID_TextChanged(object sender, EventArgs e)
         {
-            string searchTerm = txtLocID.Text.Trim();
 
-            if (string.IsNullOrEmpty(searchTerm))
-            {
-                List<KhuyenMai> khuyenMais = BUS.CNHien(); // Lấy tất cả khuyến mãi nếu không có từ khóa
-                ShowData(khuyenMais);
-                return;
-            }
 
-            cancellationTokenSource?.Cancel();
-            cancellationTokenSource = new CancellationTokenSource();
-            var token = cancellationTokenSource.Token;
+            //string searchTerm = txtLocID.Text.Trim();
 
-            try
-            {
-                await Task.Delay(300, token); // Chờ một chút để tránh việc gọi quá nhiều lần
+            //if (string.IsNullOrEmpty(searchTerm))
+            //{
+               
+            //    ShowData();
+            //    return;
+            //}
 
-                List<KhuyenMai> khuyenMais = BUS.GetKhuyenMaisById(searchTerm); // Gọi phương thức BUS để tìm kiếm
+            //cancellationTokenSource?.Cancel();
+            //cancellationTokenSource = new CancellationTokenSource();
+            //var token = cancellationTokenSource.Token;
 
-                ShowData(khuyenMais);
-            }
-            catch (TaskCanceledException)
-            {
-                // Tác vụ bị hủy, không làm gì cả
-            }
+            //try
+            //{
+            //    await Task.Delay(300, token); // Chờ một chút để tránh việc gọi quá nhiều lần
+
+            //    List<KhuyenMai> khuyenMais = BUS.GetKhuyenMaisById(searchTerm); // Gọi phương thức BUS để tìm kiếm
+
+            //    ShowData(khuyenMais);
+            //}
+            //catch (TaskCanceledException)
+            //{
+            //    // Tác vụ bị hủy, không làm gì cả
+            //}
         }
 
         private void cbbTrangThai_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            if (cbbTrangThai.SelectedItem == null)
-            {
-                List<KhuyenMai> khuyenMais = BUS.CNHien();
-                ShowData(khuyenMais);
-                return;
-            }
-
-
-            if (cbbTrangThai.SelectedItem.ToString() == "Tất cả")
-            {
-
-                List<KhuyenMai> khuyenMais = BUS.CNHien();
-                ShowData(khuyenMais);
-                return;
-            }
-
-
-            bool status = cbbTrangThai.SelectedItem.ToString() == "Đang hoạt động";
-            List<KhuyenMai> filteredKhuyenMais = BUS.LocTrangThai(status);
-            ShowData(filteredKhuyenMais);
-
+            ShowData();
 
         }
 
         private void dateLocNBD_ValueChanged(object sender, EventArgs e)
         {
-            ApplyFilters();
+            ShowData();
+
         }
 
         private void dateLocNKT_ValueChanged(object sender, EventArgs e)
         {
-            ApplyFilters();
+            ShowData();
+
+           
+        }
+
+        private void dateNgayBatDau_ValueChanged(object sender, EventArgs e)
+        {
+
+            if (dateNgayBatDau.Value <= DateTime.Now && dateNgayKetThuc.Value >= DateTime.Now)
+            {
+                rdoBat.Checked = true;
+            }
+            else
+            {
+                rdoTat.Checked = true;
+            }
+
+
+
+        }
+        private bool kiemTraThoiGian()
+        {
+            if (dateNgayBatDau.Value >= dateNgayKetThuc.Value)
+            {
+                MessageBox.Show("Thời gian bắt đầu nhỏ hơn thời gian kết thúc");
+                return false;
+            }
+            return true;
+        }
+
+        private void dateNgayKetThuc_ValueChanged(object sender, EventArgs e)
+        {
+
+            if (dateNgayBatDau.Value <= DateTime.Now && dateNgayKetThuc.Value >= DateTime.Now)
+            {
+                rdoBat.Checked = true;
+            }
+            else
+            {
+                rdoTat.Checked = true;
+            }
+
+
+        }
+
+        private void btn_tamNgung_Click(object sender, EventArgs e)
+        {
+            var khuyenMai = BUS.GetKMByID_M(idwhenClick);
+            khuyenMai.TamNgung = true;
+            BUS.UpdateKhuyenMaiTheoThoiGian(khuyenMai);
+            List<KhuyenMai> km = BUS.CNHien();
+            rdoBat.Checked = false;
+            rdoTat.Checked=false;
+            btn_tamNgung.Visible = false;
+            btn_tiepTuc.Visible = true;
+            ShowData();
+            
+        }
+
+        private void btn_tiepTuc_Click(object sender, EventArgs e)
+        {
+            var khuyenMai = BUS.GetKMByID_M(idwhenClick);
+            khuyenMai.TamNgung = false;
+            BUS.UpdateKhuyenMaiTheoThoiGian(khuyenMai);
+            List<KhuyenMai> km = BUS.CNHien();
+            btn_tamNgung.Visible = true;
+            btn_tiepTuc.Visible = false;
+            rdoBat.Checked = true;
+
+            ShowData();
+        }
+
+        public int trangThai()
+        {
+            int x;
+          
+
+            if (cbbTrangThai.Text == "Tất cả")
+            {
+                x = 1;
+            }
+            else if (cbbTrangThai.Text == "Đang hoạt động")
+            {
+                x = 2;
+            }
+            else if (cbbTrangThai.Text=="Tạm ngưng")
+            {
+                x=3;
+            }
+            else if (cbbTrangThai.Text=="Đã kết thúc")
+            {
+                x = 4;
+            }else
+            {
+                x = 5;
+            }
+            return x;
         }
     }
 }

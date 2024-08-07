@@ -28,7 +28,7 @@ namespace BUS
             }
             else
             {
-                return repos.GetAllKhachHang().Where(x => x.Ten.Contains(search)||x.Sdt==search).ToList();
+                return repos.GetAllKhachHang().Where(x => x.Ten.Contains(search)||x.Sdt.Contains(search)).ToList();
             }
         }
         public string themNV(KhachHang kh)

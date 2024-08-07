@@ -52,8 +52,14 @@ namespace GUI
                 {
                     gioitinh = "Nữ";
                 }
+                if (kh.IdkhachHang == "KH0")
+                {
 
-                dtg_hienthi.Rows.Add(kh.IdkhachHang, kh.Ten, gioitinh, kh.Email, kh.Sdt, kh.Diachi);
+                }
+                else
+                {
+                    dtg_hienthi.Rows.Add(kh.IdkhachHang, kh.Ten, gioitinh, kh.Email, kh.Sdt, kh.Diachi);
+                }
             }
         }
 
@@ -113,22 +119,23 @@ namespace GUI
                 return;
             }
 
-            if(txt_email.Text == ""){
+            if (txt_email.Text == "")
+            {
 
             }
             else
             {
                 if (!IsEmailUnique(txt_email.Text))
-                            {
-                                MessageBox.Show("Email đã tồn tại. Vui lòng nhập email khác.");
-                                return;
-                            }
+                {
+                    MessageBox.Show("Email đã tồn tại. Vui lòng nhập email khác.");
+                    return;
+                }
             }
-            
+
 
             KhachHang newKhachHang = new KhachHang
             {
-                IdkhachHang = "KH" + (service.GetKhachHangs(txt_search.Text).Count + 1),
+                IdkhachHang = "KH" + (service.GetKhachHangs(txt_search.Text).Count),
                 Ten = txt_khachhang.Text,
                 Diachi = txt_diachi.Text,
                 Email = txt_email.Text,
@@ -221,7 +228,7 @@ namespace GUI
             idwhenclick = dtg_hienthi.Rows[rowIndex].Cells[1].Value.ToString();
             fillData();*/
             int rowIndex = e.RowIndex;
-            if (rowIndex >= 0 && rowIndex < dtg_hienthi.Rows.Count)
+            if (rowIndex >= 0 && rowIndex < dtg_hienthi.Rows.Count-1)
             {
                 idwhenclick = dtg_hienthi.Rows[rowIndex].Cells[0].Value.ToString(); // Lấy giá trị ID từ cột ID
                 fillData();
@@ -284,5 +291,12 @@ namespace GUI
         {
 
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

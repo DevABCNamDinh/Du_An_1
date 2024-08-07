@@ -11,6 +11,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,14 +50,14 @@ namespace GUI
             txtHoVaTen.Text = nv.TenNhanVien;
             txtTenDangNhap.Text = nv.Taikhoan;
             txtMatKhau.Text = nv.MatKhau;
-
+           
 
             //txtChucVu.Text = NhanVien.IdchucVu;
-            txtChucVu.Text = _chucvuBUS.Getbyid(NhanVien.IdchucVu).ChucVu1;
+            txtChucVu.Text = _chucvuBUS.Getbyid(nv.IdchucVu).ChucVu1;
 
-            txtEmail.Text = NhanVien.Email;
-            txtSdt.Text = NhanVien.Sdt;
-            if (NhanVien.GioiTinh == true)
+            txtEmail.Text = nv.Email;
+            txtSdt.Text = nv.Sdt;
+            if (nv.GioiTinh == true)
             {
                 rdoNam.Checked = true;
             }
@@ -86,7 +88,7 @@ namespace GUI
             {
                 gioitinh = true;
             }
-            else if (rdoNam.Checked)
+            else if (rdoNu.Checked)
             {
                 gioitinh = false;
             }
@@ -101,8 +103,9 @@ namespace GUI
             if (dl == DialogResult.Yes)
             {
                 string kq = _qlnvBUS.Update2(update);
+              
+                SendMailUpdate();
                 MessageBox.Show(kq);
-
                 return;
 
             }
@@ -114,6 +117,45 @@ namespace GUI
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void SendMailUpdate()
+        {
+            string fromEmail = "trungbdph49009@gmail.com";
+            string toEmail = txtEmail.Text.Trim();
+            string pass = "idrk sger pfbu mdvv";
+            string tieude = "SUNSCREEN - THÔNG BÁO CẬP NHẬT THÔNG TIN";
+            string content = $"Xin chào {txtHoVaTen.Text}, Thông tin cá nhân của bạn trên hệ thống Sunscreen FPL đã được bạn cập nhật. Vui lòng kiểm tra lại thông tin mới: ";
+            string id = $"ID nhân viên: {txtIDNhanVien.Text}";
+            string ten = $"Họ và tên: {txtHoVaTen.Text}";
+            string sdt = $"Số điện thoại: {txtSdt.Text}";
+            string email = $"Emai: {txtEmail.Text}";
+            string chucvu = $"Chức vụ: {txtChucVu.Text}";
+            string tk = $"Tên đăng nhập: {txtTenDangNhap.Text}";
+            string mk = $"Mật khẩu: {txtMatKhau.Text}";
+
+            string thongdiep = "Nếu thông tin cá nhân không chính xác, vui lòng liên hệ với quản lý !";
+
+            MailMessage mail = new MailMessage();
+            mail.To.Add(toEmail);
+            mail.From = new MailAddress(fromEmail);
+            mail.Subject = tieude;
+            mail.Body = content + "\n" + id + "\n" + ten + "\n" + sdt + "\n" + email + "\n" + chucvu + "\n" + tk + "\n" + mk + "\n" + thongdiep;
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+            smtp.EnableSsl = true;
+            smtp.Port = 587;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Credentials = new NetworkCredential(fromEmail, pass); // fromEmail: email người gửi, pass: mật khẩu email người gửi
+            try
+            {
+                smtp.Send(mail);
+                //MessageBox.Show("đã gửi email");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("gửi email thất bại");
+            }
         }
     }
 }

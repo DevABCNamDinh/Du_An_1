@@ -304,6 +304,7 @@
             txtGiaNhap.Name = "txtGiaNhap";
             txtGiaNhap.Size = new Size(241, 39);
             txtGiaNhap.TabIndex = 33;
+            txtGiaNhap.TextChanged += txtGiaNhap_TextChanged;
             // 
             // txtGiaBan
             // 
@@ -571,7 +572,6 @@
             // cbbTrangThai
             // 
             cbbTrangThai.FormattingEnabled = true;
-            cbbTrangThai.Items.AddRange(new object[] { "Còn Bán", "Ngừng Bán" });
             cbbTrangThai.Location = new Point(815, 60);
             cbbTrangThai.Name = "cbbTrangThai";
             cbbTrangThai.Size = new Size(324, 40);

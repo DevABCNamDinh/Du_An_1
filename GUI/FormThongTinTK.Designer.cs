@@ -44,14 +44,12 @@
             txtChucVu = new TextBox();
             txtEmail = new TextBox();
             txtSdt = new TextBox();
-            grpGioiTinh = new GroupBox();
             rdoNu = new RadioButton();
             rdoNam = new RadioButton();
             pictureBox1 = new PictureBox();
             btnUpdate = new Button();
             groupBox1 = new GroupBox();
             label7 = new Label();
-            grpGioiTinh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -59,7 +57,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(719, 311);
+            label1.Location = new Point(719, 375);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(174, 32);
@@ -69,7 +67,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(719, 394);
+            label2.Location = new Point(719, 458);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(115, 32);
@@ -79,7 +77,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(719, 236);
+            label3.Location = new Point(719, 300);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(118, 32);
@@ -89,7 +87,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(719, 468);
+            label4.Location = new Point(719, 230);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(101, 32);
@@ -120,7 +118,7 @@
             // 
             txtIDNhanVien.BackColor = Color.Gainsboro;
             txtIDNhanVien.Location = new Point(959, 156);
-            txtIDNhanVien.Margin = new Padding(4, 4, 4, 4);
+            txtIDNhanVien.Margin = new Padding(4);
             txtIDNhanVien.Name = "txtIDNhanVien";
             txtIDNhanVien.ReadOnly = true;
             txtIDNhanVien.Size = new Size(528, 39);
@@ -150,27 +148,27 @@
             // 
             // txtHoVaTen
             // 
-            txtHoVaTen.BackColor = Color.Gainsboro;
-            txtHoVaTen.Location = new Point(959, 232);
-            txtHoVaTen.Margin = new Padding(4, 4, 4, 4);
+            txtHoVaTen.BackColor = SystemColors.Window;
+            txtHoVaTen.Location = new Point(959, 296);
+            txtHoVaTen.Margin = new Padding(4);
             txtHoVaTen.Name = "txtHoVaTen";
             txtHoVaTen.Size = new Size(528, 39);
             txtHoVaTen.TabIndex = 10;
             // 
             // txtTenDangNhap
             // 
-            txtTenDangNhap.BackColor = Color.Gainsboro;
-            txtTenDangNhap.Location = new Point(959, 307);
-            txtTenDangNhap.Margin = new Padding(4, 4, 4, 4);
+            txtTenDangNhap.BackColor = SystemColors.Window;
+            txtTenDangNhap.Location = new Point(959, 371);
+            txtTenDangNhap.Margin = new Padding(4);
             txtTenDangNhap.Name = "txtTenDangNhap";
             txtTenDangNhap.Size = new Size(528, 39);
             txtTenDangNhap.TabIndex = 11;
             // 
             // txtMatKhau
             // 
-            txtMatKhau.BackColor = Color.Gainsboro;
-            txtMatKhau.Location = new Point(959, 390);
-            txtMatKhau.Margin = new Padding(4, 4, 4, 4);
+            txtMatKhau.BackColor = SystemColors.Window;
+            txtMatKhau.Location = new Point(959, 454);
+            txtMatKhau.Margin = new Padding(4);
             txtMatKhau.Name = "txtMatKhau";
             txtMatKhau.Size = new Size(528, 39);
             txtMatKhau.TabIndex = 12;
@@ -178,8 +176,8 @@
             // txtChucVu
             // 
             txtChucVu.BackColor = Color.Gainsboro;
-            txtChucVu.Location = new Point(959, 465);
-            txtChucVu.Margin = new Padding(4, 4, 4, 4);
+            txtChucVu.Location = new Point(959, 227);
+            txtChucVu.Margin = new Padding(4);
             txtChucVu.Name = "txtChucVu";
             txtChucVu.ReadOnly = true;
             txtChucVu.Size = new Size(528, 39);
@@ -187,40 +185,27 @@
             // 
             // txtEmail
             // 
-            txtEmail.BackColor = Color.Gainsboro;
+            txtEmail.BackColor = SystemColors.Window;
             txtEmail.Location = new Point(959, 538);
-            txtEmail.Margin = new Padding(4, 4, 4, 4);
+            txtEmail.Margin = new Padding(4);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(528, 39);
             txtEmail.TabIndex = 14;
             // 
             // txtSdt
             // 
-            txtSdt.BackColor = Color.Gainsboro;
+            txtSdt.BackColor = SystemColors.Window;
             txtSdt.Location = new Point(959, 616);
-            txtSdt.Margin = new Padding(4, 4, 4, 4);
+            txtSdt.Margin = new Padding(4);
             txtSdt.Name = "txtSdt";
             txtSdt.Size = new Size(528, 39);
             txtSdt.TabIndex = 15;
             // 
-            // grpGioiTinh
-            // 
-            grpGioiTinh.Controls.Add(rdoNu);
-            grpGioiTinh.Controls.Add(rdoNam);
-            grpGioiTinh.Location = new Point(719, 701);
-            grpGioiTinh.Margin = new Padding(4, 4, 4, 4);
-            grpGioiTinh.Name = "grpGioiTinh";
-            grpGioiTinh.Padding = new Padding(4, 4, 4, 4);
-            grpGioiTinh.Size = new Size(770, 145);
-            grpGioiTinh.TabIndex = 16;
-            grpGioiTinh.TabStop = false;
-            grpGioiTinh.Text = "Giới tính";
-            // 
             // rdoNu
             // 
             rdoNu.AutoSize = true;
-            rdoNu.Location = new Point(542, 61);
-            rdoNu.Margin = new Padding(4, 4, 4, 4);
+            rdoNu.Location = new Point(1261, 707);
+            rdoNu.Margin = new Padding(4);
             rdoNu.Name = "rdoNu";
             rdoNu.Size = new Size(77, 36);
             rdoNu.TabIndex = 1;
@@ -231,8 +216,8 @@
             // rdoNam
             // 
             rdoNam.AutoSize = true;
-            rdoNam.Location = new Point(240, 61);
-            rdoNam.Margin = new Padding(4, 4, 4, 4);
+            rdoNam.Location = new Point(959, 707);
+            rdoNam.Margin = new Padding(4);
             rdoNam.Name = "rdoNam";
             rdoNam.Size = new Size(96, 36);
             rdoNam.TabIndex = 0;
@@ -242,10 +227,12 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(150, 156);
-            pictureBox1.Margin = new Padding(4, 4, 4, 4);
+            pictureBox1.Margin = new Padding(4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(420, 586);
+            pictureBox1.Size = new Size(437, 585);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 17;
             pictureBox1.TabStop = false;
             // 
@@ -255,7 +242,7 @@
             btnUpdate.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUpdate.ForeColor = Color.FromArgb(29, 67, 138);
             btnUpdate.Location = new Point(504, 955);
-            btnUpdate.Margin = new Padding(4, 4, 4, 4);
+            btnUpdate.Margin = new Padding(4);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(619, 88);
             btnUpdate.TabIndex = 18;
@@ -267,12 +254,13 @@
             // 
             groupBox1.BackColor = Color.FromArgb(210, 218, 255);
             groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(rdoNu);
+            groupBox1.Controls.Add(rdoNam);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(btnUpdate);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(pictureBox1);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(grpGioiTinh);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(txtSdt);
             groupBox1.Controls.Add(label5);
@@ -285,9 +273,9 @@
             groupBox1.Controls.Add(txtTenDangNhap);
             groupBox1.Controls.Add(txtHoVaTen);
             groupBox1.Location = new Point(434, 154);
-            groupBox1.Margin = new Padding(4, 4, 4, 4);
+            groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 4, 4, 4);
+            groupBox1.Padding = new Padding(4);
             groupBox1.Size = new Size(1663, 1257);
             groupBox1.TabIndex = 20;
             groupBox1.TabStop = false;
@@ -296,13 +284,12 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(253, 794);
+            label7.Location = new Point(719, 709);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(186, 37);
-            label7.TabIndex = 20;
-            label7.Text = "Ảnh nhân viên";
+            label7.Size = new Size(105, 32);
+            label7.TabIndex = 19;
+            label7.Text = "Giới tính";
             // 
             // FormThongTinTK
             // 
@@ -316,11 +303,8 @@
             Controls.Add(groupBox1);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
-            ImeMode = ImeMode.NoControl;
             Name = "FormThongTinTK";
             Load += FormThongTinTK_Load;
-            grpGioiTinh.ResumeLayout(false);
-            grpGioiTinh.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -345,7 +329,6 @@
         private TextBox txtChucVu;
         private TextBox txtEmail;
         private TextBox txtSdt;
-        private GroupBox grpGioiTinh;
         private RadioButton rdoNu;
         private RadioButton rdoNam;
         private PictureBox pictureBox1;
@@ -353,6 +336,5 @@
 
         private GroupBox groupBox1;
         private Label label7;
-
     }
 }
